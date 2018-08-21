@@ -12,7 +12,7 @@ the pedagogy of teaching tone.
 ##Requirements
 This outlines the requirements for the application.
 
-###Fucntional Requirements
+###Functional Requirements
 
 ###Usability Requirements
 
