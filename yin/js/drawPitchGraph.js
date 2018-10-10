@@ -2,13 +2,14 @@ var mother;
 var horse;
 
 function setup(){
-  createCanvas(700, 400);
+  var canvas1 = createCanvas(700, 400);
   mother = createGraphics(700,400);
   horse = createGraphics(700,400);
-
+  canvas1.parent('examples-graphs-mother');
 }
 
 function draw() {
+
   background(222);
   stroke(000);
   strokeWeight(5);
@@ -18,7 +19,7 @@ function draw() {
   line(0,300,width,300);
   line(0,394,width,394);
 
-  //pitch mother`
+  //pitch mother
   stroke('red');
   strokeWeight(4);
   line(100,80,width-80,80);
