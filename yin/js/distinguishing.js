@@ -22,13 +22,28 @@ function pickIncorrectOption(test){
     return option;
 }
 
-function presentOption(option,parentDiv){
- 
+var uniqueOptions = 0;
+
+function presentOption(parentDiv,option){
+    let parentDivHandle = document.getElementById(parentDiv);
+    let newNode = document.createElement("DIV");
+    newNode.className = "response";
+    newNode.classList.add("options");
+    newNode.id = "option"+uniqueOptions;
+    uniqueOptions++;
+    let optionText = document.createTextNode(option);
+    newNode.appendChild(optionText);
+    parentDivHandle.appendChild(newNode);
 }
 
+
 addSound(test0,"audioSource");
+presentOption("firstResponse",pickIncorrectOption(test0));
+presentOption("secondResponse",test0.correctOption);
+
 
 //prompt user to select option
+
 
 //evaluate user selection
     //if correct highlight green
@@ -36,3 +51,24 @@ addSound(test0,"audioSource");
 
     //if incorrect highlight red
     //repeat correct stimuli
+
+function evaluateResponse(option,test) {
+    let response = document.getElementById(option).innerText;
+    if (response === test.correctOption){
+        changeBackgroundColor(option,"green");
+    } else {
+        changeBackgroundColor(option,"red");
+    }
+}
+
+function changeBackgroundColor(divId,color) {
+    let divIdHandle = document.getElementById(divId);
+    divIdHandle.style.backgroundColor = color;
+}
+
+
+evaluateResponse("option0",test0);
+evaluateResponse("option1",test0);
+//set evaluation to only occur onclick
+
+
