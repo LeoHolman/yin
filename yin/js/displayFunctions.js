@@ -35,3 +35,22 @@ export function changeBackgroundColor(divId,color) {
     let divIdHandle = document.getElementById(divId);
     divIdHandle.style.backgroundColor = color;
 }
+
+export var uniqueOptions = 0;
+
+export function presentOption(parentDiv,option){
+    let parentDivHandle = document.getElementById(parentDiv);
+    let newNode = document.createElement("DIV");
+    newNode.className = "response";
+    newNode.classList.add("options");
+    newNode.id = "option"+uniqueOptions;
+    uniqueOptions++;
+    let optionText = document.createTextNode(option);
+    newNode.appendChild(optionText);
+    parentDivHandle.appendChild(newNode);
+}
+
+export function addEvaluator(optionID,testID){
+    let option = document.getElementById(optionID);
+    option.addEventListener("click",function(){evaluateResponse(optionID,testID);});
+}

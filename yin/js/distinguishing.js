@@ -7,28 +7,14 @@ var test0 = {
     get correctOption () {return this.options[0];} 
 }
 
-var uniqueOptions = 0;
-
-function presentOption(parentDiv,option){
-    let parentDivHandle = document.getElementById(parentDiv);
-    let newNode = document.createElement("DIV");
-    newNode.className = "response";
-    newNode.classList.add("options");
-    newNode.id = "option"+uniqueOptions;
-    uniqueOptions++;
-    let optionText = document.createTextNode(option);
-    newNode.appendChild(optionText);
-    parentDivHandle.appendChild(newNode);
-}
-
-//prompt user to select option
+//add stimuli
 df.addSound(test0,"audioSource");
-// document.getElementById("audioSource").load();
-presentOption("firstResponse",df.pickIncorrectOption(test0));
-presentOption("secondResponse",test0.correctOption);
 
-//set evaluation to only occur onclick
-document.getElementById("option0").addEventListener("click",function(){df.evaluateResponse("option0",test0);});
+//present user with options
+df.presentOption("firstResponse",df.pickIncorrectOption(test0));
+df.presentOption("secondResponse",test0.correctOption);
 
-document.getElementById("option1").addEventListener("click",function(){df.evaluateResponse("option1",test0);});
+//set evaluation to occur onclick
+df.addEvaluator("option0",test0);
+df.addEvaluator("option1",test0);
 
