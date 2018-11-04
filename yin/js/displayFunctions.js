@@ -3,6 +3,7 @@
 export function addSound (test,sourceId){
     let target = document.getElementById(sourceId);
     target.src = test.audio;
+    target.parentElement.load();
 }
 
 export function pickIncorrectOption(test){

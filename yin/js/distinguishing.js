@@ -23,6 +23,7 @@ function presentOption(parentDiv,option){
 
 //prompt user to select option
 df.addSound(test0,"audioSource");
+// document.getElementById("audioSource").load();
 presentOption("firstResponse",df.pickIncorrectOption(test0));
 presentOption("secondResponse",test0.correctOption);
 
