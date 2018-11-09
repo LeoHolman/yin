@@ -8,3 +8,39 @@
     background-color: gray;
     color:white;
 }
+
+body{
+    width:70em;
+    margin:auto;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 26px 50px 0px;
+    text-decoration: none;
+}
+/** -------- HOME PAGE --------- **/
+
+#home-intro, #home-about{
+    width:30em;
+    margin: auto;
+}
+
+#home-intro a{
+    text-align: center;
+    width:100%;
+}
