@@ -27,9 +27,12 @@ body{
     background-color:#EDEDED;
 }
 
+nav{
+    margin-right:1em;
+}
+
 nav ul {
     list-style-type: none;
-    
     padding: 0;
     overflow: hidden;
 }
@@ -59,6 +62,10 @@ body{
     
 }
 **/
+
+
+
+
 #logo{
     float:left;
     margin: 0;
