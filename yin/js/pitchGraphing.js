@@ -13,7 +13,6 @@ drawf.drawPitchChart('#visualization',width,height);
 
 //draw points
 d3.tsv("../praat/zhong_pitchtier.csv",function(data) {
-    console.log(data.frequency);
 
     d3.select("#visualization svg")
         .append("circle")
