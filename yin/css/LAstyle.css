@@ -1,0 +1,34 @@
+.main{
+    width:70em;
+    background-color: white;
+}
+
+.main.container-one{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    clip-path: 
+        polygon(
+          0% 5%,     /* top left */
+          5% 0%,     /* top left */
+          95% 0%,    /* top right */
+          100% 5%,   /* top right */
+          100% 95%,  /* bottom right */
+          95% 100%,  /* bottom right */
+          5% 100%,   /* bottom left */
+          0 95%      /* bottom left */
+        );
+    
+}
+
+
+
+.lesson{
+    grid-column:1/2;
+    padding: 2em;
+
+}
+
+.activity{
+    grid-column:2/3;
+    padding: 2em;
+}
