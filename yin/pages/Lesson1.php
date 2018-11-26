@@ -2,10 +2,11 @@
 $title = "Yin - Lesson One";
 $style = "../css/style.css";
 $style2 = "../css/LAstyle.css";
+$prefix = "../";
 include "../head.php";
 ?>
 
-<div class = "main container-one">
+<div class = "main container-one LA">
     <section id = "lesson-one" class = "lesson">
         <h1>Lesson One: Lexical Tones</h1>
         <p>Lexical tones are changes in pitch that change the meaning of a word.</p>
@@ -41,12 +42,37 @@ include "../head.php";
           </div>
         </div>
     </section>
-    <section id = "activity-one" class = "activity">
+    <section id = "lesson-one-ref" class = "hide view-2">
+        <div id = "ref-title"><h1>Lesson One</h1>
+            <h3>Reference</h3></div>
+        <img src = "../assets/images/1_graph.svg" id = "graph-1">
+        <img src = "../assets/images/2_graph.svg" id = "graph-2">
+        <img src = "../assets/images/3_graph.svg" id = "graph-3">
+        <img src = "../assets/images/4_graph.svg" id = "graph-4">
+        <button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>
+        
+    </section>
+    <section id = "activity-one-prompt" class = "activity">
         <h1>Activity One</h1>
         <p>Are you ready to test what you learned with an activity?</p>
+        <button type = "button" onclick = "openActivity();">Begin</button>
     
     </section>
-
+    <section id = "activity-one" class = "hide view-2 activity">
+        <div id = "ref-title"><h1>Activity One</h1>
+            <h3>Tonal Discrimination</h3></div>
+         <div id = "audio-clip-box"><audio controls id = "audio-clip" >
+              <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg">
+              Audio not working!
+            </audio></div>
+        <img src = "../assets/images/2_graph.svg" id = "img-1">
+        <img src = "../assets/images/3_graph.svg" id = "img-2">
+        <div id = "feedback-box">
+            <p>feedback</p>
+        </div>
+        <button type = "button" id = "continue">Continue</button>
+        
+    </section>
 
 </div>
 
@@ -54,3 +80,7 @@ include "../head.php";
 <p>footer</p>
 </div>
 </body>
+
+<footer>
+    <script src = "../js/pageInteractions.js"></script>
+</footer>

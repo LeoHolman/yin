@@ -10,11 +10,11 @@
     
 <body>
     
-    <h1 id = "logo">Yin</h1>
+    <a href = "<?php echo $prefix ?>index.php"><h1 id = "logo">Yin</h1></a>
       <nav>
         <ul>
-            <li><a href = "#">About</a></li>
-            <li><a href = "pages/LessonsAndActivities.html">Lessons and Activities</a></li>
-            <li><a href = "#">Home</a></li>
+            <li><a href = "<?php echo $prefix ?>#">About</a></li>
+            <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.html">Lessons and Activities</a></li>
+            <li><a href = "<?php echo $prefix ?>index.php">Home</a></li>
         </ul>
       </nav>

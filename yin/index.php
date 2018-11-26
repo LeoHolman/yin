@@ -1,6 +1,7 @@
 <?php
 $title = "Yin - Home";
 $style = "css/style.css";
+$prefix = "";
 include "head.php";
 ?>
 
@@ -14,7 +15,7 @@ include "head.php";
     through the tap at the top of the page, but we recommend first time
     users press the button below to enter the first lesson and start from the beginning.</p>
         </section>
-        <a  href = "pages/lexical-tones.html" id = "mid-wrapper">
+        <a  href = "pages/Lesson1.php" id = "mid-wrapper">
             <h1 id = "begin">BEGIN</h1>
             <img id = "yin2" src = "assets/images/yin2.svg">
         </a>
