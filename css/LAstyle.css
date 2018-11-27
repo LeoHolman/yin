@@ -1,0 +1,185 @@
+.main{
+    width:70em;
+    background-color: white;
+}
+
+#main-wrap{
+    filter: drop-shadow(8.4px 8px #9A2D04);
+}
+.main.LA{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    clip-path: 
+        polygon(
+          0% 5%,     /* top left */
+          5% 0%,     /* top left */
+          95% 0%,    /* top right */
+          100% 5%,   /* top right */
+          100% 95%,  /* bottom right */
+          95% 100%,  /* bottom right */
+          5% 100%,   /* bottom left */
+          0 95%      /* bottom left */
+        );
+    box-shadow: 5px 5px;
+}
+
+.main.LA h1{
+    margin-bottom:.4em;
+}
+
+
+.lesson{
+    grid-column:1/2;
+    padding: 2em;
+    border-right:3px solid #9A2D04; 
+  transition: all 2s ease;
+}
+
+.lesson h1, .lesson h2{
+    color:#9A2D04;
+}
+
+.activity{
+    grid-column:2/3;
+    padding: 2em;
+    background-color:rgba(237, 237, 237, 0.23); 
+  transition: all 2s ease;
+}
+
+.activity h1, .activity h2{
+    color:#db7a13;
+}
+
+#begin-btn{
+    width:7em;
+    height:3em;
+    justify-self:center;
+}
+
+
+.view-2{
+    display:grid;
+    grid-template-rows:12em 10em 10em 10em 10em 5em 2.5em;
+    padding:2em;
+}
+
+.view-2 .activity{
+    grid-template-columns:1fr 1fr;
+}
+
+#lesson-one-ref{
+    grid-column: 1/2;
+}
+
+.hide{
+    display:none;
+}
+
+#ref-title{
+    grid-row:1/2;
+    grid-column:1/3;
+}
+
+#graph-1{
+    grid-row:2/3;
+    width:11em;
+}
+#graph-2{
+    grid-row:3/4;
+    width:11em;
+}
+#graph-3{
+    grid-row:4/5;
+    width:11em;
+}
+#graph-4{
+    grid-row:5/6;
+    width:11em;
+}
+
+#btn-to-lesson{
+    grid-row:6/7;
+    width:15em;
+    height:3em;
+}
+
+#audio-clip-box{
+    grid-row:2/3;
+    grid-column: 1/3;
+    
+}
+
+#audio-clip{
+    display:table;
+    margin:0 auto;
+    height:60%;
+
+}
+
+#img-1, #img-2{
+    grid-row:3/5;
+    margin:.5em;
+    display:inline-flex;
+    vertical-align: middle;
+    height: 100%;
+}
+
+#img-1{
+    grid-column: 1/2;
+     width:15em;
+}
+
+
+#img-2{
+    grid-column: 2/3;
+     width:15em;
+}
+
+#feedback-box{
+    grid-column: 1/3;
+    grid-row:5/6;
+    margin:1em;
+    padding-left:.5em;
+    padding-right:.5em;
+}
+
+.correct{
+    border:3px solid #237a36;
+}
+
+.correct h1{
+    color:#237a36;
+}
+
+.incorrect{
+    border:3px solid #a50122;
+}
+
+.incorrect h1{
+    color: #a50122;
+}
+
+#continue-btn{
+    grid-row:6/7;
+    grid-column: 2/3;
+    width:10em;
+    height:3em;
+    justify-self:right;
+}
+
+hr {
+   display: block;
+   position: relative;
+   padding: 0;
+   margin: 8px auto;
+   height: 0;
+    margin-top:0;
+   width: 100%;
+   max-height: 0;
+   font-size: 1px;
+   line-height: 0;
+   clear: both;
+   border: none;
+   border-top: 3px solid lightgray;
+
+}

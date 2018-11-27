@@ -1,0 +1,40 @@
+.main{
+    width:50em;
+    height:70em;
+    margin:0 auto;
+}
+
+.main.honeycomb{
+    display: grid;
+    grid-template-columns:2.3fr 1fr 2.3fr;
+    grid-template-rows: 1fr 2.3fr 1fr 1.3fr 1fr 1.3fr 1fr 2.3fr;
+
+}
+
+
+#one,#two,#three,#four{
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#one{
+    background-image: url(../assets/images/One.svg);
+    grid-row: 2/4;
+    grid-column:1/3;
+    height:100%;
+}
+#two{
+    background-image: url(../assets/images/Two.svg);
+    grid-column:2/4;
+    grid-row:2/5;
+}
+#three{
+    background-image: url(../assets/images/Three.svg);
+    grid-column:1/3;
+    grid-row:4/7;
+}
+#four{
+    background-image: url(../assets/images/Four.svg);
+    grid-column:2/4;
+    grid-row:6/8;
+}

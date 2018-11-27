@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title><?php echo $title ?></title>
+      <meta charset="utf-16">
+      <link rel = "stylesheet" href = "<?php echo $style ?>" type = "text/css">
+      <link rel = "stylesheet" href = "<?php echo $style2 ?>" type = "text/css">
+      <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,500|Open+Sans:400,400i,700" rel="stylesheet">
+       <script src = "../js/pageInteractions.js"></script>
+  </head>
+    
+<body>
+    
+    <a href = "<?php echo $prefix ?>index.php"><h1 id = "logo">Yin</h1></a>
+      <nav>
+        <ul>
+            <li><a href = "<?php echo $prefix ?>#">About</a></li>
+            <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.html">Lessons and Activities</a></li>
+            <li><a href = "<?php echo $prefix ?>index.php">Home</a></li>
+        </ul>
+      </nav>
