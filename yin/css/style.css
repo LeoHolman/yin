@@ -1,7 +1,7 @@
 /** COLORS
 
 Dark red - #9A2D04
-Orange - #FF8F17
+Orange - //#FF8F17//  --->#db7a13
 Background gray - #EDEDED
 Blue - #5E99D3
 
@@ -56,6 +56,7 @@ h1, h2, h3, h4, h5{
 
 h1{
     font-size: 2.1em;
+    font-variant: small-caps;
 }
 
 h2{
@@ -70,6 +71,16 @@ h4{
     font-size: 1em;
 }
 
+
+button{
+    border-radius:12px;
+    background-color:#5E99D3;
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+    border:none;
+    font-size:1em;
+    box-shadow: 3px 3px #2b2a2a;
+}
 
 
 /** -------- HOME PAGE --------- **/

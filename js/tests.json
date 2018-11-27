@@ -1,6 +1,0 @@
-{
-    "id" : "zhong1",
-    "audio" : "../assets/sounds/test0.mp3",
-    "options" : ["zhong1","zhong2","zhong3","zhong4"],
-    "correctOption" : "zhong1"
-}

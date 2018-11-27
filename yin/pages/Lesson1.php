@@ -6,16 +6,18 @@ $prefix = "../";
 include "../head.php";
 ?>
 
+<div id = "main-wrap">
 <div class = "main container-one LA">
     <section id = "lesson-one" class = "lesson">
-        <h1>Lesson One: Lexical Tones</h1>
+        <h1>Lesson One</h1><hr>
+        <h2>Lexical Tones</h2>
         <p>Lexical tones are changes in pitch that change the meaning of a word.</p>
         <p>For example, the two words 妈 and 马 are both pronounced "ma", but the
           first means 'mother' and the second means 'horse'. The difference comes
           in their tone. The first word, 妈 has a high, sustained tone, almost like
           singing a note. The second word, 马 has a tone that falls, then rises,
           almost like a question in English.</p>
-        <h2>Examples of words distinguished by tones</h2>
+        <h3>Examples of words distinguished by tones</h3>
         <div id="example-tones">
             <audio controls>
               <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg">
@@ -33,7 +35,7 @@ include "../head.php";
             <script type="text/javascript" src="../js/drawPitchGraph.js"></script>
           </div>
           <div id="4-tones">
-            <h2>Transcribing pronuncation</h2>
+            <h3>Transcribing pronuncation</h3>
             <p>Written Chinese is <emp>logographic</emp>, meaning that each character represents <emp>an idea</emp> and not <emp>a sound</emp> as in Latin script.</p>
             <p>Mandarin has 4 lexical tones; they are named 1, 2, 3, and 4. </p>
             <p><strong>So how do you know how to pronounce the words?</strong></p>
@@ -42,9 +44,9 @@ include "../head.php";
           </div>
         </div>
     </section>
-    <section id = "lesson-one-ref" class = "hide view-2">
-        <div id = "ref-title"><h1>Lesson One</h1>
-            <h3>Reference</h3></div>
+    <section id = "lesson-one-ref" class = "hide view-2 lesson">
+        <div id = "ref-title"><h1>Lesson One</h1><hr>
+            <h2>Reference: Lexical Tones</h2></div>
         <img src = "../assets/images/1_graph.svg" id = "graph-1">
         <img src = "../assets/images/2_graph.svg" id = "graph-2">
         <img src = "../assets/images/3_graph.svg" id = "graph-3">
@@ -53,27 +55,37 @@ include "../head.php";
         
     </section>
     <section id = "activity-one-prompt" class = "activity">
-        <h1>Activity One</h1>
+        <h1>Activity One</h1><hr>
+        <h2>Tonal Discrimination</h2>
         <p>Are you ready to test what you learned with an activity?</p>
-        <button type = "button" onclick = "openActivity();">Begin</button>
+        <button type = "button" onclick = "openActivity();" id = "begin-btn">Begin</button>
     
     </section>
     <section id = "activity-one" class = "hide view-2 activity">
-        <div id = "ref-title"><h1>Activity One</h1>
-            <h3>Tonal Discrimination</h3></div>
-         <div id = "audio-clip-box"><audio controls id = "audio-clip" >
+        <div id = "ref-title"><h1>Activity One</h1><hr>
+            <h2>Tonal Discrimination</h2></div>
+         <div id = "audio-clip-box">
+<!--             <p>Can you identify the tone of this audio clip?</p>-->
+             <audio controls id = "audio-clip" >
               <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg">
               Audio not working!
             </audio></div>
         <img src = "../assets/images/2_graph.svg" id = "img-1">
         <img src = "../assets/images/3_graph.svg" id = "img-2">
         <div id = "feedback-box">
-            <p>feedback</p>
+            <div id ="correct" class = "hide">
+                <h3>Correct!</h3>
+                <p>Further description here.</p>
+            </div>
+            <div id ="incorrect" class = "hide">
+                <h3>Incorrect...</h3>
+                <p>Further description here.</p>
+            </div>
         </div>
-        <button type = "button" id = "continue">Continue</button>
-        
+        <button type = "button" id = "continue-btn">Continue</button>
     </section>
 
+</div>
 </div>
 
 <div>
@@ -81,6 +93,3 @@ include "../head.php";
 </div>
 </body>
 
-<footer>
-    <script src = "../js/pageInteractions.js"></script>
-</footer>

@@ -3,6 +3,9 @@
     background-color: white;
 }
 
+#main-wrap{
+    filter: drop-shadow(8.4px 8px #9A2D04);
+}
 .main.LA{
     display:grid;
     grid-template-columns:2fr 1fr;
@@ -17,22 +20,41 @@
           5% 100%,   /* bottom left */
           0 95%      /* bottom left */
         );
-    
+    box-shadow: 5px 5px;
 }
 
+.main.LA h1{
+    margin-bottom:.4em;
+}
 
 
 .lesson{
     grid-column:1/2;
     padding: 2em;
+    border-right:3px solid #9A2D04; 
+  transition: all 2s ease;
+}
 
+.lesson h1, .lesson h2{
+    color:#9A2D04;
 }
 
 .activity{
     grid-column:2/3;
     padding: 2em;
+    background-color:rgba(237, 237, 237, 0.23); 
+  transition: all 2s ease;
 }
 
+.activity h1, .activity h2{
+    color:#db7a13;
+}
+
+#begin-btn{
+    width:7em;
+    height:3em;
+    justify-self:center;
+}
 
 
 .view-2{
@@ -55,6 +77,7 @@
 
 #ref-title{
     grid-row:1/2;
+    grid-column:1/3;
 }
 
 #graph-1{
@@ -76,24 +99,29 @@
 
 #btn-to-lesson{
     grid-row:6/7;
-    width:8em;
+    width:15em;
+    height:3em;
 }
 
 #audio-clip-box{
     grid-row:2/3;
     grid-column: 1/3;
-    display:flex;
     
 }
 
 #audio-clip{
-    vertical-align: middle;
+    display:table;
+    margin:0 auto;
+    height:60%;
 
 }
 
 #img-1, #img-2{
     grid-row:3/5;
     margin:.5em;
+    display:inline-flex;
+    vertical-align: middle;
+    height: 100%;
 }
 
 #img-1{
@@ -108,13 +136,50 @@
 }
 
 #feedback-box{
-    background:gray;
     grid-column: 1/3;
     grid-row:5/6;
     margin:1em;
+    padding-left:.5em;
+    padding-right:.5em;
 }
 
-#continue{
+.correct{
+    border:3px solid #237a36;
+}
+
+.correct h1{
+    color:#237a36;
+}
+
+.incorrect{
+    border:3px solid #a50122;
+}
+
+.incorrect h1{
+    color: #a50122;
+}
+
+#continue-btn{
     grid-row:6/7;
     grid-column: 2/3;
+    width:10em;
+    height:3em;
+    justify-self:right;
+}
+
+hr {
+   display: block;
+   position: relative;
+   padding: 0;
+   margin: 8px auto;
+   height: 0;
+    margin-top:0;
+   width: 100%;
+   max-height: 0;
+   font-size: 1px;
+   line-height: 0;
+   clear: both;
+   border: none;
+   border-top: 3px solid lightgray;
+
 }

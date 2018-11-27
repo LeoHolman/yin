@@ -1,6 +1,6 @@
 function openActivity(){
     var slide = document.getElementsByClassName("LA")[0];
-    slide.setAttribute("style", "grid-template-columns: 1fr 2fr;");
+    slide.setAttribute("style", "grid-template-columns: .8fr 2fr;");
     
     var ref = document.getElementById("lesson-one-ref");
     ref.setAttribute("onclick","closeActivity()");
@@ -34,3 +34,12 @@ function closeActivity(){
     activity.classList.add("hide");
 }
 
+var torf=null;
+
+function activity(bool){
+    if (bool == true){
+        openActivity();
+    } else {
+        return;
+    }
+}
