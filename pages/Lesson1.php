@@ -64,14 +64,13 @@ include "../head.php";
     <section id = "activity-one" class = "hide view-2 activity">
         <div id = "ref-title"><h1>Activity One</h1><hr>
             <h2>Tonal Discrimination</h2></div>
-         <div id = "audio-clip-box">
-<!--             <p>Can you identify the tone of this audio clip?</p>-->
+         <div id = "stimuli">
              <audio controls id = "audio-clip" >
-              <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg">
+              <source id="audioSource" src="" type="audio/mpeg">
               Audio not working!
             </audio></div>
-        <img src = "../assets/images/2_graph.svg" id = "img-1">
-        <img src = "../assets/images/3_graph.svg" id = "img-2">
+        <div id="firstResponse" class="response"></div>
+        <div id="secondResponse" class="response"></div>
         <div id = "feedback-box">
             <div id ="correct" class = "hide">
                 <h3>Correct!</h3>
@@ -91,5 +90,9 @@ include "../head.php";
 <div>
 <p>footer</p>
 </div>
+
+    <script type="module" src="../js/distinguishing.js"></script>
+    <script type="module" src="../js/displayFunctions.js"></script>
+
 </body>
 
