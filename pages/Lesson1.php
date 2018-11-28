@@ -69,14 +69,16 @@ include "../head.php";
               <source id="audioSource" src="" type="audio/mpeg">
               Audio not working!
             </audio></div>
-        <div id="firstResponse" class="response"></div>
+        <div id="firstResponse" class="response">
+            
+        </div>
         <div id="secondResponse" class="response"></div>
         <div id = "feedback-box">
-            <div id ="correct" class = "hide">
+            <div id ="correct" class = "hide correct">
                 <h3>Correct!</h3>
                 <p>Further description here.</p>
             </div>
-            <div id ="incorrect" class = "hide">
+            <div id ="incorrect" class = "hide incorrect">
                 <h3>Incorrect...</h3>
                 <p>Further description here.</p>
             </div>

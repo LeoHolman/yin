@@ -25,15 +25,19 @@ export function pickIncorrectOption(test){
 export function evaluateResponse(option,test) {
     let response = document.getElementById(option).innerText;
     if (response === test.correctOption){
-        changeBackgroundColor(option,"green");
+        resultStyle(option,"correct");
+        var feedback = document.getElementById("correct");
+        feedback.classList.remove("hide");
     } else {
-        changeBackgroundColor(option,"red");
+        resultStyle(option,"incorrect");
+        var feedback = document.getElementById("incorrect");
+        feedback.classList.remove("hide");
     }
 }
     
-export function changeBackgroundColor(divId,color) {
+export function resultStyle(divId,score) {
     let divIdHandle = document.getElementById(divId);
-    divIdHandle.style.backgroundColor = color;
+    divIdHandle.classList.add(score);
 }
 
 export var uniqueOptions = 0;
