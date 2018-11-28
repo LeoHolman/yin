@@ -26,18 +26,50 @@ export function evaluateResponse(option,test) {
     let response = document.getElementById(option).innerText;
     if (response === test.correctOption){
         resultStyle(option,"correct");
-        var feedback = document.getElementById("correct");
-        feedback.classList.remove("hide");
+//        var cor = document.getElementById("correct");
+//        cor.classList.remove("hide");
+//        var incor =document.getElementById("incorrect");
+//        incor.classList.add("hide");
     } else {
         resultStyle(option,"incorrect");
-        var feedback = document.getElementById("incorrect");
-        feedback.classList.remove("hide");
+//        var incor = document.getElementById("incorrect");
+//        incor.classList.remove("hide");
+//        var cor = document.getElementById("correct");
+//        cor.classList.add("hide");
     }
 }
     
 export function resultStyle(divId,score) {
     let divIdHandle = document.getElementById(divId);
+
+    clearResultStyle();
+    
+    if (score == "correct"){
+        var cor = document.getElementById("correct");
+        cor.classList.remove("hide");
+        var incor =document.getElementById("incorrect");
+        incor.classList.add("hide");
+    } else if (score =="incorrect"){
+         var cor = document.getElementById("correct");
+        cor.classList.add("hide");
+        var incor =document.getElementById("incorrect");
+        incor.classList.remove("hide");
+    }
+    
     divIdHandle.classList.add(score);
+}
+
+export function clearResultStyle(){
+    let clear = document.getElementsByClassName("response");
+    
+    for (var i=0; i<clear.length;i++){
+        if (clear[i].classList.contains("correct")){
+            clear[i].classList.remove("correct");
+        }else if (clear[i].classList.contains("incorrect")){
+            clear[i].classList.remove("incorrect");
+        }
+    }
+    
 }
 
 export var uniqueOptions = 0;
@@ -50,6 +82,32 @@ export function presentOption(parentDiv,option){
     newNode.id = "option"+uniqueOptions;
     uniqueOptions++;
     let optionText = document.createTextNode(option);
+    
+    let image = document.createElement("IMG");
+    var imageSrc = null;
+    var lastChar = option[option.length-1];
+    
+    switch (lastChar){
+        case "1":
+            imageSrc = "../assets/images/1_graph.svg";
+            break;
+        case "2":
+            imageSrc = "../assets/images/2_graph.svg";
+            break;
+        case "3":
+            imageSrc = "../assets/images/3_graph.svg";
+            break;
+        case "4":
+            imageSrc = "../assets/images/4_graph.svg";
+            break;
+        default:
+            break;
+    }
+    
+    image.src = imageSrc;
+    image.className = "graphOption";
+    
+    newNode.appendChild(image);
     newNode.appendChild(optionText);
     parentDivHandle.appendChild(newNode);
 }

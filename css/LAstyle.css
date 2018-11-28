@@ -60,6 +60,7 @@
 .view-2{
     display:grid;
     grid-template-rows:12em 10em 10em 10em 10em 5em 2.5em;
+    grid-template-columns: 1fr 1fr;
     padding:2em;
 }
 
@@ -116,12 +117,18 @@
 
 }
 
+.response {
+    display: inline;
+    margin: 5% 5% 0 5%;
+    width:100%;
+}
+
 #firstResponse, #secondResponse{
     grid-row:3/5;
     margin:.5em;
     display:inline-flex;
     vertical-align: middle;
-    height: 100%;
+    width:100%;
 }
 
 #firstResponse{

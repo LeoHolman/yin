@@ -70,7 +70,6 @@ include "../head.php";
               Audio not working!
             </audio></div>
         <div id="firstResponse" class="response">
-            
         </div>
         <div id="secondResponse" class="response"></div>
         <div id = "feedback-box">
