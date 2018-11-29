@@ -137,6 +137,7 @@
 }
 
 
+
 #secondResponse{
     grid-column: 2/3;
      width:15em;
@@ -150,21 +151,30 @@
     padding-right:.5em;
 }
 
-.correct{
-    border:3px solid #237a36;
+.correctfeed{
+    box-shadow:3px 3px #237a36;
 }
 
-.correct h1{
+.correctfeed h1{
     color:#237a36;
 }
 
-.incorrect{
-    border:3px solid #a50122;
+.correct img{
+    box-shadow:3px 3px #237a36;
 }
 
-.incorrect h1{
+.incorrectfeed{
+    box-shadow: 3px 3px #a50122;
+}
+
+.incorrectfeed h1{
     color: #a50122;
 }
+
+.incorrect img{
+    box-shadow:3px 3px #a50122;
+}
+
 
 #continue-btn{
     grid-row:6/7;

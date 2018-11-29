@@ -10,7 +10,9 @@ Blue - #5E99D3
 
 
 
-
+a:visited{
+    color:#5E99D3;
+}
 
 
 body{
@@ -93,6 +95,11 @@ body{
     float:left;
     margin: 0;
     font-size: 3em;
+    color:black;
+}
+
+#logo:visited{
+    color:black;
 }
 
 #home-intro, #home-about{

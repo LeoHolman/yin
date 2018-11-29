@@ -73,11 +73,11 @@ include "../head.php";
         </div>
         <div id="secondResponse" class="response"></div>
         <div id = "feedback-box">
-            <div id ="correct" class = "hide correct">
+            <div id ="correct" class = "hide correctfeed">
                 <h3>Correct!</h3>
                 <p>Further description here.</p>
             </div>
-            <div id ="incorrect" class = "hide incorrect">
+            <div id ="incorrect" class = "hide incorrectfeed">
                 <h3>Incorrect...</h3>
                 <p>Further description here.</p>
             </div>
