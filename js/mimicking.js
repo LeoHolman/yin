@@ -51,8 +51,36 @@ p.mousePressed = function () {
  else if (state === 2) {
    soundFile.play(); // play the result!
    p.saveSound(soundFile, 'export.wav'); // save file
+  //  function loadDoc() {
+  //   var xhttp = new XMLHttpRequest();
+  //   xhttp.onreadystatechange = function() {
+  //     if (this.readyState == 4 && this.status == 200) {
+  //       document.getElementById("demo").innerHTML = this.responseText;
+  //     }
+  //   };
+  //   xhttp.open("GET", "../js/tests.json", true);
+  //   xhttp.send();
+
+  // }
+  //   loadDoc();
    state++;
  }
+
+ // Define processing URL and form element
+ const url = "runScript.php";
+ const form = document.querySelector('form');
+
+ // Listen for form submit
+ form.addEventListener('submit', e => {
+   e.preventDefault();
+
+   fetch(url, {
+     method: 'POST',
+     body: FormData
+   }).then(response => {
+     console.log(response);
+   });
+ });
 }
 };
 
