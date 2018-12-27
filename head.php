@@ -15,7 +15,7 @@
       <nav>
         <ul>
             <li><a href = "<?php echo $prefix ?>#">About</a></li>
-            <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.html">Lessons and Activities</a></li>
+            <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.php">Lessons and Activities</a></li>
             <li><a href = "<?php echo $prefix ?>index.php">Home</a></li>
         </ul>
       </nav>
