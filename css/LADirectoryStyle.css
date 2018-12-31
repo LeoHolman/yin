@@ -71,3 +71,15 @@
     grid-column: 2/3;
     grid-row:3/4;
 }
+
+.L-head:hover{
+    color:#9A2D04;
+}
+
+.A-head:hover{
+    color:#db7a13;
+}
+
+#one:hover{
+    background:red;
+}
