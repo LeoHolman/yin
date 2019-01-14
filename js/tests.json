@@ -1,6 +1,14 @@
 {
-    "id" : "zhong1",
-    "audio" : "../assets/sounds/test0.mp3",
-    "options" : ["zhong1","zhong2","zhong3","zhong4"],
-    "correctOption" : "zhong1"
+    "test0" :{
+        "id" : "zhong1",
+        "audio" : "../assets/sounds/test0.mp3",
+        "options" : ["zhong1","zhong2","zhong3","zhong4"],
+        "correctOption" : "zhong1"
+    },
+    "test1":{
+    "id" : "ma3",
+    "audio" : "../assets/sounds/test1.mp3",
+    "options" : ["ma1","ma2","ma3","ma4"],
+    "correctOption" : "ma1"
+    }
 }
