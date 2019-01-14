@@ -56,8 +56,9 @@ include "../head.php";
     </section>
     <section id = "activity-one-prompt" class = "activity">
         <h1>Activity One</h1><hr>
-        <h2>Tonal Discrimination</h2>
-        <p>Are you ready to test what you learned with an activity?</p>
+        <h2>Distinguishing</h2>
+        <p>In this activity, we'll play a sound and show you two tone curves. <br>Listen carefully, and choose which tone matches the sound.</p>
+        <p>Are you ready to test what you learned with with this activity?</p>
         <button type = "button" onclick = "openActivity();" id = "begin-btn">Begin</button>
     
     </section>
