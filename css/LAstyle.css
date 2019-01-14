@@ -152,7 +152,7 @@
 }
 
 .correctfeed{
-    box-shadow:3px 3px #237a36;
+    border:5px solid #237a36;
 }
 
 .correctfeed h1{
@@ -164,7 +164,7 @@
 }
 
 .incorrectfeed{
-    box-shadow: 3px 3px #a50122;
+    border:5px solid #a50122;
 }
 
 .incorrectfeed h1{
