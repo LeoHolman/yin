@@ -1,4 +1,5 @@
 import * as df from './displayFunctions.js';
+import * as $ from './jquery/jquery-3.3.1.min.js';
 
 //test objects
 var test0 = {
@@ -18,3 +19,6 @@ df.presentOption("secondResponse",test0.correctOption);
 df.addEvaluator("option0",test0);
 df.addEvaluator("option1",test0);
 
+$.getJSON("tests.json", function(json){
+    console.log(json);
+});
