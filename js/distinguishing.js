@@ -19,6 +19,7 @@ df.presentOption("secondResponse",test0.correctOption);
 df.addEvaluator("option0",test0);
 df.addEvaluator("option1",test0);
 
+//Access tests.json
 $.getJSON("tests.json", function(json){
     console.log(json);
 });
