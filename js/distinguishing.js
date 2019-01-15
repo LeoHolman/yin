@@ -1,5 +1,4 @@
 import * as df from './displayFunctions.js';
-// import * as $ from './jquery/jquery-3.3.1.min.js';
 
 //test objects
 var test0 = {
