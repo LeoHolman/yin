@@ -72,6 +72,13 @@
     grid-column: 1/2;
 }
 
+.sidebar p{
+    margin-top:3em;
+    line-height: 1.9em;
+    margin-bottom:3em;
+}
+
+
 .hide{
     display:none;
 }

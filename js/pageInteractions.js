@@ -35,10 +35,3 @@ function closeActivity(){
 }
 
 
-function activity(bool){
-    if (bool == true){
-        openActivity();
-    } else {
-        return;
-    }
-}

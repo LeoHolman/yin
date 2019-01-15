@@ -44,17 +44,17 @@ include "../head.php";
           </div>
         </div>
     </section>
-    <section id = "lesson-one-ref" class = "hide view-2 lesson">
+    <section id = "lesson-one-ref" class = "hide view-2 lesson sidebar">
         <div id = "ref-title"><h1>Lesson One</h1><hr>
-            <h2>Reference: Lexical Tones</h2></div>
-        <img src = "../assets/images/1_graph.svg" id = "graph-1">
-        <img src = "../assets/images/2_graph.svg" id = "graph-2">
-        <img src = "../assets/images/3_graph.svg" id = "graph-3">
-        <img src = "../assets/images/4_graph.svg" id = "graph-4">
+            <h2>Instructions</h2>
+            <p>When you're ready, press the play button and listen to the sound. Play it as many times as you need to, then select which pitch curve matches the tone you heard.</p>
+            <h2>Remember</h2>
+            <p>The <strong>first tone </strong>is high and sustained, <strong>second tone</strong> is rising from low to high, <strong>third tone</strong> falls to low then rises at the end, and <strong>fourth tone</strong> falls from high to low.</p>
+        </div>
         <button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>
         
     </section>
-    <section id = "activity-one-prompt" class = "activity">
+    <section id = "activity-one-prompt" class = "activity sidebar">
         <h1>Activity One</h1><hr>
         <h2>Distinguishing</h2>
         <p>In this activity, we'll play a sound and show you two tone curves. <br>Listen carefully, and choose which tone matches the sound.</p>
