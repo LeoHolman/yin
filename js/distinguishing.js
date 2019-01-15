@@ -1,11 +1,20 @@
 import * as df from './displayFunctions.js';
 
+var tests;
+//Access tests.json
+$.getJSON("../js/tests.json", function(json){
+    console.log(json);
+    tests = json;
+    console.log(tests);
+});
+
+// console.log(tests);
 //test objects
-var test0 = {
-    audio : "../assets/sounds/test0.mp3",
-    options : ["zhong1","zhong2","zhong3","zhong4"],
-    get correctOption () {return this.options[0];} 
-}
+// var test0 = {
+//     audio : "../assets/sounds/test0.mp3",
+//     options : ["zhong1","zhong2","zhong3","zhong4"],
+//     get correctOption () {return this.options[0];} 
+// }
 
 //add stimuli
 df.addSound(test0,"audioSource");
@@ -18,7 +27,5 @@ df.presentOption("secondResponse",test0.correctOption);
 df.addEvaluator("option0",test0);
 df.addEvaluator("option1",test0);
 
-//Access tests.json
-$.getJSON("../js/tests.json", function(json){
-    console.log(json);
-});
+
+
