@@ -1,5 +1,5 @@
 import * as df from './displayFunctions.js';
-import * as $ from './jquery/jquery-3.3.1.min.js';
+// import * as $ from './jquery/jquery-3.3.1.min.js';
 
 //test objects
 var test0 = {
@@ -20,6 +20,6 @@ df.addEvaluator("option0",test0);
 df.addEvaluator("option1",test0);
 
 //Access tests.json
-$.getJSON("tests.json", function(json){
+$.getJSON("../js/tests.json", function(json){
     console.log(json);
 });
