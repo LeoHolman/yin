@@ -26,9 +26,8 @@ include "../head.php";
     </div>
     <div id = "two" class = "comb">
         <div class = "invisible">
-            <a href="Lesson2.php">
             <h1 class = "head"><a href ="Lesson2.php">Two</a></h1>
-            <p class = "desc">Lesson: Tone characteristics<br>Activity: Tone identification</p></a>
+            <p class = "desc">Lesson: Tone characteristics<br>Activity: Tone identification</p>
         </div>
 <!--
         <div class = "L-head">
@@ -77,7 +76,7 @@ include "../head.php";
 
 <script>
     $(".invisible").click(function() {
-  window.location = $(this).find("a").attr("href"); 
+  window.location = $(this).find("a:first").attr("href"); 
   return false;
 });
 </script>
