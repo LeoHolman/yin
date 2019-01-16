@@ -9,9 +9,9 @@ include "../head.php";
 <div class = "main honeycomb">
     <div id = "one" class = "comb">
         <div class = "invisible">
-            <h1 class = "head">One</h1>
+            <h1 class = "head"><a href ="Lesson1.php">One</a></h1>
             <p class = "desc">Lesson: Lexical tones<br>Activity: Tone distinguishing</p>
-        </div>
+            </div>
         
 
 
@@ -26,8 +26,9 @@ include "../head.php";
     </div>
     <div id = "two" class = "comb">
         <div class = "invisible">
-            <h1 class = "head">Two</h1>
-            <p class = "desc">Lesson: Tone characteristics<br>Activity: Tone identification</p>
+            <a href="Lesson2.php">
+            <h1 class = "head"><a href ="Lesson2.php">Two</a></h1>
+            <p class = "desc">Lesson: Tone characteristics<br>Activity: Tone identification</p></a>
         </div>
 <!--
         <div class = "L-head">
@@ -70,6 +71,16 @@ include "../head.php";
 
 
 </div>
+<script src="../js/jquery/jquery-3.3.1.min.js">
+
+</script>
+
+<script>
+    $(".invisible").click(function() {
+  window.location = $(this).find("a").attr("href"); 
+  return false;
+});
+</script>
     
 </body>
     

@@ -77,6 +77,13 @@
     grid-row:2/3;
 }
 
+.head a{
+    text-decoration: none;
+    color:black;
+}
+
+
+
 .desc{
     grid-column:1/2;
     grid-row:3/4;
@@ -111,7 +118,7 @@
     grid-template-columns: 1fr;
 }
 
-.invisible:hover .head{
+.invisible:hover .head a{
     color:#db7a13;
 }
 
@@ -124,3 +131,6 @@
     color:#db7a13;
 }
 
+.comb a{
+    display:block;
+}
