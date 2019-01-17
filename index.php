@@ -2,6 +2,7 @@
 $title = "Yin - Home";
 $style = "css/style.css";
 $prefix = "";
+$indexClass="active";
 include "head.php";
 ?>
 
