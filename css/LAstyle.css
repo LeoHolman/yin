@@ -158,6 +158,10 @@
     padding-right:.5em;
 }
 
+#feedback-box div{
+    padding:.5em 1em .5em 1em;
+}
+
 .correctfeed{
     border:5px solid #237a36;
 }

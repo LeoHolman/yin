@@ -10,13 +10,13 @@ Blue - #5E99D3
 
 
 
-a:visited{
+.active{
     color:#5E99D3;
 }
 
 
 body{
-    width:70em;
+    width:70vw;
     margin:auto;
     font-family: 'Open Sans', sans-serif;
     background-color:#EDEDED;
@@ -119,7 +119,7 @@ body{
 
 #mid-wrapper{
     display:grid;
-    grid-template-columns:70em;
+    grid-template-columns:70vw;
     text-decoration: none;
     text-align:center;
     
