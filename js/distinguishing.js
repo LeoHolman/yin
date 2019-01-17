@@ -1,7 +1,8 @@
 import * as df from './displayFunctions.js';
 
 var tests;
-var testsParsed;
+var testsArray = [];
+var shownTests = [];
 //Access tests.json
 $.getJSON("../js/tests.json", function(json){
     tests = json;
@@ -16,18 +17,39 @@ $.getJSON("../js/tests.json", function(json){
     // //set evaluation to occur onclick
     // df.addEvaluator("option0",tests.test0);
     // df.addEvaluator("option1",tests.test0);
-    newTest(tests.test8);
+    for(var i in tests){
+        testsArray.push(tests [i]);
+    }
+    newTest();
 });
 
-function newTest(testNumber){
+function newTest(){
+    //find new test
+    var thisTestNumber = getRandomInt(12);
+    while (shownTests.includes(thisTestNumber)){
+        thisTestNumber = getRandomInt(12);
+    }
+    shownTests.push(thisTestNumber);
+    var thisTest = testsArray[thisTestNumber];
+    console.log(shownTests);
+    
     //add stimuli
-    df.addSound(testNumber, "audioSource");
+    df.addSound(thisTest, "audioSource");
 
     //present user with options
-    df.presentOption("firstResponse",df.pickIncorrectOption(testNumber));
-    df.presentOption("secondResponse",testNumber.correctOption);
+    df.presentOption("firstResponse",df.pickIncorrectOption(thisTest));
+    df.presentOption("secondResponse",thisTest.correctOption);
 
     //set evaluation to occur onclick
-    df.addEvaluator("option0",testNumber);
-    df.addEvaluator("option1",testNumber);
+    df.addEvaluator("option0",thisTest);
+    df.addEvaluator("option1",thisTest);
 }
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+//create new test on click
+document.getElementById("continueButton").addEventListener("click", function(){
+    newTest();
+})
