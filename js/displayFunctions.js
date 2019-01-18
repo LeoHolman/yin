@@ -76,6 +76,9 @@ export var uniqueOptions = 0;
 
 export function presentOption(parentDiv,option){
     let parentDivHandle = document.getElementById(parentDiv);
+    while (parentDivHandle.firstChild){
+        parentDivHandle.removeChild(parentDivHandle.firstChild);
+    }
     let newNode = document.createElement("DIV");
     newNode.className = "response";
     newNode.classList.add("options");
