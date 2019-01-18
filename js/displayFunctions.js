@@ -41,7 +41,6 @@ export function evaluateResponse(option,test) {
     
 export function resultStyle(divId,score) {
     let divIdHandle = document.getElementById(divId);
-
     clearResultStyle();
     
     if (score == "correct"){

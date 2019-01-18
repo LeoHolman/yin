@@ -41,8 +41,8 @@ function newTest(){
     df.presentOption("secondResponse",thisTest.correctOption);
 
     //set evaluation to occur onclick
-    df.addEvaluator("option0",thisTest);
-    df.addEvaluator("option1",thisTest);
+    df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
+    df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
 }
 
 function getRandomInt(max) {
