@@ -83,7 +83,7 @@ include "../head.php";
                 <p>Further description here.</p>
             </div>
         </div>
-        <button type = "button" id = "continue-btn">Continue</button>
+        <button type = "button" id = "continueButton">Continue</button>
     </section>
 
 </div>
