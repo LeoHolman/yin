@@ -9,7 +9,7 @@
         "id" : "ma3",
         "audio" : "../assets/sounds/test1.mp3",
         "options" : ["ma1","ma2","ma3","ma4"],
-        "correctOption" : "ma1"
+        "correctOption" : "ma3"
     },
     "test2" : {
         "id" : "gou3",
