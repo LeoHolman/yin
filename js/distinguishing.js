@@ -37,8 +37,13 @@ function newTest(){
     df.addSound(thisTest, "audioSource");
 
     //present user with options
-    df.presentOption("firstResponse",df.pickIncorrectOption(thisTest));
-    df.presentOption("secondResponse",thisTest.correctOption);
+    if (Math.random() > 0.5){
+        df.presentOption("firstResponse",df.pickIncorrectOption(thisTest));
+        df.presentOption("secondResponse",thisTest.correctOption);
+    } else {
+        df.presentOption("firstResponse",thisTest.correctOption);
+        df.presentOption("secondResponse",df.pickIncorrectOption(thisTest));
+    }
 
     //set evaluation to occur onclick
     df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
