@@ -92,8 +92,8 @@ include "../head.php";
 <p>footer</p>
 </div>
     <script src="../js/jquery/jquery-3.3.1.min.js"></script>
-    <script type="module" src="../js/distinguishing.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
+    <script type="module" src="../js/distinguishing.js"></script>
 
 </body>
 
