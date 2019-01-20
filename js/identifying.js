@@ -1,22 +1,75 @@
-import * as df from "./displayFunctions.js";
+import * as df from './displayFunctions.js';
 
-var test0 = {
-    audio : "../assets/sounds/test0.mp3",
-    options : ["zhong1","zhong2","zhong3","zhong4"],
-    get correctOption () {return this.options[0];} 
+var tests;
+var testsArray = [];
+var shownTests = [];
+
+//Access tests.json
+$.getJSON("../js/tests.json", function(json){
+    tests = json;
+
+    for(var i in tests){
+        testsArray.push(tests [i]);
+    }
+
+    //Initial test
+    newTest();
+});
+
+function newTest(){
+    //find new test
+    var thisTestNumber = df.getRandomInt(12);
+    while (shownTests.includes(thisTestNumber)){
+        thisTestNumber = df.getRandomInt(12);
+    }
+    shownTests.push(thisTestNumber);
+    var thisTest = testsArray[thisTestNumber];
+    
+    //add stimuli
+    console.log(thisTest);
+    df.addSound(thisTest, "audioSource");
+
+    //present user with options
+    let diceroll = Math.random();
+    switch (true){
+        case (diceroll <= 0.25):
+            df.presentOption("firstResponse",thisTest.correctOption);
+            df.presentOption("secondResponse",thisTest.options[1]);
+            df.presentOption("thirdResponse",thisTest.options[2]);
+            df.presentOption("fourthResponse",thisTest.options[3]);
+            console.log("case 1");
+            break;
+        case (diceroll > 0.25 && diceroll <= 0.5):
+            df.presentOption("firstResponse",thisTest.options[0]);
+            df.presentOption("secondResponse",thisTest.correctOption);
+            df.presentOption("thirdResponse",thisTest.options[2]);
+            df.presentOption("fourthResponse",thisTest.options[3]);
+            console.log("case 2");
+            break;
+        case (diceroll > 0.5 && diceroll <= 0.75):
+            df.presentOption("firstResponse",thisTest.options[0]);
+            df.presentOption("secondResponse",thisTest.options[1]);
+            df.presentOption("thirdResponse",thisTest.correctOption);
+            df.presentOption("fourthResponse",thisTest.options[3]);
+            console.log("case 3");
+            break;
+        case (diceroll < 0.75):
+            df.presentOption("firstResponse",thisTest.options[0]);
+            df.presentOption("secondResponse",thisTest.options[1]);
+            df.presentOption("thirdResponse",thisTest.options[2]);
+            df.presentOption("fourthResponse",thisTest.correctOption);
+            console.log("case 4");
+            break;
+    }
+
+    //set evaluation to occur onclick
+    df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
+    df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
+    df.addEvaluator(document.getElementById("thirdResponse").firstChild.id,thisTest);
+    df.addEvaluator(document.getElementById("fourthResponse").firstChild.id,thisTest);
 }
 
-//present stimuli
-df.addSound(test0,"audioSource");
-
-//present options
-df.presentOption("firstResponse",test0.options[0]);
-df.presentOption("secondResponse",test0.options[1]);
-df.presentOption("thirdResponse",test0.options[2]);
-df.presentOption("fourthResponse",test0.options[3]);
-
-//set evaluation to occur onclick
-df.addEvaluator("option0",test0);
-df.addEvaluator("option1",test0);
-df.addEvaluator("option2",test0);
-df.addEvaluator("option3",test0);
+//create new test on click
+document.getElementById("continueButton").addEventListener("click", function(){
+    newTest();
+})

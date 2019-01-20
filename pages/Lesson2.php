@@ -58,8 +58,18 @@ include "../head.php";
     </section>
     <section id = "activity-two" class = "hide view-2 activity">
         <div id = "ref-title"><h1>Activity Two</h1><hr>
-            <h2>Tone Identification</h2></div>
-         [activity components here]
+            <h2>Tone Identification</h2>
+        </div>
+        <div id = "stimuli">
+            <audio controls id = "audio-clip" >
+                <source id="audioSource" src="" type="audio/mpeg">
+                Audio not working!
+            </audio>
+        </div>
+        <div id="firstResponse" class="response"></div>
+        <div id="secondResponse" class="response"></div>
+        <div id="thirdResponse" class="response"></div>
+        <div id="fourthResponse" class="response"></div>
         <div id = "feedback-box">
             <div id ="correct" class = "hide correctfeed">
                 <h3>Correct!</h3>
@@ -70,7 +80,7 @@ include "../head.php";
                 <p>Further description here.</p>
             </div>
         </div>
-        <button type = "button" id = "continue-btn">Continue</button>
+        <button type = "button" id = "continueButton">Continue</button>
     </section>
 
 </div>
@@ -79,8 +89,8 @@ include "../head.php";
 <div>
 <p>footer</p>
 </div>
-
-    <script type="module" src="../js/distinguishing.js"></script>
+    <script src="../js/jquery/jquery-3.3.1.min.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
+    <script type="module" src="../js/identifying.js"></script>
 
 </body>
