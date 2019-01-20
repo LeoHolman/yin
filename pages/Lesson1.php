@@ -70,8 +70,7 @@ include "../head.php";
               <source id="audioSource" src="" type="audio/mpeg">
               Audio not working!
             </audio></div>
-        <div id="firstResponse" class="response">
-        </div>
+        <div id="firstResponse" class="response"></div>
         <div id="secondResponse" class="response"></div>
         <div id = "feedback-box">
             <div id ="correct" class = "hide correctfeed">
