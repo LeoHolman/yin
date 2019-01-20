@@ -25,9 +25,9 @@ $.getJSON("../js/tests.json", function(json){
 
 function newTest(){
     //find new test
-    var thisTestNumber = getRandomInt(12);
+    var thisTestNumber = df.getRandomInt(12);
     while (shownTests.includes(thisTestNumber)){
-        thisTestNumber = getRandomInt(12);
+        thisTestNumber = df.getRandomInt(12);
     }
     shownTests.push(thisTestNumber);
     var thisTest = testsArray[thisTestNumber];
@@ -48,10 +48,6 @@ function newTest(){
     //set evaluation to occur onclick
     df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
     df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
-}
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
 }
 
 //create new test on click

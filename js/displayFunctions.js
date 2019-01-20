@@ -118,3 +118,7 @@ export function addEvaluator(optionID,testID){
     let option = document.getElementById(optionID);
     option.addEventListener("click",function(){evaluateResponse(optionID,testID);});
 }
+
+export function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
