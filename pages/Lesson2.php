@@ -12,7 +12,33 @@ include "../head.php";
         <h1>Lesson Two</h1><hr>
         <h2>Tone Characteristics</h2>
         <div id = "lesson-content">
-            <img src = "../assets/images/skeleton.png">
+            <h3>Tone levels</h3>
+            <p>Tones can be graphed to any voice by using relative numbers. In this graphing scheme, '3' represents the 'middle' pitch of your voice. '5' represents a pitch two clicks higher, and '1' represents a pitch two clicks lower. Each tone is described as starting on one number, moving to another number, and ending on a final number. For example. The 1st tone starts high, stays high, and ends high, so it is '5-5-5', (somtimes just 5-5). The 3rd tone starts a little lower than the middle pitch, moves lower, and ends higher: (2-1-4).</p>
+            
+            <h3>1st Tone</h3>
+            <p>Tone 1 is high and sustained, it has a singing like quality. It moves 5-5-5.</p>
+            <audio controls>
+                <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg"/>
+                Audio not working! 
+            </audio>
+            <h3>2nd Tone</h3>
+            <p>Tone 2 rises, it sounds much like a question in English. It moves 2-4-5</p>
+            <audio controls>
+                <source src="../assets/sounds/ma-2-hemp.mp3" type="audio/mpeg"/>
+                Audio not working! 
+            </audio>
+            <h3>3rd Tone</h3>
+            <p>Tone 3 falls, then rises. This intonation pattern is not common in English, the closest approximation is incredulousness, something like "Are you sure?". It moves "2-1-4".</p>
+            <audio controls>
+                <source src="../assets/sounds/ma-3-horse.mp3" type="audio/mpeg"/>
+                Audio not working! 
+            </audio>
+            <h3>4th Tone</h3>
+            <p>Tone 4 falls sharply, much like barking an order or scolding someone in English. It moves 5-3-1.</p>
+            <audio controls>
+                <source src="../assets/sounds/ma-4-scold.mp3" type="audio/mpeg"/>
+                Audio not working! 
+            </audio>
         </div>
     </section>
     <section id = "lesson-two-ref" class = "hide view-2 lesson">
