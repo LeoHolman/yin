@@ -3,6 +3,7 @@ import * as df from './displayFunctions.js';
 var tests;
 var testsArray = [];
 var shownTests = [];
+
 //Access tests.json
 $.getJSON("../js/tests.json", function(json){
     tests = json;
@@ -10,6 +11,8 @@ $.getJSON("../js/tests.json", function(json){
     for(var i in tests){
         testsArray.push(tests [i]);
     }
+
+    //Initial test
     newTest();
 });
 
