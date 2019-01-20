@@ -7,16 +7,6 @@ var shownTests = [];
 $.getJSON("../js/tests.json", function(json){
     tests = json;
 
-    // //add stimuli
-    // df.addSound(tests.test0,"audioSource");
-
-    // //present user with options
-    // df.presentOption("firstResponse",df.pickIncorrectOption(tests.test0));
-    // df.presentOption("secondResponse",tests.test0.correctOption);
-
-    // //set evaluation to occur onclick
-    // df.addEvaluator("option0",tests.test0);
-    // df.addEvaluator("option1",tests.test0);
     for(var i in tests){
         testsArray.push(tests [i]);
     }
@@ -31,7 +21,6 @@ function newTest(){
     }
     shownTests.push(thisTestNumber);
     var thisTest = testsArray[thisTestNumber];
-    console.log(shownTests);
     
     //add stimuli
     df.addSound(thisTest, "audioSource");
