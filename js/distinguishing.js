@@ -40,9 +40,11 @@ function newTest(){
     //set evaluation to occur onclick
     df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
     df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
+
 }
 
 //create new test on click
 document.getElementById("continueButton").addEventListener("click", function(){
     newTest();
 })
+

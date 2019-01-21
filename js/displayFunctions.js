@@ -1,5 +1,7 @@
 'use strict';
 
+export var correctResponses = 0;
+
 export function addSound (test,sourceId){
     let target = document.getElementById(sourceId);
     target.src = test.audio;
@@ -25,13 +27,16 @@ export function pickIncorrectOption(test){
 export function evaluateResponse(option,test) {
     let response = document.getElementById(option).innerText;
     if (response === test.correctOption){
+        correctResponses++;
         resultStyle(option,"correct");
+        showScore("correct");
 //        var cor = document.getElementById("correct");
 //        cor.classList.remove("hide");
 //        var incor =document.getElementById("incorrect");
 //        incor.classList.add("hide");
     } else {
         resultStyle(option,"incorrect");
+        showScore("incorrect");
 //        var incor = document.getElementById("incorrect");
 //        incor.classList.remove("hide");
 //        var cor = document.getElementById("correct");
@@ -121,4 +126,9 @@ export function addEvaluator(optionID,testID){
 
 export function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
+}
+
+export function showScore(divID){
+    var feedbackBox = document.getElementById(divID);
+    feedbackBox.querySelector('p').innerText = `${correctResponses} / 12`;
 }
