@@ -44,6 +44,8 @@ function newTest(){
     df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
     df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
     
+    //reset responseGiven for new test
+    // df.responseGiven = false;
 
 
 }

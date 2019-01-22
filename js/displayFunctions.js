@@ -2,6 +2,7 @@
 
 export var correctResponses = 0;
 export var totalResponses = 0;
+export var responseGiven = false;
 
 export function addSound (test,sourceId){
     let target = document.getElementById(sourceId);
@@ -28,7 +29,7 @@ export function pickIncorrectOption(test){
 export function evaluateResponse(option,test) {
     let response = document.getElementById(option).innerText;
     totalResponses++;
-    if (response === test.correctOption){
+    if ((response === test.correctOption) ){ //&& (!responseGiven)
         correctResponses++;
         resultStyle(option,"correct");
         showScore("score");
@@ -44,6 +45,7 @@ export function evaluateResponse(option,test) {
 //        var cor = document.getElementById("correct");
 //        cor.classList.add("hide");
     }
+    responseGiven = true;
 }
     
 export function resultStyle(divId,score) {
