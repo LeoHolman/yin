@@ -73,7 +73,7 @@ export function clearResultStyle(){
             clear[i].classList.remove("incorrect");
         }
     }
-    
+       
 }
 
 export var uniqueOptions = 0;
