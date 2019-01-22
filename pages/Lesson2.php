@@ -3,6 +3,8 @@ $title = "Yin - Lesson Two";
 $style = "../css/style.css";
 $style2 = "../css/LAstyle.css";
 $prefix = "../";
+$extras = "<link rel ='stylesheet' href = '../css/activity2.css' type ='text/css'>";
+
 include "../head.php";
 ?>
 

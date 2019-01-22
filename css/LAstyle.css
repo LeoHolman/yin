@@ -68,9 +68,7 @@
     grid-template-columns:1fr 1fr;
 }
 
-#lesson-one-ref{
-    grid-column: 1/2;
-}
+
 
 .sidebar p{
     margin-top:3em;
@@ -134,39 +132,15 @@
 
 }
 
-.response {
-    display: inline;
-/*    margin: 5% 5% 0 5%;*/
-    width:100%;
-    text-align:center;
-    height:15em;
-    margin:.5em;
-    padding-left:3.5em;
-    
-}
 
-#firstResponse, #secondResponse{
-    grid-row:3/5;
-/*    margin:.5em;*/
-    display:inline-flex;
-    vertical-align: middle;
-    width:100%;
-}
 
-#firstResponse{
-    grid-column: 1/2;
-     width:15em;
-}
 
 .options{
     padding:.5em;
 }
 
 
-#secondResponse{
-    grid-column: 2/3;
-     width:15em;
-}
+
 
 #feedback-box{
     grid-column: 1/3;
