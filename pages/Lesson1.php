@@ -64,7 +64,9 @@ include "../head.php";
     </section>
     <section id = "activity-one" class = "hide view-2 activity">
         <div id = "ref-title"><h1>Activity One</h1><hr>
-            <h2>Tonal Discrimination</h2></div>
+            <h2>Tonal Discrimination</h2>
+        </div>
+        <h3 id ="score"></h3>
          <div id = "stimuli">
              <audio controls id = "audio-clip" >
               <source id="audioSource" src="" type="audio/mpeg">
