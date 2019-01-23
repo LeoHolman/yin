@@ -28,26 +28,32 @@ export function pickIncorrectOption(test){
 
 export function evaluateResponse(option,test) {
     let response = document.getElementById(option).innerText;
-    totalResponses++;
-    if ((response === test.correctOption) ){ //&& (!responseGiven)
-        correctResponses++;
-        resultStyle(option,"correct");
-        showScore("score");
-//        var cor = document.getElementById("correct");
-//        cor.classList.remove("hide");
-//        var incor =document.getElementById("incorrect");
-//        incor.classList.add("hide");
-    } else {
-        resultStyle(option,"incorrect");
-        showScore("score");
-//        var incor = document.getElementById("incorrect");
-//        incor.classList.remove("hide");
-//        var cor = document.getElementById("correct");
-//        cor.classList.add("hide");
+    if (!responseGiven){
+        totalResponses++;
+        if (response === test.correctOption){ 
+            correctResponses++;
+            resultStyle(option,"correct");
+            showScore("score");
+    //        var cor = document.getElementById("correct");
+    //        cor.classList.remove("hide");
+    //        var incor =document.getElementById("incorrect");
+    //        incor.classList.add("hide");
+        } else {
+            resultStyle(option,"incorrect");
+            showScore("score");
+    //        var incor = document.getElementById("incorrect");
+    //        incor.classList.remove("hide");
+    //        var cor = document.getElementById("correct");
+    //        cor.classList.add("hide");
+        }
     }
     responseGiven = true;
 }
-    
+   
+export function setResponseGiven(boolean) {
+    responseGiven = boolean;
+}
+
 export function resultStyle(divId,score) {
     let divIdHandle = document.getElementById(divId);
     clearResultStyle();
