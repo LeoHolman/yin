@@ -1,3 +1,15 @@
+#examples-graphs-mother p{
+    width:55%;
+}
+
+#examples-graphs-mother img{
+    float:right;
+    width:36%;
+    padding-right:2%;
+}
+
+
+
 .response {
     display: inline;
     width:100%;

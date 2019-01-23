@@ -12,7 +12,7 @@
     
 <body>
     
-    <a href = "<?php echo $prefix ?>index.php"><h1 id = "logo">Yin</h1></a>
+    <a href = "<?php echo $prefix ?>index.php"><img src ="<?php echo $prefix ?>assets/images/yinLogoSmall.png" id = "logo"></a>
       <nav>
         <ul>
             <li><a href = "<?php echo $prefix ?>pages/About.php" class ="<?php echo $aboutClass ?>">About</a></li>

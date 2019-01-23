@@ -21,11 +21,7 @@ include "head.php";
             <img id = "yin2" src = "assets/images/yin2.svg">
         </a>
         <section id = "home-about">
-            <p>What our app aims to do. Lorem ipsum dolor sit amet, consectetuer
-    adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-    dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-    quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-    ex ea coeuhendrerit in.</p>
+            <p>Understanding Chinese tone can be difficult for native speakers of non-tonal languages, such as English. Yin has four lessons paired with four activities to help you not only learn what tone is and how it's used, but also how to put it into practice. The first two activities work with distinguishing between tones and pairing each with its assigned number (e.g. first tone, second tone...). The final two ask you to pronounce some Chinese words yourself and will give you visual feedback on how you measure up to a native speaker. <br><br>Ready to learn? Press the "Begin" button above!</p>
         </section>
         <img id = "yin3" src = "assets/images/yin3.svg">
     </div> 

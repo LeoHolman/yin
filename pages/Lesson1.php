@@ -32,9 +32,9 @@ include "../head.php";
             </audio>
             <p>And this is horse.</p>
           <div id="examples-graphs-mother">
-
-            <p>This graph shows what a pitch curve (in red) might look like for someone saying 妈(mother). It also shows a pitch curve (in blue) for what someone saying 马(horse) might look like.</p>
-            <script type="text/javascript" src="../js/drawPitchGraph.js"></script>
+              <img src="../assets/images/ma_graph.png">
+            <p>The graph to the right shows what a pitch curve (in red, ma1) might look like for someone saying 妈(mother). It also shows a pitch curve (in blue, ma3) for what someone saying 马(horse) might look like.</p>
+            
           </div>
           <div id="4-tones">
             <h3>Transcribing pronuncation</h3>
