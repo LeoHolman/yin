@@ -17,6 +17,9 @@ $.getJSON("../js/tests.json", function(json){
 });
 
 function newTest(){
+    document.getElementById("correct").classList.add("hide");
+    document.getElementById("incorrect").classList.add("hide");
+    
     //find new test
     var thisTestNumber = df.getRandomInt(12);
     while (shownTests.includes(thisTestNumber)){
@@ -40,6 +43,10 @@ function newTest(){
     //set evaluation to occur onclick
     df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
     df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
+    
+    //reset responseGiven for new test
+    df.setResponseGiven(false);
+
 
 }
 

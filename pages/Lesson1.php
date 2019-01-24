@@ -3,6 +3,8 @@ $title = "Yin - Lesson One";
 $style = "../css/style.css";
 $style2 = "../css/LAstyle.css";
 $prefix = "../";
+$extras = "<link rel ='stylesheet' href = '../css/activity1.css' type ='text/css'>";
+
 include "../head.php";
 ?>
 
@@ -30,9 +32,9 @@ include "../head.php";
             </audio>
             <p>And this is horse.</p>
           <div id="examples-graphs-mother">
-
-            <p>This graph shows what a pitch curve (in red) might look like for someone saying 妈(mother). It also shows a pitch curve (in blue) for what someone saying 马(horse) might look like.</p>
-            <script type="text/javascript" src="../js/drawPitchGraph.js"></script>
+              <img src="../assets/images/ma_graph.png">
+            <p>The graph to the right shows what a pitch curve (in red, ma1) might look like for someone saying 妈(mother). It also shows a pitch curve (in blue, ma3) for what someone saying 马(horse) might look like.</p>
+            
           </div>
           <div id="4-tones">
             <h3>Transcribing pronuncation</h3>
@@ -64,7 +66,9 @@ include "../head.php";
     </section>
     <section id = "activity-one" class = "hide view-2 activity">
         <div id = "ref-title"><h1>Activity One</h1><hr>
-            <h2>Tonal Discrimination</h2></div>
+            <h2>Tonal Discrimination</h2>
+        </div>
+        <h3 id ="score"></h3>
          <div id = "stimuli">
              <audio controls id = "audio-clip" >
               <source id="audioSource" src="" type="audio/mpeg">
@@ -73,11 +77,11 @@ include "../head.php";
         <div id="firstResponse" class="response"></div>
         <div id="secondResponse" class="response"></div>
         <div id = "feedback-box">
-            <div id ="correct" class = "hide correctfeed">
+            <div id ="correct" class = "hide feedback correct">
                 <h3>Correct!</h3>
                 <p>Further description here.</p>
             </div>
-            <div id ="incorrect" class = "hide incorrectfeed">
+            <div id ="incorrect" class = "hide feedback incorrect">
                 <h3>Incorrect...</h3>
                 <p>Further description here.</p>
             </div>

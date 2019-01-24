@@ -1,6 +1,8 @@
 'use strict';
 
 export var correctResponses = 0;
+export var totalResponses = 0;
+export var responseGiven = false;
 
 export function addSound (test,sourceId){
     let target = document.getElementById(sourceId);
@@ -26,24 +28,32 @@ export function pickIncorrectOption(test){
 
 export function evaluateResponse(option,test) {
     let response = document.getElementById(option).innerText;
-    if (response === test.correctOption){
-        correctResponses++;
-        resultStyle(option,"correct");
-        showScore("correct");
-//        var cor = document.getElementById("correct");
-//        cor.classList.remove("hide");
-//        var incor =document.getElementById("incorrect");
-//        incor.classList.add("hide");
-    } else {
-        resultStyle(option,"incorrect");
-        showScore("incorrect");
-//        var incor = document.getElementById("incorrect");
-//        incor.classList.remove("hide");
-//        var cor = document.getElementById("correct");
-//        cor.classList.add("hide");
+    if (!responseGiven){
+        totalResponses++;
+        if (response === test.correctOption){ 
+            correctResponses++;
+            resultStyle(option,"correct");
+            showScore("score");
+    //        var cor = document.getElementById("correct");
+    //        cor.classList.remove("hide");
+    //        var incor =document.getElementById("incorrect");
+    //        incor.classList.add("hide");
+        } else {
+            resultStyle(option,"incorrect");
+            showScore("score");
+    //        var incor = document.getElementById("incorrect");
+    //        incor.classList.remove("hide");
+    //        var cor = document.getElementById("correct");
+    //        cor.classList.add("hide");
+        }
     }
+    responseGiven = true;
 }
-    
+   
+export function setResponseGiven(boolean) {
+    responseGiven = boolean;
+}
+
 export function resultStyle(divId,score) {
     let divIdHandle = document.getElementById(divId);
     clearResultStyle();
@@ -73,7 +83,7 @@ export function clearResultStyle(){
             clear[i].classList.remove("incorrect");
         }
     }
-    
+       
 }
 
 export var uniqueOptions = 0;
@@ -130,5 +140,6 @@ export function getRandomInt(max) {
 
 export function showScore(divID){
     var feedbackBox = document.getElementById(divID);
-    feedbackBox.querySelector('p').innerText = `${correctResponses} / 12`;
+    var left = 12-totalResponses;
+    feedbackBox.innerHTML = `Your current score: ${correctResponses} / 12 | Questions left: ${left}`;
 }

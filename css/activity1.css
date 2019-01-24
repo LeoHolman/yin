@@ -1,0 +1,43 @@
+#examples-graphs-mother p{
+    width:55%;
+}
+
+#examples-graphs-mother img{
+    float:right;
+    width:36%;
+    padding-right:2%;
+}
+
+
+
+.response {
+    display: inline;
+    width:100%;
+    text-align:center;
+    height:15em;
+    margin:.5em;
+    padding-left:3.5em;
+    
+}
+
+
+#lesson-one-ref{
+    grid-column: 1/2;
+}
+
+#firstResponse, #secondResponse{
+    grid-row:3/5;
+    display:inline-flex;
+    vertical-align: middle;
+    width:100%;
+}
+
+#firstResponse{
+    grid-column: 1/2;
+     width:15em;
+}
+
+#secondResponse{
+    grid-column: 2/3;
+     width:15em;
+}
