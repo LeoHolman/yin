@@ -3,8 +3,8 @@
   <head>
       <title><?php echo $title ?></title>
       <meta charset="utf-16">
-      <link rel = "stylesheet" href = "<?php echo $style ?>" type = "text/css">
-      <link rel = "stylesheet" href = "<?php echo $style2 ?>" type = "text/css">
+      <link rel = "stylesheet" href = "<?php echo $prefix ?>css/style.css" type = "text/css">
+      <link rel = "stylesheet" href = "<?php echo $prefix ?>css/<?php echo $style ?>" type = "text/css">
       <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,500|Open+Sans:400,400i,700" rel="stylesheet">
        <script src = "../js/pageInteractions.js"></script>
       <?php echo $extras ?>

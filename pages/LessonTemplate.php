@@ -1,7 +1,6 @@
 <?php
 $title = "Yin - Lesson #";
-$style = "../css/style.css";
-$style2 = "../css/LAstyle.css";
+$style = "LAstyle.css";
 $prefix = "../";
 include "../head.php";
 ?>
@@ -47,12 +46,9 @@ include "../head.php";
 </div>
 </div>
 
-<div>
-<p>footer</p>
-</div>
+
 
     <script type="module" src="../js/distinguishing.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
 
-</body>
-
+<?php include $prefix."foot.php"; ?>
