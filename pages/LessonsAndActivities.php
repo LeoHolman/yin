@@ -1,7 +1,6 @@
 <?php
 $title = "Yin - Lesson One";
-$style = "../css/style.css";
-$style2 = "../css/LADirectoryStyle.css";
+$style = "LADirectoryStyle.css";
 $prefix = "../";
 $LAClass="active";
 include "../head.php";

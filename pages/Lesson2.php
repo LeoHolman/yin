@@ -1,7 +1,6 @@
 <?php
 $title = "Yin - Lesson Two";
-$style = "../css/style.css";
-$style2 = "../css/LAstyle.css";
+$style = "LAstyle.css";
 $prefix = "../";
 $extras = "<link rel ='stylesheet' href = '../css/activity2.css' type ='text/css'>";
 
@@ -88,11 +87,8 @@ include "../head.php";
 </div>
 </div>
 
-<div>
-<p>footer</p>
-</div>
     <script src="../js/jquery/jquery-3.3.1.min.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
     <script type="module" src="../js/identifying.js"></script>
 
-</body>
+<?php include $prefix."foot.php"; ?>
