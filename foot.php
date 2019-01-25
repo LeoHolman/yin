@@ -1,7 +1,7 @@
 <footer>
     <div>
         <p>	&copy; Leo Holman and Christine McCullough</p>
-        <p>Contact us at: </p>
+        <p>Contact us at: yinwebapp@gmail.com</p>
     </div>
     
     
