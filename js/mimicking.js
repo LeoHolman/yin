@@ -1,10 +1,12 @@
 var audio;
+const recordButton = document.getElementById("record");
 
 function record(){
   navigator.mediaDevices.getUserMedia({audio:true})
     .then(stream => {
       const mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.start();
+      recordButton.style.backgroundColor = "red";
 
       const audioChunks = [];
 
@@ -20,6 +22,7 @@ function record(){
 
       setTimeout(() => {
         mediaRecorder.stop();
+        recordButton.style.backgroundColor = "green";
       }, 2000);
   });
 };
