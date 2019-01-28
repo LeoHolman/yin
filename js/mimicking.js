@@ -38,5 +38,13 @@ document.getElementById("record").addEventListener("click", () => {
 });
 
 document.getElementById("save").addEventListener("click", () => {
-  audio.download;
+  var element = document.createElement('a');
+  element.setAttribute('href', audioUrl);
+  element.setAttribute('download', "recording.wav");
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 });
