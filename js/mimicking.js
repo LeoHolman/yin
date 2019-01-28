@@ -1,87 +1,33 @@
-import * as drawf from "./drawingFunctions.js";
-import * as df from "./displayFunctions.js";
-// import p5 from "./p5/p5.js";
-// import "./p5/addons/p5.sound.js";
+var audio;
 
-var test0 = {
-    audio : "../assets/sounds/test0.mp3",
-    options : ["zhong1","zhong2","zhong3","zhong4"],
-    get correctOption () {return this.options[0];} 
-}
+function record(){
+  navigator.mediaDevices.getUserMedia({audio:true})
+    .then(stream => {
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.start();
 
-df.addSound(test0,"audioSource");
+      const audioChunks = [];
 
-var s = function( p ) {
-  var mic, recorder, soundFile;
-  var state = 0; 
-  p.setup = function() { 
-    p.createCanvas(400, 400);
-    mic = new p5.AudioIn()
-    mic.start();
-    p.background(220);
-    p.text("click to record",20,20);
-    // create a sound recorder
-    recorder = new p5.SoundRecorder();
-    // connect the mic to the recorder
-    recorder.setInput(mic);
-    // create an empty sound file that we will use to playback the recording
-    soundFile = new p5.SoundFile();
-} 
+      mediaRecorder.addEventListener("dataavailable", event => {
+        audioChunks.push(event.data);
+      });
 
-p.mousePressed = function () {
- // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)
- if (state === 0 && mic.enabled) {
+      mediaRecorder.addEventListener("stop", () => {
+        const audioBlob = new Blob(audioChunks);
+        const audioUrl = URL.createObjectURL(audioBlob);
+        audio = new Audio(audioUrl);
+      });
 
-   // Tell recorder to record to a p5.SoundFile which we will use for playback
-   recorder.record(soundFile);
-
-   p.background(255,0,0);
-   p.text('Recording now! Click to stop.', 20, 20);
-   state++;
- }
-
- else if (state === 1) {
-   recorder.stop(); // stop recorder, and send the result to soundFile
-
-   p.background(0,255,0);
-   p.text('Recording stopped. Click to play & save', 20, 20);
-   state++;
- }
-
- else if (state === 2) {
-   soundFile.play(); // play the result!
-   p.saveSound(soundFile, 'export.wav'); // save file
-  //  function loadDoc() {
-  //   var xhttp = new XMLHttpRequest();
-  //   xhttp.onreadystatechange = function() {
-  //     if (this.readyState == 4 && this.status == 200) {
-  //       document.getElementById("demo").innerHTML = this.responseText;
-  //     }
-  //   };
-  //   xhttp.open("GET", "../js/tests.json", true);
-  //   xhttp.send();
-
-  // }
-  //   loadDoc();
-   state++;
- }
-
- // Define processing URL and form element
- const url = "runScript.php";
- const form = document.querySelector('form');
-
- // Listen for form submit
- form.addEventListener('submit', e => {
-   e.preventDefault();
-
-   fetch(url, {
-     method: 'POST',
-     body: FormData
-   }).then(response => {
-     console.log(response);
-   });
- });
-}
+      setTimeout(() => {
+        mediaRecorder.stop();
+      }, 2000);
+  });
 };
 
-var myp5 = new p5(s);
+document.getElementById("play").addEventListener("click", () => {
+    audio.play();
+});
+
+document.getElementById("record").addEventListener("click", () => {
+  record();
+});
