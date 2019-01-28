@@ -43,8 +43,16 @@ document.getElementById("save").addEventListener("click", () => {
   element.setAttribute('download', "recording.wav");
   element.style.display = 'none';
   document.body.appendChild(element);
-
   element.click();
-
   document.body.removeChild(element);
+
+  var formData = new FormData();
+  formData.append("audioData",audio,"recording.wav");
+
+  fetch('../saveAudio.php', {
+    method: 'POST',
+    body: formData
+}).then(response => {
+    console.log(response);
+});
 });
