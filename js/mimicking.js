@@ -1,4 +1,5 @@
 var audio;
+var audioUrl
 const recordButton = document.getElementById("record");
 
 function record(){
@@ -16,13 +17,14 @@ function record(){
 
       mediaRecorder.addEventListener("stop", () => {
         const audioBlob = new Blob(audioChunks);
-        const audioUrl = URL.createObjectURL(audioBlob);
+        audioUrl = URL.createObjectURL(audioBlob);
         audio = new Audio(audioUrl);
       });
 
       setTimeout(() => {
         mediaRecorder.stop();
         recordButton.style.backgroundColor = "green";
+        document.getElementById("save").href = audioUrl;
       }, 2000);
   });
 };
@@ -33,4 +35,8 @@ document.getElementById("play").addEventListener("click", () => {
 
 document.getElementById("record").addEventListener("click", () => {
   record();
+});
+
+document.getElementById("save").addEventListener("click", () => {
+  audio.download;
 });
