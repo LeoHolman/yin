@@ -46,6 +46,10 @@ document.getElementById("save").addEventListener("click", () => {
   element.click();
   document.body.removeChild(element);
 
+
+  audio.lastModifiedDate = new Date();
+  audio.name = "recording.wav";
+  
   var formData = new FormData();
   formData.append("audioData",audio,"recording.wav");
 
