@@ -49,9 +49,11 @@ document.getElementById("save").addEventListener("click", () => {
 
   audio.lastModifiedDate = new Date();
   audio.name = "recording.wav";
-  
+
+  var audioFile = new File([audio], "recording.wav");
+
   var formData = new FormData();
-  formData.append("audioData",audio,"recording.wav");
+  formData.append("audioData",audioFile,"recording.wav");
 
   fetch('../saveAudio.php', {
     method: 'POST',
