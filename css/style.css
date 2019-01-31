@@ -104,7 +104,7 @@ body{
 }
 
 #home-intro, #home-about{
-    width:40em;
+    width:50vw;
     margin: auto;
 }
 
@@ -133,7 +133,7 @@ body{
     text-align:center;
     margin:auto;
     padding-bottom:4em;
-    font-size:50px;
+    font-size:3em;
     font-weight:500;
     color:#9A2D04;
 }
@@ -152,4 +152,49 @@ body{
 footer div{
     width:30%;
     margin:2em auto;
+}
+
+/* MEDIA QUERY - 700px*/
+
+@media only screen and (max-width:700px){
+    
+    #home-intro, #home-about{
+        width: 60vw;
+        margin:2em auto;
+    }
+    
+    #begin{
+        font-size:2em;
+    }
+    
+}
+
+@media only screen and (max-width:550px){
+    #main img{
+        display:none;
+    }
+    
+    #mid-wrapper{
+        display:block;
+    }
+    
+    #begin{
+        background-color:#9A2D04;
+        padding:1em;
+        width:auto;
+        margin:0 auto;
+        color:white;
+    }
+    
+    #logo{
+        width:30%;
+    }
+    
+    nav li a{
+        padding:1em;
+    }
+    
+    footer div{
+        width:100%;
+    }
 }
