@@ -207,3 +207,56 @@ hr {
    border-top: 3px solid lightgray;
 
 }
+
+/* Media Queries*/
+
+@media only screen and (max-width:950px){
+    .main.LA{
+        display:block;
+        clip-path:none;
+        box-shadow:none;
+    }
+    
+    .main{
+        width:80vw;
+    }
+    
+    .activity{
+        grid-column:1/2;
+        border-bottom:5px solid #db7a13;
+        border-right:5px solid #db7a13;
+    }
+    
+    .lesson{
+        border-right:5px solid #9A2D04;
+        border-bottom:5px solid #9A2D04;
+    }
+    
+    #main-wrap{
+        filter:none;
+    }
+    
+    .view-2{
+        display:block;
+    }
+    
+    .response{
+        height:auto;
+    }
+    
+    #stimuli{
+        height:3em;
+    }
+    
+    .sidebar p{
+        margin-top:0;
+    }
+    
+    .hide{
+        display:none;
+    }
+    
+    #feedback-box{
+        padding:0;
+    }
+}
