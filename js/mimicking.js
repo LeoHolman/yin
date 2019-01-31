@@ -43,7 +43,7 @@ document.getElementById("save").addEventListener("click", () => {
   element.setAttribute('download', "recording.wav");
   element.style.display = 'none';
   document.body.appendChild(element);
-  element.click();
+  // element.click();
   document.body.removeChild(element);
 
 
@@ -55,10 +55,22 @@ document.getElementById("save").addEventListener("click", () => {
   var formData = new FormData();
   formData.append("audioData",audioFile,"recording.wav");
 
-  fetch('../saveAudio.php', {
-    method: 'POST',
-    body: formData
-}).then(response => {
-    console.log(response);
-});
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST","mimicking.php",true);
+  xhttp.send(formData);
+  xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200) {
+      //put graph display here
+      console.log(this.responseText); 
+    }
+  }; 
+
+  // document.getElementById("recording-form").
+  // fetch('mimicking.php', {
+  //   method: 'POST',
+  //   redirect: "follow",
+  //   body: formData
+  // }).then(response => {
+  //     console.log(response);
+  // });
 });
