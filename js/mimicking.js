@@ -2,10 +2,12 @@ var audio;
 var audioUrl
 const recordButton = document.getElementById("record");
 
+var audioBlob;
+
 function record(){
   navigator.mediaDevices.getUserMedia({audio:true})
     .then(stream => {
-      const mediaRecorder = new MediaRecorder(stream);
+      const mediaRecorder = new MediaRecorder(stream, {mimeType : 'audio/wav'});
       mediaRecorder.start();
       recordButton.style.backgroundColor = "red";
 
@@ -16,9 +18,10 @@ function record(){
       });
 
       mediaRecorder.addEventListener("stop", () => {
-        const audioBlob = new Blob(audioChunks);
+        audioBlob = new Blob(audioChunks,{type : 'audio/wav; codecs=MS_PCM'});
         audioUrl = URL.createObjectURL(audioBlob);
         audio = new Audio(audioUrl);
+		audio.type = "audio/wave";
       });
 
       setTimeout(() => {
@@ -37,23 +40,23 @@ document.getElementById("record").addEventListener("click", () => {
   record();
 });
 
+
+
 document.getElementById("save").addEventListener("click", () => {
   var element = document.createElement('a');
   element.setAttribute('href', audioUrl);
   element.setAttribute('download', "recording.wav");
   element.style.display = 'none';
   document.body.appendChild(element);
-  // element.click();
+ //  element.click();
   document.body.removeChild(element);
-
 
   audio.lastModifiedDate = new Date();
   audio.name = "recording.wav";
 
-  var audioFile = new File([audio], "recording.wav");
-
   var formData = new FormData();
-  formData.append("audioData",audioFile,"recording.wav");
+  formData.append("audioData",audioBlob);
+	console.log(formData.keys().next());
 
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST","mimicking.php",true);
