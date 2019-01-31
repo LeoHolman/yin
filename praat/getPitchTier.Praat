@@ -1,5 +1,5 @@
-Read from file: "zhong.mp3"
+Read from file: "tmp.wav"
 selectObject: "Sound zhong"
 To Manipulation: 0.01, 75, 600
 Extract pitch tier
-Save as PitchTier spreadsheet file: "E:\zhong_pitchtier.csv"
+Save as PitchTier spreadsheet file: "tmp.csv"
