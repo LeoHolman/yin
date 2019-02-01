@@ -47,11 +47,20 @@ function newTest(){
     //reset responseGiven for new test
     df.setResponseGiven(false);
 
-
+    if (shownTests.length == 10){
+        document.getElementById("continueButton").removeEventListener("    click", function(){
+            newTest();
+        });
+        
+        document.getElementById("continueButton").innerHTML="Finish";
+        
+        document.getElementById("continueButton").addEventListener("click", function(){
+            df.showScoreCard("activity-one");
+        })
+    }
 }
 
 //create new test on click
 document.getElementById("continueButton").addEventListener("click", function(){
     newTest();
 })
-
