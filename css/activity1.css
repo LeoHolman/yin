@@ -8,9 +8,14 @@
     padding-right:2%;
 }
 
+.view-2{
+    display:grid;
+    grid-template-rows:12em 10em 10em 10em 10em 5em 2.5em;
+    grid-template-columns: 1fr 1fr;
+    padding:2em;
+}
 
-
-.response {
+.response-wrap {
     display: inline;
     width:100%;
     text-align:center;
@@ -20,6 +25,9 @@
     
 }
 
+.response{
+    width:100%;
+}
 
 #lesson-one-ref{
     grid-column: 1/2;
@@ -40,6 +48,10 @@
 #secondResponse{
     grid-column: 2/3;
      width:15em;
+}
+
+.hide{
+    display:none;
 }
 
 @media only screen and (max-width:950px){

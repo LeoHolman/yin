@@ -57,12 +57,7 @@
 }
 
 
-.view-2{
-    display:grid;
-    grid-template-rows:12em 10em 10em 10em 10em 5em 2.5em;
-    grid-template-columns: 1fr 1fr;
-    padding:2em;
-}
+
 
 .view-2 .activity{
     grid-template-columns:1fr 1fr;

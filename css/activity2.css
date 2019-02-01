@@ -1,11 +1,24 @@
-.response {
+.view-2{
+    display:grid;
+    grid-template-rows:12em 10em 12em 12em 10em 5em 2.5em;
+    grid-template-columns: 1fr 1fr;
+    padding:2em;
+}
+
+.response-wrap {
     display: inline;
     width:40%;
     text-align:center;
-    height:15em;
     margin:.5em;
     padding-left:3.5em;
     
 }
 
 
+.response{
+    width:100%;
+}
+
+.hide{
+    display:none;
+}
