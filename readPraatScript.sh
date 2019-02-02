@@ -1,2 +1,0 @@
-echo "$(<../praat/getPitchTier.Praat)"
-
