@@ -9,16 +9,29 @@ var height = 350;
 
 //select div target
 //import data
-drawf.drawPitchChart('#visualization',width,height);
+
 
 //draw points
-d3.tsv("../praat/zhong_pitchtier.csv",function(data) {
+// d3.tsv("../praat/zhong_pitchtier.csv",function(data) {
 
-    d3.select("#visualization svg")
+//     d3.select("#visualization svg")
+//         .append("circle")
+//         .attr("cx",data.time*(width/2))
+//         .attr("cy",height - data.frequency)
+//         .attr("r",5)
+//         .style("fill","red");
+
+// });
+export function drawPitchCurve(dataset){
+    drawf.drawPitchChart('#visualization',width,height);
+	d3.tsv(dataset, function(data){
+  	  d3.select("#visualization svg")
+      //  .data(dataset)
+      //  .enter()
         .append("circle")
-        .attr("cx",data.time*(width/2))
-        .attr("cy",height - data.frequency)
-        .attr("r",5)
-        .style("fill","red");
-
-});
+            .attr("cx",data.time*(width/2))
+            .attr("cy",height - data.frequency)
+            .attr("r",5)
+            .style("fill","red");
+	})
+}
