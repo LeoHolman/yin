@@ -1,27 +1,29 @@
 <?php
 	if(!empty($_FILES)):
     var_dump($_FILES);
-    $randomNumber = random_int(1,200);
+    $randomNumber = random_int(1,2000000000);
     $targetDir = "../uploads/" . $randomNumber;
     while(!empty(glob($targetDir))){
-        $randomNumber = random_int(1,200); 
+        $randomNumber = random_int(1,2000000000); 
         $targetDir = "../uploads/" . $randomNumber; 
     }
-    mkdir($targetDir);
-//	file_put_contents($targetDir."/tmp.wav", file_get_contents($_FILES["audioData"]["tmp_name"]));
-	move_uploaded_file($_FILES["audioData"]["tmp_name"], $targetDir."/tmp.wav");
-	echo "After mkdir targetDir is" . $targetDir;
-	$praatScript = shell_exec('../readPraatScript.sh');
-//	$praatScript = 'Read from file: "tmp.wav"\nselectObject: "Sound zhong"\nTo Manipulation: 0.01, 75, 600\nExtract pitch tier\nSave as PitchTier spreadsheet file: "tmp.csv"';
-	echo "</br>" . $praatScript;
-//	$praatScript_str = var_export($praatScript, true);
-//	file_put_contents($targetDir ."/getPitchTier.Praat", $praatScript_str);
-//	file_put_contents($targetDir ."/getPitchTier.Praat", $praatScript);
-//    $audioCSV = shell_exec('../sendAudioToPraat.sh '.escapeshellarg($randomNumber));
-//    echo $audioCSV; 
+    mkdir($targetDir,0777);
+	chmod($targetDir, 0777);
+	move_uploaded_file($_FILES["audioData"]["tmp_name"], $targetDir."/tmp.blob");
+	$praatScriptInput = fopen('../praat/getPitchTier.Praat', 'r') or die("Unable to open file");
+	$praatScript = fread($praatScriptInput,filesize('../praat/getPitchTier.Praat'));
+	fclose($praatScriptInput);	
+	$writePraatScript = fopen($targetDir ."/getPitchTier.Praat", "w") or die("Unable to open file:");
+	fwrite($writePraatScript, $praatScript);
+	fclose($writePraatScript);
+   // $audioCSV = 
+	exec('../prepAudioFile.sh '.escapeshellarg($randomNumber));
+	exec("praat --run '/var/www/html/yin/uploads/".$randomNumber."/getPitchTier.Praat'");
+	$grabCSV = fopen($targetDir."/tmp.csv", "r");
+	$csvData = fread($grabCSV, filesize($targetDir."/tmp.csv"));
+	fclose($grabCSV);
+	echo "HERE IT IS".$csvData;
 	endif;
-	$testingBash = shell_exec('../testBash.sh '.escapeshellarg($randomNumber));
-	echo $testingBash;
 ?>
 <!DOCTYPE html>
 <html>

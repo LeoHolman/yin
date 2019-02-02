@@ -7,7 +7,7 @@ var audioBlob;
 function record(){
   navigator.mediaDevices.getUserMedia({audio:true})
     .then(stream => {
-      const mediaRecorder = new MediaRecorder(stream, {mimeType : 'audio/wav'});
+      const mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.start();
       recordButton.style.backgroundColor = "red";
 
@@ -56,7 +56,6 @@ document.getElementById("save").addEventListener("click", () => {
 
   var formData = new FormData();
   formData.append("audioData",audioBlob);
-	console.log(formData.keys().next());
 
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST","mimicking.php",true);
