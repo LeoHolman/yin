@@ -1,7 +1,10 @@
-var audio;
-var audioUrl
-const recordButton = document.getElementById("record");
+import * as pg from "./pitchGraphing.js";
 
+var audio;
+var audioUrl;
+const recordButton = document.getElementById("record");
+var csvDataLocation;
+var rawResponse;
 var audioBlob;
 
 function record(){
@@ -63,10 +66,21 @@ document.getElementById("save").addEventListener("click", () => {
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200) {
       //put graph display here
-      console.log(this.responseText); 
+      //console.log(this.responseText); 
+	//rawResponse = this.responseText;
+	//var start = rawResponse.indexOf('Pitchtier') + 26;
+	//var end = rawResponse.indexOf('<!DOCTYPE html>');
+	//csvData = rawResponse.substring(start,end);	
+	//csvData = "time	frequency\n" + csvData;
+	//console.log(csvData);
+	rawResponse = this.responseText;
+	var start = rawResponse.indexOf("***")+3;
+	var end = rawResponse.indexOf("&&&");
+	csvDataLocation = rawResponse.substring(start,end);
+	console.log(csvDataLocation);
+	pg.drawPitchCurve(csvDataLocation);
     }
   }; 
-
   // document.getElementById("recording-form").
   // fetch('mimicking.php', {
   //   method: 'POST',
