@@ -8,7 +8,7 @@ include "../head.php";
 ?>
 
 <div id = "main-wrap">
-<div class = "main container-one LA">
+<div class = "main container-two LA">
     <section id = "lesson-two" class = "lesson">
         <h1>Lesson Two</h1><hr>
         <h2>Tone Characteristics</h2>

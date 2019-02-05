@@ -1,11 +1,57 @@
+/** COLORS
+
+Dark red - #9A2D04
+Orange - //#FF8F17//  --->#db7a13
+Background gray - #EDEDED
+Blue - #5E99D3
+
+**/
+
+
+
+
 .main{
-    width:70em;
+    width:70vw;
     background-color: white;
 }
 
 #main-wrap{
     filter: drop-shadow(8.4px 8px #9A2D04);
 }
+
+.LA-breadcrumb {
+  padding: 1em;
+  list-style: none;
+    margin-top:2em;
+
+
+}
+.LA-breadcrumb li {
+  display: inline;
+  font-size: 18px;
+
+}
+.LA-breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "|";
+
+}
+.LA-breadcrumb li a {
+  color: #5E99D3;
+  text-decoration: none;
+
+}
+.LA-breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+
+}
+
+.LA-breadcrumb a:visited{
+    color:#5E99D3;
+}
+
 .main.LA{
     display:grid;
     grid-template-columns:2fr 1fr;
@@ -21,6 +67,10 @@
           0 95%      /* bottom left */
         );
     box-shadow: 5px 5px;
+}
+
+.main.LA.container-one{
+    clip-path: polygon(0 0, 94% 0, 100% 6%, 100% 80%, 100% 100%, 0 100%, 0% 80%, 0% 20%);
 }
 
 .main.LA h1{
@@ -56,8 +106,24 @@
     justify-self:center;
 }
 
+#next-lesson{
+    width:70vw;
+    margin:0 auto;
+    position:relative;
+}
 
+#next-btn{
+    margin:1.5em 0;
+    position:absolute;
+    right:0;
+    display:inline-block;
+}
 
+#next-btn button{
+    width:9em;
+    height:3em;
+    justify-self:center;
+}
 
 .view-2 .activity{
     grid-template-columns:1fr 1fr;

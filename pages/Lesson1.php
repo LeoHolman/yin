@@ -7,7 +7,14 @@ $extras = "<link rel ='stylesheet' href = '../css/activity1.css' type ='text/css
 include "../head.php";
 ?>
 
+
+<ul class = "LA-breadcrumb">
+    <li><a href ="<?php echo $prefix ?>index.php">Home</a></li>
+    <li><a href ="LessonsAndActivities.php">Lessons and Activities</a></li>
+    <li><a href ="#">One</a></li>
+</ul>
 <div id = "main-wrap">
+    
 <div class = "main container-one LA">
     <section id = "lesson-one" class = "lesson">
         <h1>Lesson One</h1><hr>
@@ -88,8 +95,14 @@ include "../head.php";
         <button type = "button" id = "continueButton">Continue</button>
     </section>
 
-</div>
-</div>
+</div> <!-- end .main .container-one .LA -->
+    
+</div> <!-- end #main-wrap -->
+<div id ="next-lesson">
+    <a href ="Lesson2.php" id ="next-btn"><button >Next Lesson</button></a>
+</div>    
+
+
 
     <script src="../js/jquery/jquery-3.3.1.min.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
