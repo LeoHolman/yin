@@ -7,6 +7,12 @@ $extras = "<link rel ='stylesheet' href = '../css/activity2.css' type ='text/css
 include "../head.php";
 ?>
 
+
+<ul class = "LA-breadcrumb">
+    <li><a href ="<?php echo $prefix ?>index.php">Home</a></li>
+    <li><a href ="LessonsAndActivities.php">Lessons and Activities</a></li>
+    <li><a href ="#">Two</a></li>
+</ul>
 <div id = "main-wrap">
 <div class = "main container-two LA">
     <section id = "lesson-two" class = "lesson">
@@ -49,7 +55,7 @@ include "../head.php";
         <button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>
         
     </section>
-    <section id = "activity-one-prompt" class = "activity">
+    <section id = "activity-two-prompt" class = "activity">
         <h1>Activity Two</h1><hr>
         <h2>Identification</h2>
         <p>In this activity, we will play a sound and present all four tones' pitch curves. Select the correct pitch for the tone you heard.</p>
@@ -61,6 +67,7 @@ include "../head.php";
         <div id = "ref-title"><h1>Activity Two</h1><hr>
             <h2>Tone Identification</h2>
         </div>
+        <h3 id ="score"></h3>
         <div id = "stimuli">
             <audio controls id = "audio-clip" >
                 <source id="audioSource" src="" type="audio/mpeg">
@@ -72,11 +79,11 @@ include "../head.php";
         <div id="thirdResponse" class="response-wrap"></div>
         <div id="fourthResponse" class="response-wrap"></div>
         <div id = "feedback-box">
-            <div id ="correct" class = "hide correct">
+            <div id ="correct" class = "hide feedback correct">
                 <h3>Correct!</h3>
                 <p>Further description here.</p>
             </div>
-            <div id ="incorrect" class = "hide incorrect">
+            <div id ="incorrect" class = "hide feedback incorrect">
                 <h3>Incorrect...</h3>
                 <p>Further description here.</p>
             </div>
@@ -86,6 +93,9 @@ include "../head.php";
 
 </div>
 </div>
+<div id ="next-lesson">
+    <a href ="Lesson3.php" id ="next-btn"><button >Next Lesson</button></a>
+</div>   
 
     <script src="../js/jquery/jquery-3.3.1.min.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
