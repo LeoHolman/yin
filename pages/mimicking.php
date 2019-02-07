@@ -16,6 +16,7 @@
         <div id="input"></div>
         <div id="demo"></div>
         <div>
+		<button id="baseline">Record Baseline</button>
             <button id="record">Record</button>
             <button id="play">Play</button>
             <button id="save">Save</button>
