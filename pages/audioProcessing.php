@@ -33,6 +33,7 @@
 	//clean up csv, remove top headers and add 'time	frequency' to top for d3
 	$csvBeforeData = file("/var/www/html/yin/uploads/".$randomNumber."/tmp.csv");
 	array_shift($csvBeforeData);
+	array_shift($csvBeforeData);
 	$csvBeforeData[0] = "time	frequency\n";
 	$csvAfterData = implode("", $csvBeforeData);
 	$csvAfter = fopen($targetDir."/tmp.csv", "w+") or die("Unable to open file");
