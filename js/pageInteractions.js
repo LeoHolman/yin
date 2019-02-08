@@ -1,6 +1,6 @@
 function openActivity(){
     var slide = document.getElementsByClassName("LA")[0];
-    slide.setAttribute("style", "grid-template-columns: .8fr 2fr;");
+    slide.setAttribute("style", "grid-template-columns: 20vw 50vw;");
     
     var ref = document.getElementsByClassName("lesson")[1];
     ref.setAttribute("onclick","closeActivity()");
