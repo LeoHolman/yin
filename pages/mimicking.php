@@ -19,7 +19,6 @@
 		<button id="baseline">Record Baseline</button>
             <button id="record">Record</button>
             <button id="play">Play</button>
-            <button id="save">Save</button>
         </div>
         <form id="recording-form" action="mimicking.php" method="POST" style="display: none;">
             <input type="file" name="recording-input" id="recording-input" enctype="multipart/form-data" />
