@@ -1,17 +1,17 @@
 import * as pg from "./pitchGraphing.js";
 
-export function record() {
+export function record(buttonId) {
     return new Promise(resolve => {
         var audio;
         var audioUrl;
         var audioBlob;
+        const recordButton = document.getElementById(buttonId);
         navigator.mediaDevices.getUserMedia({
                 audio: true
             })
             .then(stream => {
                 const mediaRecorder = new MediaRecorder(stream);
                 mediaRecorder.start();
-                const recordButton = document.getElementById("record");
                 recordButton.style.backgroundColor = "red";
 
                 const audioChunks = [];
@@ -24,17 +24,12 @@ export function record() {
                     audioBlob = new Blob(audioChunks, {
                         type: 'audio/wav; codecs=MS_PCM'
                     });
-                    audioUrl = URL.createObjectURL(audioBlob);
-                    audio = new Audio(audioUrl);
-                    audio.type = "audio/wave";
                     resolve(audioBlob);
                 });
 
                 setTimeout(() => {
                     mediaRecorder.stop();
-                    const recordButton = document.getElementById("record");
                     recordButton.style.backgroundColor = "green";
-                    document.getElementById("save").href = audioUrl;
                 }, 2000);
             });
     })
