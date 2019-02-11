@@ -1,14 +1,21 @@
 import * as pg from "./pitchGraphing.js";
 import * as af from "./audioFunctions.js";
+import * as drawf from "./drawingFunctions.js";
 
+//set button handles
 const recordButton = document.getElementById("record");
 const playButton = document.getElementById("play");
 const baselineButton = document.getElementById("baseline");
 
+//initialize baseline variables
 var baselineMax;
 var baselineMin;
 var baselineAvg;
 
+//draw graph
+drawf.drawPitchChart('#visualization',1000,350);
+
+//set record function
 recordButton.addEventListener("click", () => {
 	af.record("record")
 		.then( blob => {
@@ -19,11 +26,12 @@ recordButton.addEventListener("click", () => {
 			});
 			af.processAudio(blob)
 				.then( csvDataLocation => {
-					pg.drawPitchCurve(csvDataLocation);
+					drawf.drawPitchCurve(csvDataLocation,1000,350);
 				})	
 		})
 });
 
+//set baseline function
 baselineButton.addEventListener("click", () => {
 	af.record("baseline")
 		.then( blob => {
