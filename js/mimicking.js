@@ -50,3 +50,7 @@ baselineButton.addEventListener("click", () => {
 				});	
 			});
 		});
+
+//var clearUploads = new XMLHttpRequest();
+//clearUploads.open("GET","../pages/clearUploads.php");
+//clearUploads.send();
