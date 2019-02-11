@@ -25,12 +25,17 @@ export function drawPitchChart(divID, width, height) {
     }
 }
 
+/*d3 canvas is upside down, for high values to appear at the top
+ * it must be displayed as (height - value)
+ * Deviance from baseline is measured as (value - baseline) such
+ * that values higher than the baseline will create a positive value.
+ * This value is added to half of the total height to center it. */
 export function drawPitchCurve(dataset, width, height, baseline) {
     d3.tsv(dataset, function(data) {
         d3.select("#visualization svg")
             .append("circle")
             .attr("cx", data.time * (width / 2))
-            .attr("cy", height - data.frequency)
+            .attr("cy", height - ((height/2) + (data.frequency - baseline)))  
             .attr("r", 5)
             .style("fill", "red");
     })

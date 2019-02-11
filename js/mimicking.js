@@ -25,7 +25,7 @@ recordButton.addEventListener("click", () => {
 			});
 			af.processAudio(blob)
 				.then( csvDataLocation => {
-					drawf.drawPitchCurve(csvDataLocation,1000,350);
+					drawf.drawPitchCurve(csvDataLocation,1000,350,baselineAvg);
 				})	
 		})
 });
@@ -43,8 +43,8 @@ baselineButton.addEventListener("click", () => {
 					}).then( () =>{		
 							baselineMin = d3.min(frequencyset);
 							baselineMax = d3.max(frequencyset); 
-							console.log(baselineMax);
-							console.log(baselineMin);
+							baselineAvg = (baselineMax + baselineMin)/2;
+							console.log(baselineAvg);
 					} );	
 				
 				});	
