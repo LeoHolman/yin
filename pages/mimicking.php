@@ -26,7 +26,6 @@
         <script type="module" src="../js/mimicking.js"></script>
 	<script src="https://d3js.org/d3.v5.js"></script>
 	<script type="module" src-"../js/drawingFunctions.js"></script>
-	<script type="module" src="../js/pitchGraphing.js"></script>
 	<script type="module" src="../js/audioFunctions.js"></script>
     </body>
 </html>

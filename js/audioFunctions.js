@@ -1,5 +1,3 @@
-import * as pg from "./pitchGraphing.js";
-
 export function record(buttonId) {
     return new Promise(resolve => {
         var audio;
@@ -54,7 +52,6 @@ export function processAudio(audioBlob) {
                     var end = rawResponse.indexOf("&&&");
                     csvDataLocation = rawResponse.substring(start, end);
                     //console.log(csvDataLocation);
-                    // pg.drawPitchCurve(csvDataLocation);
                     resolve(csvDataLocation);
                 }
             };
