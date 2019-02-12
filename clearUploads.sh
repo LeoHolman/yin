@@ -1,1 +1,1 @@
-sudo rm -r /var/www/html/yin/uploads/*
+rm -r /var/www/html/yin/uploads/*
