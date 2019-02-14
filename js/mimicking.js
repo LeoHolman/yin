@@ -66,3 +66,5 @@ function clearUploads() {
 	clearUploads.open("GET","../pages/clearUploads.php");
 	clearUploads.send();
 }
+
+clearUploads();
