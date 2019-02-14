@@ -50,7 +50,10 @@ include "../head.php";
     </section>
     <section id = "lesson-two-ref" class = "hide view-2 lesson">
         <div id = "ref-title"><h1>Lesson Two</h1><hr>
-            <h2>Reference: Tone Characteristics</h2>
+            <h2>Instructions</h2>
+            <p>Play the sound and select the correct pitch for the tone you heard.</p>
+            <h2>Remember</h2>
+            <p><strong>Tone one</strong> is high and sustained, 5-5-5.<br></p><p><strong>Tone two</strong> rises like a question, 2-4-5.<br></p><p><strong>Tone three</strong> falls then rises, 2-1-4.<br></p><p><strong>Tone four</strong> falls sharply, like scolding someone, 5-3-1.</p>
         </div>
         <button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>
         
