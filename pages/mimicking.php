@@ -27,5 +27,6 @@
 	<script src="https://d3js.org/d3.v5.js"></script>
 	<script type="module" src-"../js/drawingFunctions.js"></script>
 	<script type="module" src="../js/audioFunctions.js"></script>
+	<script type="module" src="../js/stats.js"></script>
     </body>
 </html>

@@ -1,4 +1,5 @@
 'use strict';
+import * as stats from "./stats.js";
 
 export function drawPitchChart(divID, width, height) {
     d3.select(divID)
@@ -25,18 +26,36 @@ export function drawPitchChart(divID, width, height) {
     }
 }
 
-/*d3 canvas is upside down, for high values to appear at the top
- * it must be displayed as (height - value)
+/* How to arrive at the equation for the y value.
+ * d3 canvas is upside down, for high values to appear at the top
+ * the eqation must be displayed as
+ * y = (height - value)
+ *
  * Deviance from baseline is measured as (value - baseline) such
- * that values higher than the baseline will create a positive value.
- * This value is added to half of the total height to center it. */
-export function drawPitchCurve(dataset, width, height, baseline) {
+ * that values higher than the baseline will create a positive value
+ * and values lower than the baseline come out negative.
+ * To center that value (since the result of value - baseline is 
+ * usually small) half the height is added.
+ * The equation is then 
+ * y = (height - ((height/2) + (value - baseline))
+ *
+ * In order to scale the range of values to the height of the graph
+ * one fifth of the height is multipled by the zScore (both to extend
+ * values higher and to invert when negative)
+ * The final equation becomes
+ * y = (height - ((height/2) + ((value - baseline) + ((height/5) * zScore))))
+ */
+export function drawPitchCurve(dataset, width, height, baseline=(height/2), standardDeviation=0) {
+	console.log(dataset);
     d3.tsv(dataset, function(data) {
+	let zScore = stats.calcZScore(baseline,data.frequency,standardDeviation);    
+	console.log(data);
+	console.log(`zScore is: ${zScore}`);
         d3.select("#visualization svg")
             .append("circle")
             .attr("cx", data.time * (width / 2))
-            .attr("cy", height - ((height/2) + (data.frequency - baseline)))  
+            .attr("cy", height - ((height/2) + ((data.frequency - baseline) + ((height/5) * zScore)))) 
             .attr("r", 5)
             .style("fill", "red");
-    })
-}
+    });
+};

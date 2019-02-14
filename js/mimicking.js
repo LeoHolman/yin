@@ -1,5 +1,6 @@
 import * as af from "./audioFunctions.js";
 import * as drawf from "./drawingFunctions.js";
+import * as stat from "./stats.js";
 
 //set button handles
 const recordButton = document.getElementById("record");
@@ -10,6 +11,8 @@ const baselineButton = document.getElementById("baseline");
 var baselineMax;
 var baselineMin;
 var baselineAvg;
+var baselineMean;
+var baselineStandardDeviation;
 
 //draw graph
 drawf.drawPitchChart('#visualization',1000,350);
@@ -25,7 +28,15 @@ recordButton.addEventListener("click", () => {
 			});
 			af.processAudio(blob)
 				.then( csvDataLocation => {
-					drawf.drawPitchCurve(csvDataLocation,1000,350,baselineAvg);
+					var frequencyset = [];
+					d3.tsv(csvDataLocation,	function(data){
+							frequencyset.push(+data.frequency); 
+							return frequencyset;
+					}).then( () =>{		
+					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
+					console.log(`Standard deviation is ${baselineStandardDeviation}`);
+					drawf.drawPitchCurve(csvDataLocation,1000,350,baselineMean,baselineStandardDeviation);
+					})	
 				})	
 		})
 });
@@ -41,15 +52,15 @@ baselineButton.addEventListener("click", () => {
 							frequencyset.push(+data.frequency); 
 							return frequencyset;
 					}).then( () =>{		
-							baselineMin = d3.min(frequencyset);
-							baselineMax = d3.max(frequencyset); 
-							baselineAvg = (baselineMax + baselineMin)/2;
-							console.log(baselineAvg);
+						//	baselineMean = stat.calcMean(frequencyset);
+						//	console.log(`Baseline mean ${baselineMean}`);
 					} );	
 				
 				});	
 			});
 		});
+
+
 function clearUploads() {
 	var clearUploads = new XMLHttpRequest();
 	clearUploads.open("GET","../pages/clearUploads.php");
