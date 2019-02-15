@@ -1,5 +1,5 @@
 <?php
-$title = "Yin - Lesson One";
+$title = "Yin - Lessons and Activities";
 $style = "LADirectoryStyle.css";
 $prefix = "../";
 $LAClass="active";
