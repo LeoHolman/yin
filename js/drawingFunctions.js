@@ -48,6 +48,9 @@ export function drawPitchChart(divID, width, height) {
 export function drawPitchCurve(dataset, width, height, baseline=(height/2), standardDeviation=0) {
     d3.tsv(dataset, function(data) {
 	let zScore = stats.calcZScore(baseline,data.frequency,standardDeviation);    
+	if(isNaN(zScore)){
+		zScore = 0;
+	}
         d3.select("#visualization svg")
             .append("circle")
             .attr("cx", data.time * (width / 2))
