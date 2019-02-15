@@ -1,92 +1,69 @@
-import * as pg from "./pitchGraphing.js";
+import * as af from "./audioFunctions.js";
+import * as drawf from "./drawingFunctions.js";
+import * as stat from "./stats.js";
 
-var audio;
-var audioUrl;
+//set button handles
 const recordButton = document.getElementById("record");
-var csvDataLocation;
-var rawResponse;
-var audioBlob;
+const playButton = document.getElementById("play");
+const baselineButton = document.getElementById("baseline");
 
-function record(){
-  navigator.mediaDevices.getUserMedia({audio:true})
-    .then(stream => {
-      const mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.start();
-      recordButton.style.backgroundColor = "red";
+//initialize baseline variables
+var baselineMax;
+var baselineMin;
+var baselineAvg;
+var baselineMean;
+var baselineStandardDeviation;
 
-      const audioChunks = [];
+//draw graph
+drawf.drawPitchChart('#visualization',1000,350);
 
-      mediaRecorder.addEventListener("dataavailable", event => {
-        audioChunks.push(event.data);
-      });
-
-      mediaRecorder.addEventListener("stop", () => {
-        audioBlob = new Blob(audioChunks,{type : 'audio/wav; codecs=MS_PCM'});
-        audioUrl = URL.createObjectURL(audioBlob);
-        audio = new Audio(audioUrl);
-		audio.type = "audio/wave";
-      });
-
-      setTimeout(() => {
-        mediaRecorder.stop();
-        recordButton.style.backgroundColor = "green";
-        document.getElementById("save").href = audioUrl;
-      }, 2000);
-  });
-};
-
-document.getElementById("play").addEventListener("click", () => {
-    audio.play();
+//set record function
+recordButton.addEventListener("click", () => {
+	af.record("record")
+		.then( blob => {
+			playButton.addEventListener("click", () => {
+				var blobUrl = URL.createObjectURL(blob);
+				var audio = new Audio(blobUrl);
+				audio.play();
+			});
+			af.processAudio(blob)
+				.then( csvDataLocation => {
+					var frequencyset = [];
+					d3.tsv(csvDataLocation,	function(data){
+							frequencyset.push(+data.frequency); 
+							return frequencyset;
+					}).then( () =>{		
+					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
+					drawf.drawPitchCurve(csvDataLocation,1000,350,baselineMean,baselineStandardDeviation);
+					})	
+				})	
+		})
 });
 
-document.getElementById("record").addEventListener("click", () => {
-  record();
-});
+//set baseline function
+baselineButton.addEventListener("click", () => {
+	af.record("baseline")
+		.then( blob => {
+			af.processAudio(blob)
+				.then( csvDataLocation => {
+					var frequencyset = [];
+					d3.tsv(csvDataLocation,	function(data){
+							frequencyset.push(+data.frequency); 
+							return frequencyset;
+					}).then( () =>{		
+							baselineMean = stat.calcMean(frequencyset);
+						//	console.log(`Baseline mean ${baselineMean}`);
+					} );	
+				
+				});	
+			});
+		});
 
 
+function clearUploads() {
+	var clearUploads = new XMLHttpRequest();
+	clearUploads.open("GET","../pages/clearUploads.php");
+	clearUploads.send();
+}
 
-document.getElementById("save").addEventListener("click", () => {
-  var element = document.createElement('a');
-  element.setAttribute('href', audioUrl);
-  element.setAttribute('download', "recording.wav");
-  element.style.display = 'none';
-  document.body.appendChild(element);
- //  element.click();
-  document.body.removeChild(element);
-
-  audio.lastModifiedDate = new Date();
-  audio.name = "recording.wav";
-
-  var formData = new FormData();
-  formData.append("audioData",audioBlob);
-
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST","mimicking.php",true);
-  xhttp.send(formData);
-  xhttp.onreadystatechange = function(){
-    if(this.readyState == 4 && this.status == 200) {
-      //put graph display here
-      //console.log(this.responseText); 
-	//rawResponse = this.responseText;
-	//var start = rawResponse.indexOf('Pitchtier') + 26;
-	//var end = rawResponse.indexOf('<!DOCTYPE html>');
-	//csvData = rawResponse.substring(start,end);	
-	//csvData = "time	frequency\n" + csvData;
-	//console.log(csvData);
-	rawResponse = this.responseText;
-	var start = rawResponse.indexOf("***")+3;
-	var end = rawResponse.indexOf("&&&");
-	csvDataLocation = rawResponse.substring(start,end);
-	console.log(csvDataLocation);
-	pg.drawPitchCurve(csvDataLocation);
-    }
-  }; 
-  // document.getElementById("recording-form").
-  // fetch('mimicking.php', {
-  //   method: 'POST',
-  //   redirect: "follow",
-  //   body: formData
-  // }).then(response => {
-  //     console.log(response);
-  // });
-});
+clearUploads();

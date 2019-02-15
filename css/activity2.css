@@ -7,7 +7,7 @@
 
 .response-wrap {
     display: inline;
-    width:40%;
+    width:50%;
     text-align:center;
     margin:.5em;
     padding-left:3.5em;
@@ -17,6 +17,40 @@
 
 .response{
     width:100%;
+}
+
+.hide{
+    display:none;
+}
+
+@media only screen and (max-width:950px){
+    .response{
+        height:auto;
+        padding:1em;
+    }
+    
+    .view-2{
+        display:block;
+    }
+    
+    .response-wrap{
+        max-width:20vw;
+        height:auto;
+        padding-left:9vw;
+        display:inline-block;
+    }
+    
+    #feedback-box{
+        height:9em;
+    }
+    
+
+}
+
+@media only screen and (max-width:410px){
+    .response-wrap{
+        margin:0;
+    }
 }
 
 .hide{

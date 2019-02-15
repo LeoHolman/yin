@@ -125,7 +125,7 @@ Blue - #5E99D3
     justify-self:center;
 }
 
-.view-2 .activity{
+.view-2.activity{
     grid-template-columns:1fr 1fr;
 }
 
@@ -145,6 +145,7 @@ Blue - #5E99D3
 #ref-title{
     grid-row:1/2;
     grid-column:1/3;
+    max-width:20vw;
 }
 
 #score{
@@ -178,6 +179,7 @@ Blue - #5E99D3
     grid-row:6/7;
     width:15em;
     height:3em;
+    max-width:16vw;
 }
 
 #stimuli{
@@ -269,27 +271,45 @@ hr {
 
 }
 
+.activity #ref-title hr{
+    width:45vw;
+}
+
 #restart-btn, #next-lesson-btn{
     width:15em;
     margin:2em;
 }
 
 #final-score{
-    grid-row:2/3;
-    grid-column:1/3;
-    margin-top:3em;
-    margin-right:2em;
+    position:relative;
+    top:-38vh;
+    left:-7vw;
     text-align:center;
+}
+
+#score-display{
+    grid-column:1/3;
 }
 
 #score-monkey{
     width:75%;
-    grid-column:1/3;
-    grid-row:2/3;
     margin:0 auto;
 }
 
+
+
 /* Media Queries*/
+
+@media only screen and (max-width:1200px){
+    .sidebar p{
+        margin-top:0;
+    }
+    
+    #feedback-box{
+        padding-left:0;
+        padding-right:0;
+    }
+}
 
 @media only screen and (max-width:950px){
     .main.LA{
@@ -313,12 +333,22 @@ hr {
         border-bottom:5px solid #9A2D04;
     }
     
+    .lesson.view-2{
+        grid-template-rows:auto;
+    }
+    
+    #btn-to-lesson{
+        width:12em;
+        max-width:none;
+    }
+    
     #main-wrap{
         filter:none;
     }
     
-    .view-2{
-        display:block;
+
+    #ref-title{
+        max-width:100%;
     }
     
     .response{
@@ -333,11 +363,26 @@ hr {
         margin-top:0;
     }
     
-    .hide{
-        display:none;
-    }
     
     #feedback-box{
         padding:0;
     }
+    
+    #continueButton{
+        margin-left:30vw;
+    }
+}
+
+@media only screen and max-width(410px){
+    #continueButton{
+        margin-left:0;
+    }
+    
+    audio{
+        width:30vw;
+    }
+}
+
+.hide{
+    display:none;
 }

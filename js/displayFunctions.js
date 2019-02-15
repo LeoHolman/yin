@@ -147,7 +147,7 @@ export function showScore(divID){
 export function showScoreCard(divID){
     var box = document.getElementById(divID);
     box.innerHTML=`<div id = "ref-title"><h1>Activity One</h1><hr>
-            <h2>Tonal Discrimination</h2></div><img src ="../assets/images/scoreMonkey.png" id ="score-monkey"><h1 id = "final-score">Your score is: ${correctResponses}/10</h1><button id = "restart-btn">Try again</button><button id ="next-lesson-btn">Next lesson</button>`;
+            <h2>Tonal Discrimination</h2></div><div id ="score-display"><img src ="../assets/images/scoreMonkey.png" id ="score-monkey"><h1 id = "final-score">Your score is: ${correctResponses}/10</h1></div><button id = "restart-btn">Try again</button><button id ="next-lesson-btn">Next lesson</button>`;
     
     box.style.gridTemplateRows="10em 20em 8em 3em";
     

@@ -1,2 +1,4 @@
 Sandbox
 .DS_Store
+*.swp
+uploads/*

@@ -5,6 +5,12 @@ $prefix = "../";
 include "../head.php";
 ?>
 
+
+<ul class = "LA-breadcrumb">
+    <li><a href ="<?php echo $prefix ?>index.php">Home</a></li>
+    <li><a href ="LessonsAndActivities.php">Lessons and Activities</a></li>
+    <li><a href ="#">One</a></li>
+</ul>
 <div id = "main-wrap">
 <div class = "main container-one LA">
     <section id = "lesson-one" class = "lesson">
@@ -45,6 +51,9 @@ include "../head.php";
 
 </div>
 </div>
+<div id ="next-lesson">
+    <a href ="Lesson2.php" id ="next-btn"><button >Next Lesson</button></a>
+</div>    
 
 
 
