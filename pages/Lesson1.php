@@ -92,6 +92,7 @@ include "../head.php";
                 <p>Further description here.</p>
             </div>
         </div>
+	<button type = "button" id = "skipToEnd">Skip to End</button>
         <button type = "button" id = "continueButton">Continue</button>
     </section>
 

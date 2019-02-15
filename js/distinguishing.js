@@ -64,3 +64,10 @@ function newTest(){
 document.getElementById("continueButton").addEventListener("click", function(){
     newTest();
 })
+
+document.getElementById("skipToEnd").addEventListener("click", function() {
+	skipToEnd();	
+})
+function skipToEnd(){
+	df.showScoreCard("activity-one");
+}
