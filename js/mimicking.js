@@ -34,7 +34,6 @@ recordButton.addEventListener("click", () => {
 							return frequencyset;
 					}).then( () =>{		
 					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
-					console.log(`Standard deviation is ${baselineStandardDeviation}`);
 					drawf.drawPitchCurve(csvDataLocation,1000,350,baselineMean,baselineStandardDeviation);
 					})	
 				})	
@@ -52,7 +51,7 @@ baselineButton.addEventListener("click", () => {
 							frequencyset.push(+data.frequency); 
 							return frequencyset;
 					}).then( () =>{		
-						//	baselineMean = stat.calcMean(frequencyset);
+							baselineMean = stat.calcMean(frequencyset);
 						//	console.log(`Baseline mean ${baselineMean}`);
 					} );	
 				
