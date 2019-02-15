@@ -59,7 +59,7 @@ include "../head.php";
             <h2>Remember</h2>
             <p>The <strong>first tone </strong>is high and sustained, <strong>second tone</strong> is rising from low to high, <strong>third tone</strong> falls to low then rises at the end, and <strong>fourth tone</strong> falls from high to low.</p>
         </div>
-        <button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>
+        <button type = "button" id = "btn-to-lesson">Return to Lesson</button>
         
     </section>
     <section id = "activity-one-prompt" class = "activity sidebar">
@@ -67,7 +67,7 @@ include "../head.php";
         <h2>Distinguishing</h2>
         <p>In this activity, we'll play a sound and show you two tone curves. <br>Listen carefully, and choose which tone matches the sound.</p>
         <p>Are you ready to test what you learned with with this activity?</p>
-        <button type = "button" onclick = "openActivity();" id = "begin-btn">Begin</button>
+        <button type = "button" id = "begin-btn">Begin</button>
     
     </section>
     <section id = "activity-one" class = "hide view-2 activity">
@@ -108,6 +108,7 @@ include "../head.php";
     <script src="../js/jquery/jquery-3.3.1.min.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
     <script type="module" src="../js/distinguishing.js"></script>
+	<script type="module" src="../js/pageInteractions.js"></script>
 
 
 <?php include $prefix."foot.php"; ?>

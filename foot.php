@@ -5,7 +5,7 @@
     </div>
     
     
-    <script src = "../js/pageInteractions.js"></script>
+    <script type = "module" src = "../js/pageInteractions.js"></script>
 </footer>
 
 

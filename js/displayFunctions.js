@@ -149,13 +149,23 @@ export function showScoreCard(divID){
     box.innerHTML=`<div id = "ref-title"><h1>Activity One</h1><hr>
             <h2>Tonal Discrimination</h2></div><div id ="score-display"><img src ="../assets/images/scoreMonkey.png" id ="score-monkey"><h1 id = "final-score">Your score is: ${correctResponses}/10</h1></div><button id = "restart-btn">Try again</button><button id ="next-lesson-btn">Next lesson</button>`;
     
+document.getElementById("restart-btn").addEventListener("click", () => {
+	reset();
+});
     box.style.gridTemplateRows="10em 20em 8em 3em";
     
     var sidebar = document.getElementById("lesson-one-ref");
-    sidebar.innerHTML = `<div><h1>Lesson One</h1><hr><p>If you didn't understand this activity, try revisiting the lesson.</p></div><button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>`;
+    sidebar.innerHTML = `<div><h1>Lesson One</h1><hr><p>If you didn't understand this activity, try revisiting the lesson.</p></div><button type = "button" id = "btn-to-lesson">Return to Lesson</button>`;
     
     sidebar.style.gridTemplateRows="10em 20em 8em 3em";
     
     document.getElementById("btn-to-lesson").style.gridRow ="3/4";
     document.getElementById("btn-to-lesson").style.margin ="2em 0";
+}
+
+export function reset(){
+	sessionStorage.setItem("reloaded","true");
+	let setItemSuccess = sessionStorage.getItem("reloaded");
+	console.log(`Reloaded set: ${setItemSuccess}`);
+	document.location.reload();
 }

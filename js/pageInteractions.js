@@ -1,9 +1,8 @@
-function openActivity(){
+export function openActivity(){
     var slide = document.getElementsByClassName("LA")[0];
     slide.setAttribute("style", "grid-template-columns: 20vw 50vw;");
     
     var ref = document.getElementsByClassName("lesson")[1];
-    ref.setAttribute("onclick","closeActivity()");
     ref.classList.remove("hide");
     
     var lesson = document.getElementsByClassName("lesson")[0];
@@ -16,12 +15,11 @@ function openActivity(){
     activity.classList.remove("hide");
 }
 
-function closeActivity(){
+export function closeActivity(){
     var slide = document.getElementsByClassName("LA")[0];
     slide.setAttribute("style", "grid-template-columns: 2fr 1fr");
     
     var lesson = document.getElementsByClassName("lesson")[0];
-    lesson.setAttribute("onclick","");
     lesson.classList.remove("hide");
     
     var ref = document.getElementsByClassName("lesson")[1];
