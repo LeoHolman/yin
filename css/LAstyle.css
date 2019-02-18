@@ -388,6 +388,11 @@ hr {
     audio{
         width:30vw;
     }
+    
+    #final-score{
+        padding-top:0;
+        font-size:1.5em;
+    }
 }
 
 .hide{
