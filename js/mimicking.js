@@ -1,6 +1,7 @@
 import * as af from "./audioFunctions.js";
 import * as drawf from "./drawingFunctions.js";
 import * as stat from "./stats.js";
+import * as df from "./displayFunctions.js";
 
 //set button handles
 const recordButton = document.getElementById("record");
@@ -13,6 +14,35 @@ var baselineMin;
 var baselineAvg;
 var baselineMean;
 var baselineStandardDeviation;
+
+var tests;
+var testsArray = [];
+var shownTests = [];
+
+//Access tests.json
+$.getJSON("../js/tests.json", function(json){
+    tests = json;
+
+    for(var i in tests){
+        testsArray.push(tests [i]);
+    }
+    newTest();
+});
+
+function newTest(){
+	//find new test
+	var thisTestNumber = df.getRandomInt(12);
+	while (shownTests.includes(thisTestNumber)){
+		thisTestNumber = df.getRandomInt(12);
+	}
+	shownTests.push(thisTestNumber);
+	var thisTest = testsArray[thisTestNumber];
+
+	//add stimuli
+	df.addSound(thisTest, "audioSource");
+	console.log(thisTestNumber);
+	drawf.drawNativePitchCurve(`../assets/processedTests/test${thisTestNumber}.csv`, 1000, 350);
+}
 
 //draw graph
 drawf.drawPitchChart('#visualization',1000,350);

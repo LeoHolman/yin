@@ -59,3 +59,14 @@ export function drawPitchCurve(dataset, width, height, baseline=(height/2), stan
             .style("fill", "red");
     });
 };
+
+export function drawNativePitchCurve(dataset, width, height) {
+    d3.tsv(dataset, function(data) {
+        d3.select("#visualization svg")
+            .append("circle")
+            .attr("cx", data.time * (width / 2))
+            .attr("cy", height - (data.frequency)) 
+            .attr("r", 5)
+            .style("fill", "blue");
+    });
+};

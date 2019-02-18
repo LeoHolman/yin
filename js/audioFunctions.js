@@ -34,27 +34,24 @@ export function record(buttonId) {
 };
 
 export function processAudio(audioBlob) {
-    return new Promise(resolve => {
-        var rawResponse;
-        var csvDataLocation;
-            var formData = new FormData();
-            formData.append("audioData", audioBlob);
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "../pages/audioProcessing.php", true);
-            xhttp.send(formData);
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    //put graph display here
-                    //console.log(this.responseText);
-                    //console.log(csvData);
-                    rawResponse = this.responseText;
-                    var start = rawResponse.indexOf("***") + 3;
-                    var end = rawResponse.indexOf("&&&");
-                    csvDataLocation = rawResponse.substring(start, end);
-                    //console.log(csvDataLocation);
-                    resolve(csvDataLocation);
+	return new Promise(resolve => {
+		var rawResponse;
+		var csvDataLocation;
+		var formData = new FormData();
+		formData.append("audioData", audioBlob);
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "../pages/audioProcessing.php", true);
+		xhttp.send(formData);
+		xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			//put graph display here
+			rawResponse = this.responseText;
+			var start = rawResponse.indexOf("***") + 3;
+			var end = rawResponse.indexOf("&&&");
+			csvDataLocation = rawResponse.substring(start, end);
+			//console.log(csvDataLocation);
+			resolve(csvDataLocation);
                 }
             };
-        });
-    }
-
+	});
+}
