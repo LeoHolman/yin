@@ -55,7 +55,7 @@ include "../head.php";
             <h2>Remember</h2>
             <p><strong>Tone one</strong> is high and sustained, 5-5-5.<br></p><p><strong>Tone two</strong> rises like a question, 2-4-5.<br></p><p><strong>Tone three</strong> falls then rises, 2-1-4.<br></p><p><strong>Tone four</strong> falls sharply, like scolding someone, 5-3-1.</p>
         </div>
-        <button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>
+        <button type = "button" id = "btn-to-lesson">Return to Lesson</button>
         
     </section>
     <section id = "activity-two-prompt" class = "activity">
@@ -63,7 +63,7 @@ include "../head.php";
         <h2>Identification</h2>
         <p>In this activity, we will play a sound and present all four tones' pitch curves. Select the correct pitch for the tone you heard.</p>
         <p>Are you ready to test what you learned with with this activity?</p>
-        <button type = "button" onclick = "openActivity();" id = "begin-btn">Begin</button>
+        <button type = "button" id = "begin-btn">Begin</button>
     
     </section>
     <section id = "activity-two" class = "hide view-2 activity">
@@ -103,5 +103,6 @@ include "../head.php";
     <script src="../js/jquery/jquery-3.3.1.min.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
     <script type="module" src="../js/identifying.js"></script>
+	<script type="module" src="../js/pageInteractions.js"></script>
 
 <?php include $prefix."foot.php"; ?>

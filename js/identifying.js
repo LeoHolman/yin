@@ -1,4 +1,5 @@
 import * as df from './displayFunctions.js';
+import * as pi from './pageInteractions.js';
 
 var tests;
 var testsArray = [];
@@ -95,4 +96,12 @@ function newTest(){
 document.getElementById("continueButton").addEventListener("click", function(){
     newTest();
     
-})
+});
+
+document.getElementById("begin-btn").addEventListener("click", () => {
+	pi.openActivity()
+});
+
+document.getElementById("btn-to-lesson").addEventListener("click", () => {
+	pi.closeActivity();
+});
