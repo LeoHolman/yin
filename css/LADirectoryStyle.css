@@ -1,3 +1,8 @@
+html{
+    max-width:100%;
+    overflow-x:hidden;
+}
+
 .main{
     width:50em;
     height:70em;
@@ -133,4 +138,28 @@
 
 .comb a{
     display:block;
+}
+
+@media screen and (max-width:750px){
+    .main.honeycomb{
+        grid-template-columns:20em;
+        grid-template-rows:auto;
+    }
+    
+
+    #one, #two, #three, #four{
+        grid-template-columns: 1fr 2.3fr;
+        grid-row:auto;
+        grid-column:1/2;
+        background-position: right;
+        background-size:contain;
+        display:block;
+    }
+    
+}
+
+@media screen and (max-width:400px){
+    body{
+        margin:0;
+    }
 }

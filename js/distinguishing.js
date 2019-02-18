@@ -56,7 +56,7 @@ function newTest(){
         document.getElementById("continueButton").innerHTML="Finish";
         
         document.getElementById("continueButton").addEventListener("click", function(){
-            df.showScoreCard("activity-one");
+            df.showScoreCard("activity-one", "lesson-one-ref");
         })
     }
 }
@@ -80,7 +80,7 @@ document.getElementById("btn-to-lesson").addEventListener("click", () => {
 
 
 function skipToEnd(){
-	df.showScoreCard("activity-one");
+	df.showScoreCard("activity-one", "lesson-one-ref");
 }
 
 function checkIfReloaded(){

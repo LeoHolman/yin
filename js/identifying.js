@@ -86,7 +86,7 @@ function newTest(){
         document.getElementById("continueButton").innerHTML="Finish";
         
         document.getElementById("continueButton").addEventListener("click", function(){
-            df.showScoreCard("activity-two");
+            df.showScoreCard("activity-two","lesson-two-ref");
         })
     }
     
@@ -105,3 +105,18 @@ document.getElementById("begin-btn").addEventListener("click", () => {
 document.getElementById("btn-to-lesson").addEventListener("click", () => {
 	pi.closeActivity();
 });
+
+function skipToEnd(){
+	df.showScoreCard("activity-one", "lesson-one-ref");
+}
+
+function checkIfReloaded(){
+	var reloading = sessionStorage.getItem("reloaded");
+	console.log(`Reloaded is: ${reloading}`);
+	if (reloading) {
+            sessionStorage.removeItem("reloaded");
+	    pi.openActivity();
+	}
+}
+
+window.onload = checkIfReloaded();

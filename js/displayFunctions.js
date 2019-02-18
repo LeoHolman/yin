@@ -1,4 +1,5 @@
 'use strict';
+import * as pi from './pageInteractions.js';
 
 export var correctResponses = 0;
 export var totalResponses = 0;
@@ -144,18 +145,55 @@ export function showScore(divID){
     feedbackBox.innerHTML = `Your current score: ${correctResponses} / 10 | Questions left: ${left}`;
 }
 
-export function showScoreCard(divID){
+export function showScoreCard(divID, refID){
     var box = document.getElementById(divID);
-    box.innerHTML=`<div id = "ref-title"><h1>Activity One</h1><hr>
-            <h2>Tonal Discrimination</h2></div><div id ="score-display"><img src ="../assets/images/scoreMonkey.png" id ="score-monkey"><h1 id = "final-score">Your score is: ${correctResponses}/10</h1></div><button id = "restart-btn">Try again</button><button id ="next-lesson-btn">Next lesson</button>`;
+    var title =null;
+    var subtitle = null;
+    var lTitle =null;
     
-document.getElementById("restart-btn").addEventListener("click", () => {
-	reset();
-});
+    switch(divID){
+        case "activity-one":
+            title = "Activity One";
+            subtitle = "Tonal Discrimination";
+            lTitle ="Lesson One";
+            break;
+        case "activity-two":
+            title = "Activity Two";
+            subtitle = "Tonal Identification";
+            lTitle ="Lesson Two";
+            break;
+        case "activity-three":
+            title = "Activity Three";
+            subtitle = "Tone Mimicking";
+            lTitle = "Lesson Three";
+            break;
+        case "activity-four":
+            title ="Activity Four";
+            subtitle ="Tone Production";
+            lTitle = "Lesson Four";
+            break;
+        default:
+            title ="Activity";
+            subtitle = "Tone practice";
+            lTitle ="Lesson";
+            break;    
+    }
+    
+    box.innerHTML=`<div id = "ref-title"><h1>${title}</h1><hr>
+            <h2>${subtitle}</h2></div><div id ="score-display"><img src ="../assets/images/scoreMonkey.png" id ="score-monkey"><h1 id = "final-score">Your score is: ${correctResponses}/10</h1></div><button id = "restart-btn">Try again</button><button id ="next-lesson-btn">Next lesson</button>`;
+    
+    document.getElementById("restart-btn").addEventListener("click", () => {
+	   reset();
+    });
+    
     box.style.gridTemplateRows="10em 20em 8em 3em";
     
-    var sidebar = document.getElementById("lesson-one-ref");
-    sidebar.innerHTML = `<div><h1>Lesson One</h1><hr><p>If you didn't understand this activity, try revisiting the lesson.</p></div><button type = "button" id = "btn-to-lesson">Return to Lesson</button>`;
+    var sidebar = document.getElementById(refID);
+    sidebar.innerHTML = `<div><h1>${lTitle}</h1><hr><p>If you had trouble with this activity, try reviewing the lesson.</p></div><button type = "button" id = "btn-to-lesson">Return to Lesson</button>`;
+    
+    document.getElementById("btn-to-lesson").addEventListener("click", () => {
+	pi.closeActivity();
+});
     
     sidebar.style.gridTemplateRows="10em 20em 8em 3em";
     

@@ -278,6 +278,7 @@ hr {
 #restart-btn, #next-lesson-btn{
     width:15em;
     margin:2em;
+    height:3em;
 }
 
 #final-score{
