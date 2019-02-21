@@ -89,6 +89,20 @@ Blue - #5E99D3
     color:#9A2D04;
 }
 
+#example-audio{
+    margin-right:3%;
+}
+
+.exAudio{
+    float:right;
+    margin-left:2em;
+    padding-top:1em;
+}
+
+.audioCaption{
+    text-align: right;
+}
+
 .activity{
     grid-column:2/3;
     padding: 2em;
@@ -100,10 +114,18 @@ Blue - #5E99D3
     color:#db7a13;
 }
 
+#sticky-p{
+    position:sticky;
+    top:3em;
+}
+
+
 #begin-btn{
     width:7em;
     height:3em;
     justify-self:center;
+    position:sticky;
+    top:8em;
 }
 
 #next-lesson{

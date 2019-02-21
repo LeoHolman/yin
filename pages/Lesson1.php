@@ -27,19 +27,21 @@ include "../head.php";
           almost like a question in English.</p>
         <h3>Examples of words distinguished by tones</h3>
         <div id="example-tones">
-            <audio controls>
-              <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg">
-              Audio not working!
-            </audio>
-            <p>This is mother.</p>
-            <audio controls>
-              <source src="../assets/sounds/ma-3-horse.mp3" type="audio/mpeg">
-              Audio not working!
-            </audio>
-            <p>And this is horse.</p>
+            <div id ="example-audio">
+                <audio controls class ="exAudio">
+                  <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg">
+                  Audio not working!
+                </audio>
+                <p class="audioCaption"><br>This is mother.</p>
+                <audio controls class ="exAudio">
+                  <source src="../assets/sounds/ma-3-horse.mp3" type="audio/mpeg">
+                  Audio not working!
+                </audio>
+                <p class="audioCaption"><br>And this is horse.</p>
+            </div>
           <div id="examples-graphs-mother">
               <img src="../assets/images/ma_graph.png">
-            <p>The graph to the right shows what a pitch curve (in red, ma1) might look like for someone saying 妈(mother). It also shows a pitch curve (in blue, ma3) for what someone saying 马(horse) might look like.</p>
+            <p>The graph to the right shows what a pitch curve (in red, ma1) might look like for someone saying <span class ="red">妈(mother)</span>. It also shows a pitch curve (in blue, ma3) for what someone saying <span class ="blue">马(horse)</span> might look like.</p>
             
           </div>
           <div id="4-tones">
@@ -66,7 +68,7 @@ include "../head.php";
         <h1>Activity One</h1><hr>
         <h2>Distinguishing</h2>
         <p>In this activity, we'll play a sound and show you two tone curves. <br>Listen carefully, and choose which tone matches the sound.</p>
-        <p>Are you ready to test what you learned with with this activity?</p>
+        <p id ="sticky-p">Are you ready to test what you learned with with this activity?</p>
         <button type = "button" id = "begin-btn">Begin</button>
     
     </section>
