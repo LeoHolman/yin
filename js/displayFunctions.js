@@ -147,40 +147,46 @@ export function showScore(divID){
 
 export function showScoreCard(divID, refID){
     var box = document.getElementById(divID);
-    var title =null;
+    var title = null;
     var subtitle = null;
-    var lTitle =null;
+    var lTitle = null;
+    var nextPage = null;
     
     switch(divID){
         case "activity-one":
             title = "Activity One";
             subtitle = "Tonal Discrimination";
             lTitle ="Lesson One";
+	    nextPage = "Lesson2.php";
             break;
         case "activity-two":
             title = "Activity Two";
             subtitle = "Tonal Identification";
             lTitle ="Lesson Two";
+	    nextPage = "Lesson3.php";
             break;
         case "activity-three":
             title = "Activity Three";
             subtitle = "Tone Mimicking";
             lTitle = "Lesson Three";
+	    nextPage = "Lesson4.php";
             break;
         case "activity-four":
             title ="Activity Four";
             subtitle ="Tone Production";
             lTitle = "Lesson Four";
+	    nextPage = "LessonsAndActivities.php";
             break;
         default:
             title ="Activity";
             subtitle = "Tone practice";
             lTitle ="Lesson";
+	    nextPage = "LessonsAndActivities.php";
             break;    
     }
     
     box.innerHTML=`<div id = "ref-title"><h1>${title}</h1><hr>
-            <h2>${subtitle}</h2></div><div id ="score-display"><img src ="../assets/images/scoreMonkey.png" id ="score-monkey"><h1 id = "final-score">Your score is: ${correctResponses}/10</h1></div><button id = "restart-btn">Try again</button><button id ="next-lesson-btn">Next lesson</button>`;
+            <h2>${subtitle}</h2></div><div id ="score-display"><img src ="../assets/images/scoreMonkey.png" id ="score-monkey"><h1 id = "final-score">Your score is: ${correctResponses}/10</h1></div><button id = "restart-btn">Try again</button><a href=${nextPage}><button id ="next-lesson-btn">Next lesson</button></a>`;
     
     document.getElementById("restart-btn").addEventListener("click", () => {
 	   reset();
