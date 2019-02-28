@@ -74,7 +74,7 @@ include "../head.php";
     </section>
     <section id = "activity-one" class = "hide view-2 activity">
         <div id = "ref-title"><h1>Activity One</h1><hr>
-            <h2>Tonal Discrimination</h2>
+            <h2>Tonal Distinguishing</h2>
         </div>
         <h3 id ="score"></h3>
          <div id = "stimuli">
@@ -102,7 +102,7 @@ include "../head.php";
     
 </div> <!-- end #main-wrap -->
 <div id ="next-lesson">
-    <a href ="Lesson2.php" id ="next-btn"><button >Next Lesson</button></a>
+    <a href ="Lesson2.php" id ="next-btn"><button>Next Lesson</button></a>
 </div>    
 
 

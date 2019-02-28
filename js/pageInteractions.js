@@ -1,3 +1,5 @@
+import * as df from "./displayFunctions.js";
+
 export function openActivity(){
     var slide = document.getElementsByClassName("LA")[0];
     slide.setAttribute("style", "grid-template-columns: 20vw 50vw;");
@@ -32,4 +34,81 @@ export function closeActivity(){
     activity.classList.add("hide");
 }
 
+export var tests;
+export var testsArray = [];
+export var shownTests = [];
+export function loadTests(lessonNum){
+	//Access tests.json
+	$.getJSON("../js/tests.json", function(json){
+	    tests = json;
 
+	    for(var i in tests){
+		testsArray.push(tests [i]);
+	    }
+
+	    //Initial test
+	    newTest(lessonNum);
+	});
+}
+
+export function newTest(lessonNum){
+    df.setResponseGiven(false);
+    document.getElementById("correct").classList.add("hide");
+    document.getElementById("incorrect").classList.add("hide");
+    df.clearResultStyle();
+    
+    //find new test
+    var thisTestNumber = df.getRandomInt(12);
+    while (shownTests.includes(thisTestNumber)){
+        thisTestNumber = df.getRandomInt(12);
+    }
+    shownTests.push(thisTestNumber);
+    var thisTest = testsArray[thisTestNumber];
+    
+    //add stimuli
+    df.addSound(thisTest, "audioSource");
+
+    //present user with options
+    if(lessonNum == 1){
+	    if (Math.random() > 0.5){
+		df.presentOption("firstResponse",df.pickIncorrectOption(thisTest));
+		df.presentOption("secondResponse",thisTest.correctOption);
+	    } else {
+		df.presentOption("firstResponse",thisTest.correctOption);
+		df.presentOption("secondResponse",df.pickIncorrectOption(thisTest));
+	    }
+
+	    //set evaluation to occur onclick
+	    df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
+	    df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
+	}
+    if(lessonNum == 2) {
+	    df.presentOption("firstResponse",thisTest.options[0]);
+	    df.presentOption("secondResponse",thisTest.options[1]);
+	    df.presentOption("thirdResponse",thisTest.options[2]);
+	    df.presentOption("fourthResponse",thisTest.options[3]);
+		
+
+	    //set evaluation to occur onclick
+	    df.addEvaluator(document.getElementById("firstResponse").firstChild.id,thisTest);
+	    df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
+	    df.addEvaluator(document.getElementById("thirdResponse").firstChild.id,thisTest);
+	    df.addEvaluator(document.getElementById("fourthResponse").firstChild.id,thisTest);
+	} 
+   if (shownTests.length == 10){
+        document.getElementById("continueButton").removeEventListener("click", function(){
+            newTest();
+        });
+        
+        document.getElementById("continueButton").innerHTML="Finish";
+       if(lessonNum == 1){
+		document.getElementById("continueButton").addEventListener("click", function(){
+		    df.showScoreCard("activity-one", "lesson-one-ref");
+		});
+	} else if (lessonNum == 2) { 
+		document.getElementById("continueButton").addEventListener("click", function(){
+		    df.showScoreCard("activity-two","lesson-two-ref");
+		});
+	}
+    }
+}
