@@ -21,7 +21,7 @@ include "../head.php";
         <div id = "ref-title"><h1>Lesson #</h1><hr>
             <h2>Reference: Topic</h2>
         </div>
-        <button type = "button" id = "btn-to-lesson" onclick = "closeActivity()">Return to Lesson</button>
+        <button type = "button" id = "btn-to-lesson">Return to Lesson</button>
         
     </section>
     <section id = "activity-one-prompt" class = "activity">
@@ -29,7 +29,7 @@ include "../head.php";
         <h2>Title</h2>
         <p>Instructions</p>
         <p>Are you ready to test what you learned with with this activity?</p>
-        <button type = "button" onclick = "openActivity();" id = "begin-btn">Begin</button>
+        <button type = "button" id = "begin-btn">Begin</button>
     
     </section>
     <section id = "activity-#" class = "hide view-2 activity">
@@ -57,7 +57,7 @@ include "../head.php";
 
 
 
-    <script type="module" src="../js/distinguishing.js"></script>
+    <script type="module" src="../js/pageInteractions.js"></script>
     <script type="module" src="../js/displayFunctions.js"></script>
 
 <?php include $prefix."foot.php"; ?>
