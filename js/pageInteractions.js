@@ -1,4 +1,5 @@
 import * as df from "./displayFunctions.js";
+import * as drawf from "./drawingFunctions.js";
 
 export function openActivity(){
     var slide = document.getElementsByClassName("LA")[0];
@@ -37,6 +38,7 @@ export function closeActivity(){
 export var tests;
 export var testsArray = [];
 export var shownTests = [];
+
 export function loadTests(lessonNum){
 	//Access tests.json
 	$.getJSON("../js/tests.json", function(json){
@@ -95,6 +97,11 @@ export function newTest(lessonNum){
 	    df.addEvaluator(document.getElementById("thirdResponse").firstChild.id,thisTest);
 	    df.addEvaluator(document.getElementById("fourthResponse").firstChild.id,thisTest);
 	} 
+   if(lessonNum == 3) {
+	drawf.drawNativePitchCurve(`../assets/processedTests/test${thisTestNumber}.csv`, 1000, 350);
+
+	}
+
    if (shownTests.length == 10){
         document.getElementById("continueButton").removeEventListener("click", function(){
             newTest();
