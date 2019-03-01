@@ -112,3 +112,22 @@ export function newTest(lessonNum){
 	}
     }
 }
+
+document.getElementById("begin-btn").addEventListener("click", () => {
+	openActivity()
+});
+
+document.getElementById("btn-to-lesson").addEventListener("click", () => {
+	closeActivity();
+});
+
+export function checkIfReloaded(){
+	var reloading = sessionStorage.getItem("reloaded");
+	console.log(`Reloaded is: ${reloading}`);
+	if (reloading) {
+            sessionStorage.removeItem("reloaded");
+	    openActivity();
+	}
+}
+
+window.onload = checkIfReloaded();
