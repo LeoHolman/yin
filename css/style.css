@@ -137,6 +137,11 @@ body{
     font-size:3em;
     font-weight:500;
     color:#9A2D04;
+    height:1.5em;
+    background-image: url(../assets/images/brush7@2x.png);
+    background-repeat: no-repeat;
+    background-position: 0 40px;
+    background-size: contain;
 }
 
 #yin2{

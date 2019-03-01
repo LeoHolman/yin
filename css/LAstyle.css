@@ -103,6 +103,12 @@ Blue - #5E99D3
     text-align: right;
 }
 
+.red{
+    color:#9A2D04;
+}
+
+
+
 .activity{
     grid-column:2/3;
     padding: 2em;

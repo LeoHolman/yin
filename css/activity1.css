@@ -21,7 +21,9 @@
     text-align:center;
     height:15em;
     margin:.5em;
-    padding-left:3.5em;
+    border-radius:20px;
+    background-color:#db7a13;
+    box-shadow:3px 3px 5px gray;
     
 }
 
