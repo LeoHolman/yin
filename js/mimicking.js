@@ -9,6 +9,10 @@ const recordButton = document.getElementById("record");
 const playButton = document.getElementById("play");
 const baselineButton = document.getElementById("baseline");
 
+//page setup
+pi.pageSetup();
+pi.loadTests(3);
+
 //initialize baseline variables
 var baselineMax;
 var baselineMin;
@@ -16,7 +20,6 @@ var baselineAvg;
 var baselineMean;
 var baselineStandardDeviation;
 
-pi.loadTests(3);
 
 //draw graph
 drawf.drawPitchChart('#visualization',1000,350);

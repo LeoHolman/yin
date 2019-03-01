@@ -1,6 +1,8 @@
 import * as df from './displayFunctions.js';
 import * as pi from './pageInteractions.js';
 
+pi.pageSetup();
+
 pi.loadTests(1);
 
 //create new test on click

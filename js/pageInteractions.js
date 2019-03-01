@@ -120,13 +120,15 @@ export function newTest(lessonNum){
     }
 }
 
-document.getElementById("begin-btn").addEventListener("click", () => {
-	openActivity()
-});
-
-document.getElementById("btn-to-lesson").addEventListener("click", () => {
-	closeActivity();
-});
+export function pageSetup() {
+	document.getElementById("begin-btn").addEventListener("click", () => {
+		openActivity()
+	});
+	
+	document.getElementById("btn-to-lesson").addEventListener("click", () => {
+		closeActivity();
+	});
+}
 
 export function checkIfReloaded(){
 	var reloading = sessionStorage.getItem("reloaded");
