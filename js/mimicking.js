@@ -4,6 +4,8 @@ import * as stat from "./stats.js";
 import * as df from "./displayFunctions.js";
 import * as pi from "./pageInteractions.js";
 
+
+
 //set button handles
 const recordButton = document.getElementById("record");
 const playButton = document.getElementById("play");
@@ -20,6 +22,16 @@ var baselineAvg;
 var baselineMean;
 var baselineStandardDeviation;
 
+
+var cont = document.getElementById("continue-btn");
+
+//switch from baseline to activity view
+function advance() {
+    console.log("Advancd fired!");
+    document.getElementById("activity-3-baseline").style.display ="none";
+    document.getElementById("activity-3-content").style.display ="block";
+    cont.removeEventListener("click",advance);
+}
 
 //draw graph
 drawf.drawPitchChart('#visualization',1000,350);
@@ -59,12 +71,15 @@ baselineButton.addEventListener("click", () => {
 							return frequencyset;
 					}).then( () =>{		
 							baselineMean = stat.calcMean(frequencyset);
+                        
 						//	console.log(`Baseline mean ${baselineMean}`);
 					} );	
 				
 				});	
 			});
+    cont.addEventListener("click",advance);
 		});
+
 
 
 function clearUploads() {
@@ -74,3 +89,9 @@ function clearUploads() {
 }
 
 clearUploads();
+
+//if(typeof baselineAvg !== 'undefined'){
+//    cont.addEventListener("click",advance);
+//}
+//
+

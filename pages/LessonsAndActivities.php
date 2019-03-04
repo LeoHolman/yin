@@ -40,7 +40,7 @@ include "../head.php";
     </div>
     <div id = "three" class = "comb">
         <div class = "invisible">
-            <h1 class = "head">Three</h1>
+            <h1 class = "head"><a href ="Lesson3.php">Three</a></h1>
             <p class = "desc">Lesson: Relative tones<br>Activity: Tone mimicking</p>
         </div>
 <!--
