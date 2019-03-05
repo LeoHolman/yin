@@ -1,5 +1,5 @@
 <?php
-$title = "Yin - Lesson #";
+$title = "Yin - Lesson 3";
 $style = "LAstyle.css";
 $prefix = "../";
 include "../head.php";
