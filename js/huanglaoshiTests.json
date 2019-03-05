@@ -1,0 +1,98 @@
+{
+    "test0" : {
+        "id" : "bei1",
+        "audio" : "../assets/sounds/huanglaoshi/bei.wav"
+    },
+    "test1" : {
+        "id" : "bie2",
+        "audio" : "../assets/sounds/huanglaoshi/ .wav"
+    },
+    "test2" : {
+        "id" : "bing1cha2",
+        "audio" : "../assets/sounds/huanglaoshi/bingcha.wav"
+    },
+    "test3" : {
+        "id" : "dian3",
+        "audio" : "../assets/sounds/huanglaoshi/dian.wav"
+    },
+    "test4" : {
+        "id" : "dou4fu",
+        "audio" : "../assets/sounds/huanglaoshi/doufu.wav"
+    },
+    "test5" : {
+        "id" : "fang4",
+        "audio" : "../assets/sounds/huanglaoshi/fang.wav"
+    },
+    "test6" : {
+        "id" : "fan4guan3",
+        "audio" : "../assets/sounds/huanglaoshi/fanguan.wav"
+    },
+    "test7" : {
+        "id" : "gou4",
+        "audio" : "../assets/sounds/huanglaoshi/gou.wav"
+    },
+    "test8" : {
+        "id" : "hao3xiang4",
+        "audio" : "../assets/sounds/huanglaoshi/haoxiang.wav"
+    },
+    "test9" : {
+        "id" : "jia1chang2",
+        "audio" : "../assets/sounds/huanglaoshi/jiachang.wav"
+    },
+    "test10" : {
+        "id" : "jiao3zi",
+        "audio" : "../assets/sounds/huanglaoshi/jiaozi.wav"
+    },
+    "test11" : {
+        "id" : "ke3",
+        "audio" : "../assets/sounds/huanglaoshi/ke.wav"
+    },
+    "test12" : {
+        "id" : "la4",
+        "audio" : "../assets/sounds/huanglaoshi/la.wav"
+    },
+    "test13" : {
+        "id" : "pan2",
+        "audio" : "../assets/sounds/huanglaoshi/pan.wav"
+    },
+    "test14" : {
+        "id" : "qing1cai4",
+        "audio" : "../assets/sounds/huanglaoshi/qingcai.wav"
+    },
+    "test15" : {
+        "id" : "rou4",
+        "audio" : "../assets/sounds/huanglaoshi/rou.wav"
+    },
+    "test16" : {
+        "id" : "shang4cai4",
+        "audio" : "../assets/sounds/huanglaoshi/hangcai.wav"
+    },
+    "test17" : {
+        "id" : "su4",
+        "audio" : "../assets/sounds/huanglaoshi/su.wav"
+    },
+    "test18" : {
+        "id" : "tang1",
+        "audio" : "../assets/sounds/huanglaoshi/tang.wav"
+    },
+    "test19" : {
+        "id" : "wei4jing1",
+        "audio" : "../assets/sounds/huanglaoshi/weijing.wav"
+    },
+    "test20" : {
+        "id" : "wei4zi",
+        "audio" : "../assets/sounds/huanglaoshi/weizi.wav"
+    },
+    "test21" : {
+        "id" : "yan2",
+        "audio" : "../assets/sounds/huanglaoshi/yan.wav"
+    },
+    "test22" : {
+        "id" : "yi4xie1",
+        "audio" : "../assets/sounds/huanglaoshi/yixie.wav"
+    },
+    "test23" : {
+        "id" : "zhuo1zi",
+        "audio" : "../assets/sounds/huanglaoshi/zhuozi.wav"
+    }
+}

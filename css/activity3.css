@@ -1,0 +1,16 @@
+#activity-3-content{
+    display:none;
+}
+
+#continue-btn{
+    float:right;
+    margin-top:0;
+}
+
+#baseline{
+    float:left;
+}
+
+#record, #play{
+    margin:1em;
+}
