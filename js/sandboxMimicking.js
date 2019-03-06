@@ -21,21 +21,33 @@ var tests;
 var testsArray = [];
 var shownTests = [];
 
+var huangLaoshifrequencyset = [];
+var huangLaoshibaselineStandardDeviation;
 //Access tests.json
-$.getJSON("../js/tests.json", function(json){
+$.getJSON("../js/huanglaoshiTests.json", function(json){
     tests = json;
 
     for(var i in tests){
         testsArray.push(tests [i]);
     }
-    newTest();
+
+	d3.tsv("../assets/sounds/huanglaoshi/csv/baselineChinese.csv",	function(data){
+			huangLaoshifrequencyset.push(+data.frequency); 
+			return huangLaoshifrequencyset;
+	}).then( () =>{		
+	huangLaoshibaselineStandardDeviation = stat.calcStandardDeviation(210,huangLaoshifrequencyset);
+	console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
+//	drawf.drawPitchCurve(csvDataLocation,1000,350,210,huangLaoshibaselineStandardDeviation);
+	}).then ( () =>{
+	    newTest();
+	});
 });
 
 function newTest(){
 	//find new test
-	var thisTestNumber = df.getRandomInt(12);
+	var thisTestNumber = df.getRandomInt(23);
 	while (shownTests.includes(thisTestNumber)){
-		thisTestNumber = df.getRandomInt(12);
+		thisTestNumber = df.getRandomInt(23);
 	}
 	shownTests.push(thisTestNumber);
 	var thisTest = testsArray[thisTestNumber];
@@ -43,11 +55,22 @@ function newTest(){
 	//add stimuli
 	df.addSound(thisTest, "audioSource");
 	console.log(thisTestNumber);
-	drawf.drawNativePitchCurve(`../assets/processedTests/test${thisTestNumber}.csv`, 1000, 350);
+	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
+	console.log(csvFile);
+	console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
+	drawf.drawPitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 1000, 350, 210, huangLaoshibaselineStandardDeviation, "blue");
 }
 
 //draw graph
 drawf.drawPitchChart('#visualization',1000,350);
+
+
+
+
+
+
+
+
 
 //set record function
 recordButton.addEventListener("click", () => {

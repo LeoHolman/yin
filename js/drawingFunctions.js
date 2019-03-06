@@ -45,7 +45,7 @@ export function drawPitchChart(divID, width, height) {
  * The final equation becomes
  * y = (height - ((height/2) + ((value - baseline) + ((height/5) * zScore))))
  */
-export function drawPitchCurve(dataset, width, height, baseline=(height/2), standardDeviation=0) {
+export function drawPitchCurve(dataset, width, height, baseline=(height/2), standardDeviation=0, color="red") {
     d3.tsv(dataset, function(data) {
 	let zScore = stats.calcZScore(baseline,data.frequency,standardDeviation);    
 	if(isNaN(zScore)){
@@ -56,7 +56,7 @@ export function drawPitchCurve(dataset, width, height, baseline=(height/2), stan
             .attr("cx", data.time * (width / 2))
             .attr("cy", height - ((height/2) + ((data.frequency - baseline) + ((height/5) * zScore)))) 
             .attr("r", 5)
-            .style("fill", "red");
+            .style("fill",color);
     });
 };
 
