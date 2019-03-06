@@ -39,9 +39,9 @@ export var tests;
 export var testsArray = [];
 export var shownTests = [];
 
-export function loadTests(lessonNum){
+export function loadTests(lessonNum, testName=tests){
 	//Access tests.json
-	$.getJSON("../js/tests.json", function(json){
+	$.getJSON(`../js/${testName}.json`, function(json){
 	    tests = json;
 
 	    for(var i in tests){
@@ -98,7 +98,8 @@ export function newTest(lessonNum){
 	    df.addEvaluator(document.getElementById("fourthResponse").firstChild.id,thisTest);
 	} 
    if(lessonNum == 3) {
-	drawf.drawNativePitchCurve(`../assets/processedTests/test${thisTestNumber}.csv`, 1000, 350);
+	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
+	drawf.drawPitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 1000, 350, 200, 60, "blue");
 
 	}
 

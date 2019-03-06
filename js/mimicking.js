@@ -13,7 +13,7 @@ const baselineButton = document.getElementById("baseline");
 
 //page setup
 pi.pageSetup();
-pi.loadTests(3);
+pi.loadTests(3,"huanglaoshiTests");
 
 //initialize baseline variables
 var baselineMax;
@@ -31,6 +31,9 @@ function advance() {
     document.getElementById("activity-3-baseline").style.display ="none";
     document.getElementById("activity-3-content").style.display ="block";
     cont.removeEventListener("click",advance);
+    cont.addEventListener("click", () => {
+	   pi.newTest(3);
+	});
 }
 
 //draw graph
@@ -79,8 +82,6 @@ baselineButton.addEventListener("click", () => {
 			});
     cont.addEventListener("click",advance);
 		});
-
-
 
 function clearUploads() {
 	var clearUploads = new XMLHttpRequest();
