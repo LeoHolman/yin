@@ -5,7 +5,7 @@
     },
     "test1" : {
         "id" : "bie2",
-        "audio" : "../assets/sounds/huanglaoshi/ .wav"
+        "audio" : "../assets/sounds/huanglaoshi/bie.wav"
     },
     "test2" : {
         "id" : "bing1cha2",
