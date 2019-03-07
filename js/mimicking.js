@@ -8,7 +8,7 @@ import * as pi from "./pageInteractions.js";
 
 //set button handles
 const recordButton = document.getElementById("record");
-const playButton = document.getElementById("play");
+var playButton = document.getElementById("play");
 const baselineButton = document.getElementById("baseline");
 
 //page setup
@@ -27,7 +27,6 @@ var cont = document.getElementById("continue-btn");
 
 //switch from baseline to activity view
 function advance() {
-    console.log("Advancd fired!");
     document.getElementById("activity-3-baseline").style.display ="none";
     document.getElementById("activity-3-content").style.display ="block";
     cont.removeEventListener("click",advance);
@@ -43,6 +42,9 @@ drawf.drawPitchChart('#visualization',1000,350);
 recordButton.addEventListener("click", () => {
 	af.record("record")
 		.then( blob => {
+			var resetplayButton = playButton.cloneNode(true);
+			playButton.parentElement.replaceChild(resetplayButton, playButton);
+			playButton = document.getElementById("play");
 			playButton.addEventListener("click", () => {
 				var blobUrl = URL.createObjectURL(blob);
 				var audio = new Audio(blobUrl);
