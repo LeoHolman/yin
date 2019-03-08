@@ -7,7 +7,11 @@ import * as df from "./displayFunctions.js";
 const recordButton = document.getElementById("record");
 const playButton = document.getElementById("play");
 const baselineButton = document.getElementById("baseline");
+var cont = document.getElementById("continue-btn");
 
+    cont.addEventListener("click", () => {
+	   newTest();
+	});
 //initialize baseline variables
 var baselineMax;
 var baselineMin;
@@ -35,6 +39,11 @@ $.getJSON("../js/huanglaoshiTests.json", function(json){
 			huangLaoshifrequencyset.push(+data.frequency); 
 			return huangLaoshifrequencyset;
 	}).then( () =>{		
+		let hlsBaseline = 0;
+		huangLaoshifrequencyset.forEach( (element) => {hlsBaseline += element});
+		console.log("All values added: " + hlsBaseline);
+		hlsBaseline = hlsBaseline / huangLaoshifrequencyset.length;
+		console.log("Baseline after division: " + hlsBaseline);
 	huangLaoshibaselineStandardDeviation = stat.calcStandardDeviation(210,huangLaoshifrequencyset);
 	console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
 //	drawf.drawPitchCurve(csvDataLocation,1000,350,210,huangLaoshibaselineStandardDeviation);
@@ -43,6 +52,11 @@ $.getJSON("../js/huanglaoshiTests.json", function(json){
 	});
 });
 
+//english median 204
+//range 270 - 85
+//
+//chinese media 210
+//range 480 - 154
 function newTest(){
 	//find new test
 	var thisTestNumber = df.getRandomInt(23);
@@ -58,18 +72,11 @@ function newTest(){
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
 	console.log(csvFile);
 	console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
-	drawf.drawPitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 1000, 350, 210, huangLaoshibaselineStandardDeviation, "blue");
+	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
 }
 
 //draw graph
-drawf.drawPitchChart('#visualization',1000,350);
-
-
-
-
-
-
-
+drawf.drawPitchChart('#visualization',750,350);
 
 
 //set record function
@@ -89,7 +96,7 @@ recordButton.addEventListener("click", () => {
 							return frequencyset;
 					}).then( () =>{		
 					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
-					drawf.drawPitchCurve(csvDataLocation,1000,350,baselineMean,baselineStandardDeviation);
+					drawf.drawPitchCurve(csvDataLocation,750,350,baselineMean,baselineStandardDeviation);
 					})	
 				})	
 		})
