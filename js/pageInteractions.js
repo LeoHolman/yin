@@ -39,7 +39,7 @@ export var tests;
 export var testsArray = [];
 export var shownTests = [];
 
-export function loadTests(lessonNum, testName=tests){
+export function loadTests(lessonNum, testName="tests"){
 	//Access tests.json
 	$.getJSON(`../js/${testName}.json`, function(json){
 	    tests = json;
@@ -62,6 +62,10 @@ export function newTest(lessonNum){
     //find new test
     var thisTestNumber = df.getRandomInt(12);
     while (shownTests.includes(thisTestNumber)){
+	    if(shownTests.length == testsArray.length){
+		console.log("Reached end of tests array");
+		break;
+	    }
         thisTestNumber = df.getRandomInt(12);
     }
     shownTests.push(thisTestNumber);
