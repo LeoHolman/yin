@@ -39,8 +39,9 @@ export var tests;
 export var testsArray = [];
 export var shownTests = [];
 
-export function loadTests(lessonNum, testName=tests){
+export function loadTests(lessonNum, testName="tests"){
 	//Access tests.json
+    console.log(`../js/${testName}.json`);
 	$.getJSON(`../js/${testName}.json`, function(json){
 	    tests = json;
 
