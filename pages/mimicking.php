@@ -24,7 +24,8 @@
         <form id="recording-form" action="mimicking.php" method="POST" style="display: none;">
             <input type="file" name="recording-input" id="recording-input" enctype="multipart/form-data" />
         </form>
-	<script src="https://d3js.org/d3.v5.js"></script>
+<!--	<script src="https://d3js.org/d3.v5.js"></script> -->
+	<script src="../js/d3/d3.js"></script>
 	<script src="../js/jquery/jquery-3.3.1.min.js"></script>
         <script type="module" src="../js/sandboxMimicking.js"></script>
 	<script type="module" src-"../js/drawingFunctions.js"></script>
