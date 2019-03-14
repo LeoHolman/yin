@@ -107,16 +107,16 @@ export function presentOption(parentDiv,option){
     
     switch (lastChar){
         case "1":
-            imageSrc = "../assets/images/1_graph_white.png";
+            imageSrc = "../assets/images/orange-1@2x.png";
             break;
         case "2":
-            imageSrc = "../assets/images/2_graph_white.png";
+            imageSrc = "../assets/images/orange-2@2x.png";
             break;
         case "3":
-            imageSrc = "../assets/images/3_graph_white.png";
+            imageSrc = "../assets/images/orange-3@2x.png";
             break;
         case "4":
-            imageSrc = "../assets/images/4_graph_white.png";
+            imageSrc = "../assets/images/orange-4@2x.png";
             break;
         default:
             break;
