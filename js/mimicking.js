@@ -36,7 +36,7 @@ function advance() {
 }
 
 //draw graph
-drawf.drawPitchChart('#visualization',1000,350);
+drawf.drawPitchChart('#visualization',750,350);
 
 //set record function
 recordButton.addEventListener("click", () => {
@@ -58,7 +58,7 @@ recordButton.addEventListener("click", () => {
 							return frequencyset;
 					}).then( () =>{		
 					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
-					drawf.drawPitchCurve(csvDataLocation,1000,350,baselineMean,baselineStandardDeviation);
+					drawf.drawPitchCurve(csvDataLocation,750,350,baselineMean,baselineStandardDeviation);
 					})	
 				})	
 		})
