@@ -99,7 +99,9 @@ export function presentOption(parentDiv,option){
     newNode.classList.add("options");
     newNode.id = "option"+uniqueOptions;
     uniqueOptions++;
+    let optionTextParagraph = document.createElement("P");
     let optionText = document.createTextNode(option);
+    optionTextParagraph.appendChild(optionText);
     
     let image = document.createElement("IMG");
     var imageSrc = null;
@@ -126,7 +128,7 @@ export function presentOption(parentDiv,option){
     image.className = "graphOption";
     
     newNode.appendChild(image);
-    newNode.appendChild(optionText);
+    newNode.appendChild(optionTextParagraph);
     parentDivHandle.appendChild(newNode);
 }
 
