@@ -91,7 +91,7 @@ include "../head.php";
 	<script src="../js/d3/d3.js"></script>
 	<script src="../js/jquery/jquery-3.3.1.min.js"></script>
         <script type="module" src="../js/mimicking.js"></script>
-	<script type="module" src-"../js/drawingFunctions.js"></script>
+	<script type="module" src="../js/drawingFunctions.js"></script>
 	<script type="module" src="../js/audioFunctions.js"></script>
 	<script type="module" src="../js/stats.js"></script>
 	<script type="module" src="../js/displayFunctions.js"></script>
