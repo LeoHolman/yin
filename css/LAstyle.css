@@ -92,16 +92,13 @@ Blue - #5E99D3
 
 #example-audio{
     margin-right:3%;
+	overflow:auto;
 }
 
 .exAudio{
-    float:right;
-    margin-left:2em;
+    float:left;
+    margin:0em 2em;
     padding-top:1em;
-}
-
-.audioCaption{
-    text-align: right;
 }
 
 .red{
