@@ -102,7 +102,7 @@ export function presentOption(parentDiv,option){
     let optionTextParagraph = document.createElement("P");
     let optionText = document.createTextNode(option);
     optionTextParagraph.appendChild(optionText);
-    
+    optionTextParagraph.classList.add("optionText");
     let image = document.createElement("IMG");
     var imageSrc = null;
     var lastChar = option[option.length-1];
