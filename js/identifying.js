@@ -7,7 +7,9 @@ pi.loadTests(2);
 
 //create new test on click
 document.getElementById("continueButton").addEventListener("click", () => {
-   pi.newTest(2);
+	if(df.responseGiven){
+	   pi.newTest(2);
+	}
 });
 
 document.getElementById("skipToEnd").addEventListener("click", () => {

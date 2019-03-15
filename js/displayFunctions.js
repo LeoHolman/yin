@@ -143,7 +143,7 @@ export function getRandomInt(max) {
 
 export function showScore(divID){
     var feedbackBox = document.getElementById(divID);
-    var left = 12-totalResponses;
+    var left = 10-totalResponses;
     feedbackBox.innerHTML = `Your current score: ${correctResponses} / 10 | Questions left: ${left}`;
 }
 
