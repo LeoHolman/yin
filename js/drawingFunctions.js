@@ -55,7 +55,7 @@ export function drawPitchCurve(dataset, width, height, baseline=(height/2), stan
         d3.select("#visualization svg")
             .append("circle")
             .attr("cx", data.time * (width / 2))
-            .attr("cy", height - ((height/2) + ((data.frequency - baseline) + ((height/6) * zScore)))) 
+            .attr("cy", height - ((height/2) + ((data.frequency - baseline) + ((height/12) * zScore)))) 
             .attr("r", 5)
 	    .classed("userPitch",true)
             .style("fill",color);
@@ -66,11 +66,13 @@ export function drawNativePitchCurve(dataset, width, height, baseline=(height/2)
 	d3.selectAll("svg > .nativePitch").remove();
     d3.tsv(dataset, function(data) {
 	let zScore = stats.calcZScore(baseline,data.frequency,standardDeviation);    
+	console.log(zScore);
 	if(isNaN(zScore)){
 		zScore = 0;
 	}
 	var xpos = data.time * (width / 2);
-	var ypos = height - ((height/2) + ((data.frequency - baseline) + ((height/9) * zScore)));	
+	var ypos = height - ((height/2) + ((data.frequency - baseline) + ((height/12) * zScore)));	
+	console.log("ypos: " + ypos);
         d3.select("#visualization svg")
             .append("circle")
             .attr("cx", xpos)
