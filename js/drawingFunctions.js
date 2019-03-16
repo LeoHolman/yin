@@ -66,7 +66,6 @@ export function drawNativePitchCurve(dataset, width, height, baseline=(height/2)
 	d3.selectAll("svg > .nativePitch").remove();
     d3.tsv(dataset, function(data) {
 	let zScore = stats.calcZScore(baseline,data.frequency,standardDeviation);    
-	console.log(zScore);
 	if(isNaN(zScore)){
 		zScore = 0;
 	}
