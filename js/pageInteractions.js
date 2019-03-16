@@ -105,7 +105,7 @@ export function newTest(lessonNum){
    if(lessonNum == 3) {
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
 	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
-
+	df.showCharacter("score","../js/huanglaoshiTests.json",thisTest.character,thisTest.id);
 	}
 
    if (shownTests.length == 10){
