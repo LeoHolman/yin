@@ -76,7 +76,7 @@ export function resultStyle(divId,score) {
 }
 
 export function clearResultStyle(){
-    let clear = document.getElementsByClassName("response");
+    let clear = document.getElementsByClassName("response-wrap");
     
     for (var i=0; i<clear.length;i++){
         if (clear[i].classList.contains("correct")){

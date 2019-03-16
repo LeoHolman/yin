@@ -9,8 +9,8 @@ include "../head.php";
 
 
 <ul class = "LA-breadcrumb">
-    <li><a href ="<?php echo $prefix ?>index.php">Home</a></li>
     <li><a href ="LessonsAndActivities.php">Lessons and Activities</a></li>
+    <li><a href ="Lesson1.php">One</a></li>
     <li><a href ="#">Two</a></li>
 </ul>
 <div id = "main-wrap">
@@ -62,7 +62,7 @@ include "../head.php";
         <h1>Activity Two</h1><hr>
         <h2>Identification</h2>
         <p>In this activity, we will play a sound and present all four tones' pitch curves. Select the correct pitch for the tone you heard.</p>
-        <p>Are you ready to test what you learned with with this activity?</p>
+        <p id ="sticky-p">Are you ready to test what you learned with with this activity?</p>
         <button type = "button" id = "begin-btn">Begin</button>
     
     </section>
@@ -91,7 +91,7 @@ include "../head.php";
                 <p>Further description here.</p>
             </div>
         </div>
-        <button type = "button" id = "skipToEnd">Skip to End</button>
+        <button type = "button" id = "skipToEnd" class ="hide">Skip to End</button>
         <button type = "button" id = "continueButton">Continue</button>
     </section>
 
