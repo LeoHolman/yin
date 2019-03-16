@@ -72,7 +72,6 @@ export function drawNativePitchCurve(dataset, width, height, baseline=(height/2)
 	}
 	var xpos = data.time * (width / 2);
 	var ypos = height - ((height/2) + ((data.frequency - baseline) + ((height/12) * zScore)));	
-	console.log("ypos: " + ypos);
         d3.select("#visualization svg")
             .append("circle")
             .attr("cx", xpos)
