@@ -4,8 +4,6 @@ import * as stat from "./stats.js";
 import * as df from "./displayFunctions.js";
 import * as pi from "./pageInteractions.js";
 
-
-
 //set button handles
 const recordButton = document.getElementById("record");
 var playButton = document.getElementById("play");
@@ -21,8 +19,6 @@ var baselineMin;
 var baselineAvg;
 var baselineMean;
 var baselineStandardDeviation;
-
-
 var cont = document.getElementById("continue-btn");
 
 //switch from baseline to activity view
@@ -31,7 +27,7 @@ function advance() {
     document.getElementById("activity-3-content").style.display ="block";
     cont.removeEventListener("click",advance);
     cont.addEventListener("click", () => {
-	//d3.selectAll("svg > .userPitch").remove();
+	d3.selectAll("svg > .userPitch").remove();
 	   pi.newTest(3);
 	});
 }
@@ -93,9 +89,3 @@ function clearUploads() {
 }
 
 clearUploads();
-
-//if(typeof baselineAvg !== 'undefined'){
-//    cont.addEventListener("click",advance);
-//}
-//
-
