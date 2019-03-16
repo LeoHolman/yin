@@ -9,7 +9,6 @@ include "../head.php";
 
 
 <ul class = "LA-breadcrumb">
-    <li><a href ="<?php echo $prefix ?>index.php">Home</a></li>
     <li><a href ="LessonsAndActivities.php">Lessons and Activities</a></li>
     <li><a href ="#">One</a></li>
 </ul>
@@ -94,7 +93,7 @@ include "../head.php";
                 <p>Further description here.</p>
             </div>
         </div>
-	<button type = "button" id = "skipToEnd">Skip to End</button>
+	<button type = "button" id = "skipToEnd" class = "hide">Skip to End</button>
         <button type = "button" id = "continueButton">Continue</button>
     </section>
 
