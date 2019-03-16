@@ -31,6 +31,7 @@ function advance() {
     document.getElementById("activity-3-content").style.display ="block";
     cont.removeEventListener("click",advance);
     cont.addEventListener("click", () => {
+	//d3.selectAll("svg > .userPitch").remove();
 	   pi.newTest(3);
 	});
 }
