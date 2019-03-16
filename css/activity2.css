@@ -7,7 +7,8 @@
 
 .response-wrap {
     display: inline;
-    width:12vw;
+    width:57%;
+    /*12vw*/
     text-align:center;
     margin:.5em auto;
     border-radius:20px;
@@ -66,21 +67,49 @@
     .response-wrap{
         max-width:20vw;
         height:auto;
-        padding-left:9vw;
+        padding:0 1em;
         display:inline-block;
+        margin:0 1vw;
     }
     
     #feedback-box{
         height:9em;
     }
     
+    #firstResponse, #thirdResponse{
+        margin-left:4%;
+    }
 
+}
+
+
+@media only screen and (max-width:780px){
+
+    #firstResponse, #thirdResponse{
+        margin-left:15%;
+    }
+    
+    #secondResponse, #fourthResponse{
+        margin-right:0;
+    }
+}
+    
+@media only screen and (max-width:500px){
+
+    
+    #firstResponse, #secondResponse, #thirdResponse, #fourthResponse{
+        margin:1em .5em;
+    } 
 }
 
 @media only screen and (max-width:410px){
     .response-wrap{
         margin:0;
     }
+    
+    #firstResponse, #secondResponse, #thirdResponse, #fourthResponse{
+        margin:1em 0;
+    } 
 }
 
 .hide{
