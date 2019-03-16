@@ -71,7 +71,8 @@ export function resultStyle(divId,score) {
         incor.classList.remove("hide");
     }
     
-    divIdHandle.classList.add(score);
+    var optionParent = divIdHandle.parentElement;
+    optionParent.classList.add(score);
 }
 
 export function clearResultStyle(){
