@@ -47,6 +47,7 @@ include "../head.php";
         <div id = "ref-title"><h1>Activity 3</h1><hr>
             <h2>Tone Mimicking</h2>
 	</div>	
+		<h3 id="score"></h3>
 	<!-- BEGIN Activity Content -->
         <div id ="activity-3-baseline">
             <h3>Record Baseline</h3>
@@ -61,7 +62,7 @@ include "../head.php";
             <audio controls>
                 <source id="audioSource" src="" type="audio/mpeg">
             </audio>
-        <h3 id ="score"></h3>
+        <h3 id ="character"></h3>
             </div>
             <div id="visualization"></div>
             <div id="input"></div>

@@ -149,8 +149,11 @@ export function showScore(divID){
 }
 export function showCharacter(divID,testSet,character,pinyin){
 	let feedbackBox = document.getElementById(divID);
-	let left = 24 - totalResponses;
-	feedbackBox.innerHTML = `<strong>${character}</strong> (${pinyin}) | Questions left: ${left}`;
+	feedbackBox.innerHTML = `<strong>${character}</strong> (${pinyin})`;
+
+	let scoreBox = document.getElementById("score");
+	let left = 24 - ++totalResponses;
+	scoreBox.innerHTML = `Questions left: ${left}`;
 }
 
 export function showScoreCard(divID, refID){

@@ -105,7 +105,10 @@ Blue - #5E99D3
     color:#9A2D04;
 }
 
-
+#character{
+	text-align:center;
+	font-size:3em;
+}
 
 .activity{
     grid-column:2/3;
