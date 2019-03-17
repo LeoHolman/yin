@@ -35,17 +35,13 @@ export function evaluateResponse(option,test) {
             correctResponses++;
             resultStyle(option,"correct");
             showScore("score");
-    //        var cor = document.getElementById("correct");
-    //        cor.classList.remove("hide");
-    //        var incor =document.getElementById("incorrect");
-    //        incor.classList.add("hide");
+	    let corText = document.getElementById("correct").children[1];
+	    corText.innerHTML = `Good! ${test.correctOption} is correct!`;
         } else {
             resultStyle(option,"incorrect");
             showScore("score");
-    //        var incor = document.getElementById("incorrect");
-    //        incor.classList.remove("hide");
-    //        var cor = document.getElementById("correct");
-    //        cor.classList.add("hide");
+	    let incorText = document.getElementById("incorrect").children[1];
+	    incorText.innerHTML = `${response} is not correct, it should be ${test.correctOption}`;
         }
     }
     responseGiven = true;
