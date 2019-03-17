@@ -6,12 +6,9 @@ import * as pi from "./pageInteractions.js";
 
 //set button handles
 const recordButton = document.getElementById("record");
-var playButton = document.getElementById("play");
 const baselineButton = document.getElementById("baseline");
-
-//page setup
-pi.pageSetup();
-pi.loadTests(3,"huanglaoshiTests");
+const cont = document.getElementById("continue-btn");
+var playButton = document.getElementById("play");
 
 //initialize baseline variables
 var baselineMax;
@@ -20,19 +17,16 @@ var baselineAvg;
 var baselineMean;
 var baselineStandardDeviation;
 
-
-var cont = document.getElementById("continue-btn");
-
-//switch from baseline to activity view
-function advance() {
-    document.getElementById("activity-4-baseline").style.display ="none";
-    document.getElementById("activity-4-content").style.display ="block";
-    cont.removeEventListener("click",advance);
-    cont.addEventListener("click", () => {
-	//d3.selectAll("svg > .userPitch").remove();
-	   pi.newTest(3);
-	});
+function clearUploads() {
+	var clearUploads = new XMLHttpRequest();
+	clearUploads.open("GET","../pages/clearUploads.php");
+	clearUploads.send();
 }
+
+//page setup
+pi.pageSetup();
+pi.loadTests(4,"huanglaoshiTests");
+
 
 //draw graph
 drawf.drawPitchChart('#visualization',750,350);
@@ -58,6 +52,7 @@ recordButton.addEventListener("click", () => {
 					}).then( () =>{		
 					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
 					drawf.drawPitchCurve(csvDataLocation,750,350,baselineMean,baselineStandardDeviation);
+					pi.showVisualization();
 					})	
 				})	
 		})
@@ -81,13 +76,9 @@ baselineButton.addEventListener("click", () => {
 				
 				});	
 			});
-    cont.addEventListener("click",advance);
+    cont.addEventListener("click",() => {
+	    pi.advance(4);
+    });
 		});
-
-function clearUploads() {
-	var clearUploads = new XMLHttpRequest();
-	clearUploads.open("GET","../pages/clearUploads.php");
-	clearUploads.send();
-}
 
 clearUploads();
