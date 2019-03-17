@@ -3,6 +3,8 @@ $title = "Yin - About";
 $style = "../css/style.css";
 $prefix = "../";
 $aboutClass="active";
+$extras ="";
+
 include "../head.php";
 ?>
 

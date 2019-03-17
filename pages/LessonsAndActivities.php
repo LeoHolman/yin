@@ -3,6 +3,8 @@ $title = "Yin - Lessons and Activities";
 $style = "LADirectoryStyle.css";
 $prefix = "../";
 $LAClass="active";
+$extras ="";
+
 include "../head.php";
 ?>
 

@@ -2,6 +2,8 @@
 $title = "Yin - Lesson #";
 $style = "LAstyle.css";
 $prefix = "../";
+$extras ="";
+
 include "../head.php";
 ?>
 

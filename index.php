@@ -2,6 +2,8 @@
 $title = "Yin - Home";
 $prefix = "";
 $indexClass="active";
+$extras ="";
+
 include "head.php";
 ?>
 

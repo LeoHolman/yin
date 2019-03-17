@@ -10,8 +10,9 @@ include "../head.php";
 
 
 <ul class = "LA-breadcrumb">
-    <li><a href ="<?php echo $prefix ?>index.php">Home</a></li>
     <li><a href ="LessonsAndActivities.php">Lessons and Activities</a></li>
+    <li><a href ="Lesson1.php">One</a></li>
+    <li><a href ="Lesson2.php">Two</a></li>
     <li><a href ="#">Three</a></li>
 </ul>
 <div id = "main-wrap">
