@@ -41,7 +41,6 @@ export var shownTests = [];
 
 export function loadTests(lessonNum, testName="tests"){
 	//Access tests.json
-    console.log(`../js/${testName}.json`);
 	$.getJSON(`../js/${testName}.json`, function(json){
 	    tests = json;
 
@@ -64,14 +63,28 @@ export function newTest(lessonNum){
     df.clearResultStyle();
     
     //find new test
-    thisTestNumber = df.getRandomInt(12);
-    while (shownTests.includes(thisTestNumber)){
-	    if(shownTests.length == testsArray.length){
-		console.log("Reached end of tests array");
-		break;
+    if(lessonNum == 1 || lessonNum == 2){
+	    thisTestNumber = df.getRandomInt(12);
+	    while (shownTests.includes(thisTestNumber)){
+		    if(shownTests.length == testsArray.length){
+			console.log("Reached end of tests array");
+			break;
+		    }
+		thisTestNumber = df.getRandomInt(12);
 	    }
-        thisTestNumber = df.getRandomInt(12);
     }
+
+    if(lessonNum == 3 || lessonNum == 4){
+	    thisTestNumber = df.getRandomInt(23);
+	    while (shownTests.includes(thisTestNumber)){
+		    if(shownTests.length == testsArray.length){
+			console.log("Reached end of tests array");
+			break;
+		    }
+		thisTestNumber = df.getRandomInt(23);
+	    }
+    }
+
     shownTests.push(thisTestNumber);
     thisTest = testsArray[thisTestNumber];
     
@@ -118,7 +131,7 @@ export function newTest(lessonNum){
 	df.showCharacter("character","../js/huanglaoshiTests.json",thisTest.character,thisTest.id);
 	}
 
-   if ((lessonNum == 3 || lessonNum == 4) && shownTests.length == 10){
+   if ((lessonNum == 1 || lessonNum == 2) && shownTests.length == 10){
         document.getElementById("continueButton").removeEventListener("click", function(){
             newTest();
         });
@@ -134,6 +147,28 @@ export function newTest(lessonNum){
 		});
 	}
     }
+
+   if(lessonNum == 3 && shownTests.length == 23){
+	   let continueButton = document.getElementById("continue-btn");
+	   let newContButton = continueButton.cloneNode(true);
+	   continueButton.parentNode.replaceChild(newContButton,continueButton);
+	 continueButton = document.getElementById("continue-btn");
+       continueButton.innerHTML="Next Lesson";
+	continueButton.addEventListener("click", () => {
+		window.location = "Lesson4.php";
+	});	
+   } 
+   
+   if(lessonNum == 4 && shownTests.length == 23){
+	   let continueButton = document.getElementById("continue-btn");
+	   let newContButton = continueButton.cloneNode(true);
+	   continueButton.parentNode.replaceChild(newContButton,continueButton);
+	 continueButton = document.getElementById("continue-btn");
+       continueButton.innerHTML="Finish";
+	continueButton.addEventListener("click", () => {
+		window.location = "LessonsAndActivities.php";
+	});	
+   } 
 }
 
 export function pageSetup() {
@@ -148,7 +183,6 @@ export function pageSetup() {
 
 export function checkIfReloaded(){
 	var reloading = sessionStorage.getItem("reloaded");
-	console.log(`Reloaded is: ${reloading}`);
 	if (reloading) {
             sessionStorage.removeItem("reloaded");
 	    openActivity();
