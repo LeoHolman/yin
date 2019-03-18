@@ -21,16 +21,6 @@ var baselineMean;
 var baselineStandardDeviation;
 var cont = document.getElementById("continue-btn");
 
-//switch from baseline to activity view
-function advance() {
-    document.getElementById("activity-3-baseline").style.display ="none";
-    document.getElementById("activity-3-content").style.display ="block";
-    cont.removeEventListener("click",advance);
-    cont.addEventListener("click", () => {
-	d3.selectAll("svg > .userPitch").remove();
-	   pi.newTest(3);
-	});
-}
 
 //draw graph
 drawf.drawPitchChart('#visualization',750,350);
@@ -79,7 +69,9 @@ baselineButton.addEventListener("click", () => {
 				
 				});	
 			});
-    cont.addEventListener("click",advance);
+    cont.addEventListener("click",() => {
+	    pi.advance(3);
+    });
 		});
 
 function clearUploads() {

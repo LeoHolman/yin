@@ -41,7 +41,6 @@ export var shownTests = [];
 
 export function loadTests(lessonNum, testName="tests"){
 	//Access tests.json
-    console.log(`../js/${testName}.json`);
 	$.getJSON(`../js/${testName}.json`, function(json){
 	    tests = json;
 
@@ -54,6 +53,9 @@ export function loadTests(lessonNum, testName="tests"){
 	});
 }
 
+export var thisTestNumber; 
+export var thisTest; 
+
 export function newTest(lessonNum){
     df.setResponseGiven(false);
     document.getElementById("correct").classList.add("hide");
@@ -61,16 +63,30 @@ export function newTest(lessonNum){
     df.clearResultStyle();
     
     //find new test
-    var thisTestNumber = df.getRandomInt(12);
-    while (shownTests.includes(thisTestNumber)){
-	    if(shownTests.length == testsArray.length){
-		console.log("Reached end of tests array");
-		break;
+    if(lessonNum == 1 || lessonNum == 2){
+	    thisTestNumber = df.getRandomInt(12);
+	    while (shownTests.includes(thisTestNumber)){
+		    if(shownTests.length == testsArray.length){
+			console.log("Reached end of tests array");
+			break;
+		    }
+		thisTestNumber = df.getRandomInt(12);
 	    }
-        thisTestNumber = df.getRandomInt(12);
     }
+
+    if(lessonNum == 3 || lessonNum == 4){
+	    thisTestNumber = df.getRandomInt(23);
+	    while (shownTests.includes(thisTestNumber)){
+		    if(shownTests.length == testsArray.length){
+			console.log("Reached end of tests array");
+			break;
+		    }
+		thisTestNumber = df.getRandomInt(23);
+	    }
+    }
+
     shownTests.push(thisTestNumber);
-    var thisTest = testsArray[thisTestNumber];
+    thisTest = testsArray[thisTestNumber];
     
     //add stimuli
     df.addSound(thisTest, "audioSource");
@@ -108,7 +124,14 @@ export function newTest(lessonNum){
 	df.showCharacter("character","../js/huanglaoshiTests.json",thisTest.character,thisTest.id);
 	}
 
-   if (shownTests.length == 10){
+   if(lessonNum == 4) {
+	hideVisualization();
+	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
+	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
+	df.showCharacter("character","../js/huanglaoshiTests.json",thisTest.character,thisTest.id);
+	}
+
+   if ((lessonNum == 1 || lessonNum == 2) && shownTests.length == 10){
         document.getElementById("continueButton").removeEventListener("click", function(){
             newTest();
         });
@@ -124,6 +147,28 @@ export function newTest(lessonNum){
 		});
 	}
     }
+
+   if(lessonNum == 3 && shownTests.length == 23){
+	   let continueButton = document.getElementById("continue-btn");
+	   let newContButton = continueButton.cloneNode(true);
+	   continueButton.parentNode.replaceChild(newContButton,continueButton);
+	 continueButton = document.getElementById("continue-btn");
+       continueButton.innerHTML="Next Lesson";
+	continueButton.addEventListener("click", () => {
+		window.location = "Lesson4.php";
+	});	
+   } 
+   
+   if(lessonNum == 4 && shownTests.length == 23){
+	   let continueButton = document.getElementById("continue-btn");
+	   let newContButton = continueButton.cloneNode(true);
+	   continueButton.parentNode.replaceChild(newContButton,continueButton);
+	 continueButton = document.getElementById("continue-btn");
+       continueButton.innerHTML="Finish";
+	continueButton.addEventListener("click", () => {
+		window.location = "LessonsAndActivities.php";
+	});	
+   } 
 }
 
 export function pageSetup() {
@@ -138,11 +183,33 @@ export function pageSetup() {
 
 export function checkIfReloaded(){
 	var reloading = sessionStorage.getItem("reloaded");
-	console.log(`Reloaded is: ${reloading}`);
 	if (reloading) {
             sessionStorage.removeItem("reloaded");
 	    openActivity();
 	}
+}
+
+//switch from baseline to activity view
+export function advance(lessonNum) {
+    document.getElementById(`activity-${lessonNum}-baseline`).style.display ="none";
+    document.getElementById(`activity-${lessonNum}-content`).style.display ="block";
+	d3.selectAll("svg > .userPitch").remove();
+	   newTest(lessonNum);
+}
+
+//page functions
+export function hideVisualization(){
+	let viz = document.getElementById("visualization");
+	let audioBar = document.getElementById("stimuli");
+	viz.setAttribute("style","display:none;");
+	audioBar.setAttribute("style","display:none;");
+}
+
+export function showVisualization(){
+	let viz = document.getElementById("visualization");
+	let audioBar = document.getElementById("stimuli");
+	viz.setAttribute("style","display:initial;");
+	audioBar.setAttribute("style","display:initial;");
 }
 
 window.onload = checkIfReloaded();
