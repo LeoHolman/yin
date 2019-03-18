@@ -20,7 +20,7 @@ include "../head.php";
     <section id = "lesson-three" class = "lesson">
         <h1>Lesson 3</h1><hr>
         <h2>Pitch Curves</h2>
-		<p>It's important to remember that tone is relative to the speaker's voice. That mean's that one person's first tone may not be as high as another person's. For example, let's say that person A's voice is higher than person B's. Person A might have a 1st tone at 400Hz, but person B's 1st tone only comes up to 300Hz. Neither is inherently wrong, because the range of their voices are different.</p>
+		<p>It's important to remember that tone is relative to the speaker's voice. That means that one person's first tone may not be as high as another person's. For example, let's say that Person A's voice is higher than Person B's. Person A might have a 1st tone at 400Hz, but Person B's 1st tone only comes up to 300Hz. Neither is inherently wrong, because the range of their voices are different.</p>
 		<p>The lesson to take from this is not to feel like you "can't go high enough" or "can't go low enough" to say a tone correctly. The highs and lows are relative to your own voice. Even if someone else's tone is higher or lower than yours, that doesn't necessarily make either of you wrong. There are other features that need to be examined.</p>
     </section>
     <section id = "lesson-3-ref" class = "hide view-2 lesson">
