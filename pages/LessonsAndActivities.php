@@ -56,7 +56,7 @@ include "../head.php";
     </div>
     <div id = "four" class = "comb">
         <div class = "invisible">
-            <h1 class = "head">Four</h1>
+            <h1 class = "head"><a href ="Lesson3.php">Four</a></h1>
             <p class = "desc">Lesson: Tone initials and finals<br>Activity: Tone production</p>
         </div>
 <!--
