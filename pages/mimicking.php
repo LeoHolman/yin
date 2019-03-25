@@ -12,6 +12,7 @@
             <source id="audioSource" src="" type="audio/mpeg">
         </audio>
         </div>
+	<h3 id="character" style="font-size: 40px;"></h3>	
         <div id="visualization"></div>
         <div id="input"></div>
         <div id="demo"></div>
