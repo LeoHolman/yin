@@ -18,13 +18,13 @@ include "../head.php";
 <div id = "main-wrap">
 <div class = "main container-three LA">
     <section id = "lesson-three" class = "lesson">
-        <h1>Lesson 3</h1><hr>
+        <h1>Lesson Three</h1><hr>
         <h2>Pitch Curves</h2>
 		<p>It's important to remember that tone is relative to the speaker's voice. That means that one person's first tone may not be as high as another person's. For example, let's say that Person A's voice is higher than Person B's. Person A might have a 1st tone at 400Hz, but Person B's 1st tone only comes up to 300Hz. Neither is inherently wrong, because the range of their voices are different.</p>
 		<p>The lesson to take from this is not to feel like you "can't go high enough" or "can't go low enough" to say a tone correctly. The highs and lows are relative to your own voice. Even if someone else's tone is higher or lower than yours, that doesn't necessarily make either of you wrong. The shape of your curve is more important, but even that can have variation. There are other features that need to be examined.</p>
     </section>
     <section id = "lesson-3-ref" class = "hide view-2 lesson">
-        <div id = "ref-title"><h1>Lesson 3</h1><hr>
+        <div id = "ref-title"><h1>Lesson Three</h1><hr>
             <h2>Pitch Curves</h2>
 		<p>Listen to the recording for the given word. Look at the native speaker's pitch curve (blue) and prepare to say the word.</p>
 		<p>When you are ready to say the word, press "Record." You will have <strong>2 seconds</strong> to say the word. At the end of those 2 seconds, your pitch curve (red) will be graphed against the native speaker's.</p>
@@ -34,7 +34,7 @@ include "../head.php";
         
     </section>
     <section id = "activity-3-prompt" class = "activity">
-        <h1>Activity 3</h1><hr>
+        <h1>Activity Three</h1><hr>
         <h2>Tone Mimicking</h2>
 		<p>First, you'll listen to a native speaker pronouncing a word and see their pitch curve mapped out in blue.</p>
 		<p>When you are ready, you'll record yourself saying the word and see how your curve, in red, compares to the native speaker's.</p>
@@ -43,7 +43,7 @@ include "../head.php";
     
     </section>
     <section id = "activity-3" class = "hide view-2 activity">
-        <div id = "ref-title"><h1>Activity 3</h1><hr>
+        <div id = "ref-title"><h1>Activity Three</h1><hr>
             <h2>Tone Mimicking</h2>
 	</div>	
 		<h3 id="score"></h3>
