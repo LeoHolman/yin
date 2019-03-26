@@ -17,7 +17,7 @@ include "../head.php";
     <section id = "lesson-four" class = "lesson">
         <h1>Lesson 4</h1><hr>
         <h2>Initials and Finals</h2>
-	<p>The smallest unit of spoken Mandarin is the word. Each word is made from a specific pattern from a limited number of sounds. The pattern roughly divides words in half, with an <strong>initial</strong> and a <strong>final</strong>. An initial is how the word starts, and a final is how it ends. This way of talking about words has been largely adopted because most words follow an easy pattern, a initial consonant and a final vowel. It is, however, possible to have words without a consonant at the beginning, and some words end in 'n' or 'ng'.</p>
+	<p>The smallest unit of spoken Mandarin is the word. Each word is made with a specific pattern from a limited number of sounds. The pattern roughly divides words in half, with an <strong>initial</strong> and a <strong>final</strong>. An initial is how the word starts, and a final is how it ends. This way of talking about words has been largely adopted because most words follow an easy pattern, a initial consonant and a final vowel. It is, however, possible to have words without a consonant at the beginning, and some words end in 'n' or 'ng'.</p>
 	<p>As you practice it's important to keep in mind that vowels carry tone. You may have noticed that some of your recordings look bizarre and scattered at the begining or ending, this is because consonants do not carry tone well, so the program struggles to find a clear pitch. This is perfectly fine so long as you are aware of it and know it does not necessarily represent an error in your pronunciation.</p>
     </section>
     <section id = "lesson-4-ref" class = "hide view-2 lesson">

@@ -21,14 +21,14 @@ include "../head.php";
         <h1>Lesson 3</h1><hr>
         <h2>Pitch Curves</h2>
 		<p>It's important to remember that tone is relative to the speaker's voice. That means that one person's first tone may not be as high as another person's. For example, let's say that Person A's voice is higher than Person B's. Person A might have a 1st tone at 400Hz, but Person B's 1st tone only comes up to 300Hz. Neither is inherently wrong, because the range of their voices are different.</p>
-		<p>The lesson to take from this is not to feel like you "can't go high enough" or "can't go low enough" to say a tone correctly. The highs and lows are relative to your own voice. Even if someone else's tone is higher or lower than yours, that doesn't necessarily make either of you wrong. There are other features that need to be examined.</p>
+		<p>The lesson to take from this is not to feel like you "can't go high enough" or "can't go low enough" to say a tone correctly. The highs and lows are relative to your own voice. Even if someone else's tone is higher or lower than yours, that doesn't necessarily make either of you wrong. The shape of your curve is more important, but even that can have variation. There are other features that need to be examined.</p>
     </section>
     <section id = "lesson-3-ref" class = "hide view-2 lesson">
         <div id = "ref-title"><h1>Lesson 3</h1><hr>
             <h2>Pitch Curves</h2>
 		<p>Listen to the recording for the given word. Look at the native speaker's pitch curve (blue) and prepare to say the word.</p>
-		<p>When you are ready to say the word, press "Record". You will have <strong>2 seconds</strong> to say the word. At the end of those 2 seconds, your pitch curve (red) will be graphed against the native speaker's.</p>
-		<p>Try to get your pitch curve to overlap the native speaker's as closely as possible.</p>
+		<p>When you are ready to say the word, press "Record." You will have <strong>2 seconds</strong> to say the word. At the end of those 2 seconds, your pitch curve (red) will be graphed against the native speaker's.</p>
+		<p>Try to get your pitch curve to match the native speaker's as closely as possible.</p>
         </div>
         <button type = "button" id = "btn-to-lesson">Return to Lesson</button>
         
@@ -36,10 +36,8 @@ include "../head.php";
     <section id = "activity-3-prompt" class = "activity">
         <h1>Activity 3</h1><hr>
         <h2>Tone Mimicking</h2>
-		<p>First, record your baseline by clicking "Record Baseline" and saying "This is my normal speaking voice."</p>
-		<p>Listen to the recording for the given word. Look at the native speaker's pitch curve (blue) and prepare to say the word.</p>
-		<p>When you are ready to say the word, press "Record". You will have <strong>2 seconds</strong> to say the word. At the end of those 2 seconds, your pitch curve (red) will be graphed against the native speaker's.</p>
-		<p>Try to get your pitch curve to overlap the native speaker's as closely as possible.</p>
+		<p>First, you'll listen to a native speaker pronouncing a word and see their pitch curve mapped out in blue.</p>
+		<p>When you are ready, you'll record yourself saying the word and see how your curve, in red, compares to the native speaker's.</p>
         <p>Are you ready to begin this activity?</p>
         <button type = "button" id = "begin-btn">Begin</button>
     
@@ -52,10 +50,10 @@ include "../head.php";
 	<!-- BEGIN Activity Content -->
         <div id ="activity-3-baseline">
             <h3>Record Baseline</h3>
-		<p>The following activity is designed to help you improve your ability to produce tone by mimicking a native speaker. You'll be given an audio recording of a native speaker saying a word, and asked to record yourself saying the word. You'll be shown the pitch curve of the native speaker, and after you finish your recording, your pitch curve will be placed along side it for your to compare.</p>
+		<p>The following activity is designed to help you improve your ability to produce tone by mimicking a native speaker. You'll be given an audio recording of a native speaker saying a word, and asked to record yourself saying the word. You'll be shown the pitch curve of the native speaker, and after you finish your recording, your pitch curve will be placed along side it for you to compare.</p>
 		<p>After we have captured your baseline, you'll be given a word to mimick. You'll hear a native speaker say the word, see their pitch curve, and the character(s) of the word they are pronouncing. When you are ready to mimick it, press record and say the word. You only have <strong>2 seconds</strong> to say the word, so begin quickly after pressing record. All of the words you will be asked to mimick should take less than 2 seconds to say, so don't stress out about time.</p>
-            <p>To grade you accurately, we need a sample of your voice at a normal speaking tone.</p>
-            <p>Please press the "Record Baseline" button and say, "This is my normal speaking voice."</p>
+            <p>Remember, pitch is relative to each person, so to grade you accurately, we need a sample of your voice at a normal speaking tone.</p>
+            <p>Please press the "Record Baseline" button and say aloud, "This is my normal speaking voice."</p>
             <button id="baseline">Record Baseline</button>
         </div>
         <div id ="activity-3-content">
