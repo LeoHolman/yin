@@ -57,14 +57,16 @@ $.getJSON("../js/huanglaoshiTests.json", function(json){
 //
 //chinese media 210
 //range 480 - 154
+var thisTestNumber;
+var thisTest;
 function newTest(){
 	//find new test
-	var thisTestNumber = df.getRandomInt(23);
+	thisTestNumber = df.getRandomInt(23);
 	while (shownTests.includes(thisTestNumber)){
 		thisTestNumber = df.getRandomInt(23);
 	}
 	shownTests.push(thisTestNumber);
-	var thisTest = testsArray[thisTestNumber];
+	thisTest = testsArray[thisTestNumber];
 
 	//add stimuli
 	df.addSound(thisTest, "audioSource");
@@ -72,7 +74,10 @@ function newTest(){
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
 	console.log(csvFile);
 	console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
-	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
+	plotWithoutZScore(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`,750, 350);
+	let feedbackBox = document.getElementById("character");
+	feedbackBox.innerHTML = `<strong>${thisTest.character}</strong>`;
+//	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
 }
 
 //draw graph
@@ -121,6 +126,19 @@ baselineButton.addEventListener("click", () => {
 			});
 		});
 
+function plotWithoutZScore(dataset, width, height, baseline=(height/2)){
+	console.log("no zscore");
+	d3.selectAll("svg > .userPitch").remove();
+    d3.tsv(dataset, function(data) {
+        d3.select("#visualization svg")
+            .append("circle")
+            .attr("cx", data.time * (width / 2))
+            .attr("cy", height - ((height/2) + ((data.frequency - baseline)))) 
+            .attr("r", 5)
+	    .classed("userPitch",true)
+            .style("fill","green");
+    });
+};
 
 function clearUploads() {
 	var clearUploads = new XMLHttpRequest();
