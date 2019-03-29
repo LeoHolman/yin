@@ -5,7 +5,7 @@ import * as df from "./displayFunctions.js";
 
 //set button handles
 const recordButton = document.getElementById("record");
-const playButton = document.getElementById("play");
+var playButton = document.getElementById("play");
 
 //draw graph
 drawf.drawPitchChart('#visualization',750,350);
@@ -15,6 +15,9 @@ drawf.drawPitchChart('#visualization',750,350);
 recordButton.addEventListener("click", () => {
 	af.record("record")
 		.then( blob => {
+			var resetplayButton = playButton.cloneNode(true);
+			playButton.parentElement.replaceChild(resetplayButton, playButton);
+			playButton = document.getElementById("play");
 			playButton.addEventListener("click", () => {
 				var blobUrl = URL.createObjectURL(blob);
 				var audio = new Audio(blobUrl);
