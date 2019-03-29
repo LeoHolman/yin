@@ -39,7 +39,6 @@ recordButton.addEventListener("click", () => {
 });
 
 function plotWithoutZScore(dataset, width, height, baseline=(height/2)){
-	console.log("no zscore");
 	d3.selectAll("svg > .userPitch").remove();
     d3.tsv(dataset, function(data) {
         d3.select("#visualization svg")
