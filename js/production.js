@@ -7,7 +7,7 @@ import * as pi from "./pageInteractions.js";
 //set button handles
 const recordButton = document.getElementById("record");
 const baselineButton = document.getElementById("baseline");
-const cont = document.getElementById("continue-btn");
+var cont = document.getElementById("continue-btn");
 var playButton = document.getElementById("play");
 
 //initialize baseline variables
@@ -76,6 +76,9 @@ baselineButton.addEventListener("click", () => {
 				
 				});	
 			});
+	var resetCont = cont.cloneNode(true);
+	cont.parentElement.replaceChild(resetCont, cont);
+	cont = document.getElementById("continue-btn");
     cont.addEventListener("click",() => {
 	    pi.advance(4);
     });

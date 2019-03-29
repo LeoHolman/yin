@@ -5,8 +5,9 @@ import * as df from "./displayFunctions.js";
 import * as pi from "./pageInteractions.js";
 
 //set button handles
-const recordButton = document.getElementById("record");
+var recordButton = document.getElementById("record");
 var playButton = document.getElementById("play");
+var cont = document.getElementById("continue-btn");
 const baselineButton = document.getElementById("baseline");
 
 //page setup
@@ -19,7 +20,6 @@ var baselineMin;
 var baselineAvg;
 var baselineMean;
 var baselineStandardDeviation;
-var cont = document.getElementById("continue-btn");
 
 
 //draw graph
@@ -69,6 +69,9 @@ baselineButton.addEventListener("click", () => {
 				
 				});	
 			});
+	var resetCont = cont.cloneNode(true);
+	cont.parentElement.replaceChild(resetCont, cont);
+	cont = document.getElementById("continue-btn");
     cont.addEventListener("click",() => {
 	    pi.advance(3);
     });
