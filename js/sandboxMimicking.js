@@ -41,11 +41,11 @@ $.getJSON("../js/huanglaoshiTests.json", function(json){
 	}).then( () =>{		
 		let hlsBaseline = 0;
 		huangLaoshifrequencyset.forEach( (element) => {hlsBaseline += element});
-		console.log("All values added: " + hlsBaseline);
+		//console.log("All values added: " + hlsBaseline);
 		hlsBaseline = hlsBaseline / huangLaoshifrequencyset.length;
-		console.log("Baseline after division: " + hlsBaseline);
+		//console.log("Baseline after division: " + hlsBaseline);
 	huangLaoshibaselineStandardDeviation = stat.calcStandardDeviation(210,huangLaoshifrequencyset);
-	console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
+	//console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
 //	drawf.drawPitchCurve(csvDataLocation,1000,350,210,huangLaoshibaselineStandardDeviation);
 	}).then ( () =>{
 	    newTest();
@@ -70,11 +70,15 @@ function newTest(){
 
 	//add stimuli
 	df.addSound(thisTest, "audioSource");
-	console.log(thisTestNumber);
+	//console.log(thisTestNumber);
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
-	console.log(csvFile);
-	console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
-	plotWithoutZScore(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`,750, 350);
+	//console.log(csvFile);
+	//console.log("hls Baseline stndrd dev " +huangLaoshibaselineStandardDeviation);
+	//
+	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
+//	plotWithoutZScore(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`,750, 350);
+//	lopStartEnd(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`,750, 350);
+
 	let feedbackBox = document.getElementById("character");
 	feedbackBox.innerHTML = `<strong>${thisTest.character}</strong>`;
 //	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
@@ -82,7 +86,6 @@ function newTest(){
 
 //draw graph
 drawf.drawPitchChart('#visualization',750,350);
-
 
 //set record function
 recordButton.addEventListener("click", () => {
@@ -125,21 +128,48 @@ baselineButton.addEventListener("click", () => {
 				});	
 			});
 		});
-
+var frameNumber;
 function plotWithoutZScore(dataset, width, height, baseline=(height/2)){
-	console.log("no zscore");
+	//console.log("no zscore");
 	d3.selectAll("svg > .userPitch").remove();
-    d3.tsv(dataset, function(data) {
-        d3.select("#visualization svg")
-            .append("circle")
-            .attr("cx", data.time * (width / 2))
-            .attr("cy", height - ((height/2) + ((data.frequency - baseline)))) 
-            .attr("r", 5)
-	    .classed("userPitch",true)
-            .style("fill","green");
-    });
+	frameNumber = 0;
+	//console.log(`Dataset length: ${dataset.length}`);
+	d3.tsv(dataset, function(data) {
+			d3.select("#visualization svg")
+			.append("circle")
+			.attr("cx", data.time * (width / 2))
+			.attr("cy", height - ((height/2) + ((data.frequency - baseline)))) 
+			.attr("r", 5)
+			.classed("userPitch",true)
+			.style("fill","green");
+	    });
 };
 
+function lopStartEnd(dataset, width, height, baseline=(height/2)){
+	//console.log("no zscore");
+	d3.selectAll("svg > .userPitch").remove();
+	frameNumber = 0;
+	let datasetLength = 0;
+	d3.tsv(dataset, (data) => {
+		datasetLength++;
+		return datasetLength;
+	}).then( () => {
+	console.log(`Dataset length: ${datasetLength}`);
+	d3.tsv(dataset, function(data) {
+		frameNumber++;
+		if(frameNumber > 10 && frameNumber < datasetLength - 10){
+			d3.select("#visualization svg")
+			.append("circle")
+			.attr("cx", data.time * (width / 2))
+			.attr("cy", height - ((height/2) + ((data.frequency - baseline)))) 
+			.attr("r", 5)
+			.classed("userPitch",true)
+			.style("fill","yellow");
+	    };
+	//	console.log(`Frame number: ${frameNumber}`)
+	})
+	});
+};
 function clearUploads() {
 	var clearUploads = new XMLHttpRequest();
 	clearUploads.open("GET","../pages/clearUploads.php");
