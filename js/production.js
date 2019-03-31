@@ -33,6 +33,8 @@ drawf.drawPitchChart('#visualization',750,350);
 
 //set record function
 recordButton.addEventListener("click", () => {
+	df.countdown(recordButton).then( () =>{
+	recordButton.innerHTML = "Recording";
 	af.record("record")
 		.then( blob => {
 			var resetplayButton = playButton.cloneNode(true);
@@ -53,13 +55,18 @@ recordButton.addEventListener("click", () => {
 					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
 					drawf.drawPitchCurve(csvDataLocation,750,350,baselineMean,baselineStandardDeviation);
 					pi.showVisualization();
+					recordButton.style.backgroundColor = "#5E99D3"; 
+					recordButton.innerHTML = "Record";
 					})	
 				})	
 		})
+	})
 });
 
 //set baseline function
 baselineButton.addEventListener("click", () => {
+	df.countdown(baselineButton).then( () =>{
+	baselineButton.innerHTML = "Recording";
 	af.record("baseline")
 		.then( blob => {
 			af.processAudio(blob)
@@ -70,6 +77,7 @@ baselineButton.addEventListener("click", () => {
 							return frequencyset;
 					}).then( () =>{		
 							baselineMean = stat.calcMean(frequencyset);
+							baselineButton.innerHTML = "Done";
                         
 						//	console.log(`Baseline mean ${baselineMean}`);
 					} );	
@@ -82,6 +90,7 @@ baselineButton.addEventListener("click", () => {
     cont.addEventListener("click",() => {
 	    pi.advance(4);
     });
-		});
+});
+});
 
 clearUploads();
