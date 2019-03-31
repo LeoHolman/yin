@@ -121,14 +121,14 @@ export function newTest(lessonNum){
    if(lessonNum == 3) {
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
 	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
-	df.showCharacter("character","../js/huanglaoshiTestsShortened.json",thisTest.character,thisTest.id);
+	df.showCharacter("character","../js/huanglaoshiTestsShortened.json",thisTest.character,thisTest.pinyin);
 	}
 
    if(lessonNum == 4) {
 	hideVisualization();
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
 	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
-	df.showCharacter("character","../js/huanglaoshiTestsShortened.json",thisTest.character,thisTest.id);
+	df.showCharacter("character","../js/huanglaoshiTestsShortened.json",thisTest.character,thisTest.pinyin);
 	}
 
    if ((lessonNum == 1 || lessonNum == 2) && shownTests.length == 10){
