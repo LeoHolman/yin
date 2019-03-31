@@ -12,7 +12,7 @@ const baselineButton = document.getElementById("baseline");
 
 //page setup
 pi.pageSetup();
-pi.loadTests(3,"huanglaoshiTests");
+pi.loadTests(3,"huanglaoshiTestsShortened");
 
 //initialize baseline variables
 var baselineMax;

@@ -148,7 +148,7 @@ export function showCharacter(divID,testSet,character,pinyin){
 	feedbackBox.innerHTML = `<strong>${character}</strong> (${pinyin})`;
 
 	let scoreBox = document.getElementById("score");
-	let left = 24 - ++totalResponses;
+	let left = pi.testsArray.length - ++totalResponses;
 	scoreBox.innerHTML = `Questions left: ${left}`;
 }
 

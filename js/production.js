@@ -25,7 +25,7 @@ function clearUploads() {
 
 //page setup
 pi.pageSetup();
-pi.loadTests(4,"huanglaoshiTests");
+pi.loadTests(4,"huanglaoshiTestsShortened");
 
 
 //draw graph

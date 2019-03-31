@@ -64,24 +64,24 @@ export function newTest(lessonNum){
     
     //find new test
     if(lessonNum == 1 || lessonNum == 2){
-	    thisTestNumber = df.getRandomInt(12);
+	    thisTestNumber = df.getRandomInt(testsArray.length);
 	    while (shownTests.includes(thisTestNumber)){
 		    if(shownTests.length == testsArray.length){
 			console.log("Reached end of tests array");
 			break;
 		    }
-		thisTestNumber = df.getRandomInt(12);
+		thisTestNumber = df.getRandomInt(testsArray.length);
 	    }
     }
 
     if(lessonNum == 3 || lessonNum == 4){
-	    thisTestNumber = df.getRandomInt(23);
+	    thisTestNumber = df.getRandomInt(testsArray.length);
 	    while (shownTests.includes(thisTestNumber)){
 		    if(shownTests.length == testsArray.length){
 			console.log("Reached end of tests array");
 			break;
 		    }
-		thisTestNumber = df.getRandomInt(23);
+		thisTestNumber = df.getRandomInt(testsArray.length);
 	    }
     }
 
@@ -121,14 +121,14 @@ export function newTest(lessonNum){
    if(lessonNum == 3) {
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
 	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
-	df.showCharacter("character","../js/huanglaoshiTests.json",thisTest.character,thisTest.id);
+	df.showCharacter("character","../js/huanglaoshiTestsShortened.json",thisTest.character,thisTest.id);
 	}
 
    if(lessonNum == 4) {
 	hideVisualization();
 	let csvFile = testsArray[thisTestNumber].id.replace(/[0-9]/g, '');
 	drawf.drawNativePitchCurve(`../assets/sounds/huanglaoshi/csv/${csvFile}.csv`, 750, 350, 225, 100, "blue");
-	df.showCharacter("character","../js/huanglaoshiTests.json",thisTest.character,thisTest.id);
+	df.showCharacter("character","../js/huanglaoshiTestsShortened.json",thisTest.character,thisTest.id);
 	}
 
    if ((lessonNum == 1 || lessonNum == 2) && shownTests.length == 10){
@@ -148,7 +148,7 @@ export function newTest(lessonNum){
 	}
     }
 
-   if(lessonNum == 3 && shownTests.length == 23){
+   if(lessonNum == 3 && shownTests.length == testsArray.length){
 	   let continueButton = document.getElementById("continue-btn");
 	   let newContButton = continueButton.cloneNode(true);
 	   continueButton.parentNode.replaceChild(newContButton,continueButton);
@@ -159,7 +159,7 @@ export function newTest(lessonNum){
 	});	
    } 
    
-   if(lessonNum == 4 && shownTests.length == 23){
+   if(lessonNum == 4 && shownTests.length == testsArray.length){
 	   let continueButton = document.getElementById("continue-btn");
 	   let newContButton = continueButton.cloneNode(true);
 	   continueButton.parentNode.replaceChild(newContButton,continueButton);
