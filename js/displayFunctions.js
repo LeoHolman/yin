@@ -214,6 +214,21 @@ export function showScoreCard(divID, refID){
     document.getElementById("btn-to-lesson").style.margin ="2em 0";
 }
 
+export function countdown(button){
+	return new Promise( (resolve, reject) =>{
+		button.style.backgroundColor = "#5E99D3"; 
+		let countdownNum = 3;
+		button.innerHTML = countdownNum;
+		let countdownInterval = setInterval(() => {
+			button.innerHTML = --countdownNum;
+			if (countdownNum <= 0){
+				clearInterval(countdownInterval);
+				resolve();
+			}
+		},1000);	
+	});
+}
+
 export function reset(){
 	sessionStorage.setItem("reloaded","true");
 	let setItemSuccess = sessionStorage.getItem("reloaded");

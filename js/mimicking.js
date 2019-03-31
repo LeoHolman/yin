@@ -27,19 +27,7 @@ drawf.drawPitchChart('#visualization',750,350);
 
 //set record function
 recordButton.addEventListener("click", () => {
-	var countdown = new Promise( (resolve, reject) =>{
-		recordButton.style.backgroundColor = "#5E99D3"; 
-		let countdownNum = 3;
-		recordButton.innerHTML = countdownNum;
-		let countdownInterval = setInterval(() => {
-			recordButton.innerHTML = --countdownNum;
-			if (countdownNum <= 0){
-				clearInterval(countdownInterval);
-				resolve();
-			}
-		},1000);	
-	});
-	countdown.then( () =>{
+	df.countdown(recordButton).then( () =>{
 	recordButton.innerHTML = "Recording";
 	af.record("record")
 		.then( blob => {
@@ -61,6 +49,8 @@ recordButton.addEventListener("click", () => {
 					}).then( () =>{		
 					baselineStandardDeviation = stat.calcStandardDeviation(baselineMean,frequencyset);
 					drawf.drawPitchCurve(csvDataLocation,750,350,baselineMean,baselineStandardDeviation);
+					recordButton.style.backgroundColor = "#5E99D3"; 
+					recordButton.innerHTML = "Record";
 					})	
 				})	
 		})
@@ -69,6 +59,8 @@ recordButton.addEventListener("click", () => {
 
 //set baseline function
 baselineButton.addEventListener("click", () => {
+	df.countdown(baselineButton).then( () =>{
+	baselineButton.innerHTML = "Recording";
 	af.record("baseline")
 		.then( blob => {
 			af.processAudio(blob)
@@ -79,6 +71,7 @@ baselineButton.addEventListener("click", () => {
 							return frequencyset;
 					}).then( () =>{		
 							baselineMean = stat.calcMean(frequencyset);
+							baselineButton.innerHTML = "Done";
                         
 						//	console.log(`Baseline mean ${baselineMean}`);
 					} );	
@@ -91,7 +84,8 @@ baselineButton.addEventListener("click", () => {
     cont.addEventListener("click",() => {
 	    pi.advance(3);
     });
-		});
+});
+});
 
 function clearUploads() {
 	var clearUploads = new XMLHttpRequest();
