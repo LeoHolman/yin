@@ -27,6 +27,20 @@ drawf.drawPitchChart('#visualization',750,350);
 
 //set record function
 recordButton.addEventListener("click", () => {
+	var countdown = new Promise( (resolve, reject) =>{
+		recordButton.style.backgroundColor = "#5E99D3"; 
+		let countdownNum = 3;
+		recordButton.innerHTML = countdownNum;
+		let countdownInterval = setInterval(() => {
+			recordButton.innerHTML = --countdownNum;
+			if (countdownNum <= 0){
+				clearInterval(countdownInterval);
+				resolve();
+			}
+		},1000);	
+	});
+	countdown.then( () =>{
+	recordButton.innerHTML = "Recording";
 	af.record("record")
 		.then( blob => {
 			var resetplayButton = playButton.cloneNode(true);
@@ -37,6 +51,7 @@ recordButton.addEventListener("click", () => {
 				var audio = new Audio(blobUrl);
 				audio.play();
 			});
+			recordButton.innerHTML = "Done"
 			af.processAudio(blob)
 				.then( csvDataLocation => {
 					var frequencyset = [];
@@ -49,6 +64,7 @@ recordButton.addEventListener("click", () => {
 					})	
 				})	
 		})
+	})
 });
 
 //set baseline function
