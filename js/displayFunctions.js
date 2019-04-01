@@ -235,3 +235,12 @@ export function reset(){
 	console.log(`Reloaded set: ${setItemSuccess}`);
 	document.location.reload();
 }
+
+export function hideDiv(divID){
+    let div =document.getElementById(divID);
+    div.classList.add("hide");
+}
+
+document.getElementById("notice").addEventListener("click", () => {
+    hideDiv('notice');
+});
