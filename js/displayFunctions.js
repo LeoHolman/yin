@@ -241,6 +241,8 @@ export function hideDiv(divID){
     div.classList.add("hide");
 }
 
-document.getElementById("notice").addEventListener("click", () => {
-    hideDiv('notice');
-});
+if(document.getElementById("notice") != null){
+    document.getElementById("notice").addEventListener("click", () => {
+        hideDiv('notice');
+    });
+}
