@@ -6,7 +6,8 @@ export function drawPitchChart(divID, width, height) {
         .append('svg')
         .attr('width', width)
         .attr('height', height)
-        .style('background', '#eeeeee');
+        .style('background', '#eeeeee')
+        .style('border','3px solid #9A2D04');
 
     var y = 2;
     var i;
@@ -17,7 +18,7 @@ export function drawPitchChart(divID, width, height) {
             .attr('y1', y)
             .attr('x2', width)
             .attr('y2', y)
-            .style('stroke', '#000000')
+            .style('stroke', '#babbbc')
             .style('stroke-width', '3px');
         if (i == 3) {
             y -= 4;
