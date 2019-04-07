@@ -66,6 +66,13 @@ h4{
     font-size: 1em;
 }
 
+a{
+    color:#5E99D3;
+}
+
+a:visited{
+    color:darkblue;
+}
 
 button{
     border-radius:12px;

@@ -1,7 +1,7 @@
  <?php
 $title = "Yin - Home";
 $prefix = "";
-$indexClass="active";
+$indexClass="";
 $extras ="";
 
 include "head.php";

@@ -48,7 +48,7 @@ include "../head.php";
             <p>Written Chinese is <emp>logographic</emp>, meaning that each character represents <emp>an idea</emp> and not <emp>a sound</emp> as in Latin script.</p>
             <p>Mandarin has 4 lexical tones; they are named 1, 2, 3, and 4. </p>
             <p><strong>So how do you know how to pronounce the words?</strong></p>
-            <p>There is a system of transcribing the pronunciation of Chinese characters called <a href="https://en.wikipedia.org/wiki/Pinyin">Pinyin</a>. Offical Pinyin uses tone marks over the vowels of words, but these are special characters that can be difficult to produce quickly on a keyboard. A solution to this problem is to use the numbers of the tones at the end of the word. For example, 妈 can be transcribed as 'mā' or 'ma1'.</p>
+            <p>There is a system of transcribing the pronunciation of Chinese characters called <span id ="pinyin" onclick ="pinyin();">Pinyin</span>. Offical Pinyin uses tone marks over the vowels of words, but these are special characters that can be difficult to produce quickly on a keyboard. A solution to this problem is to use the numbers of the tones at the end of the word. For example, 妈 can be transcribed as 'mā' or 'ma1'.</p>
 
           </div>
         </div>
@@ -98,6 +98,12 @@ include "../head.php";
     </section>
 
 </div> <!-- end .main .container-one .LA -->
+<!--
+<div id ="pinyin-popUp" class ="hide" >
+    <h2>Pinyin</h2>
+    <p>There is a system of transcribing the pronunciation of Chinese characters called Pinyin. Offical Pinyin uses tone marks over the vowels of words, but these are special characters that can be difficult to produce quickly on a keyboard. A solution to this problem is to use the numbers of the tones at the end of the word. For example, 妈 can be transcribed as 'mā' or 'ma1'.</p>
+</div>
+-->
     
 </div> <!-- end #main-wrap -->
 <div id ="next-lesson">
