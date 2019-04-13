@@ -18,6 +18,6 @@
         <ul>
             <li><a href = "<?php echo $prefix ?>pages/About.php" class ="<?php echo $aboutClass ?>">About</a></li>
             <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.php" class ="<?php echo $LAClass ?>">Lessons and Activities</a></li>
-            <li><a href = "<?php echo $prefix ?>index.php" class ="<?php echo $indexClass ?>"> Home</a></li>
+<!--            <li><a href = "<?php echo $prefix ?>index.php" class ="<?php echo $indexClass ?>"> Home</a></li>-->
         </ul>
       </nav>

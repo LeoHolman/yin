@@ -35,6 +35,7 @@ nav ul {
 
 nav li {
     float: right;
+    font-weight:400;
 }
 
 nav li a {
