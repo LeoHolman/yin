@@ -3,6 +3,7 @@ $title = "Yin - Sandbox";
 $style = "LAstyle.css";
 $prefix = "../";
 $extras ="";
+$sandboxClass = "active";
 
 include "../head.php";
 
