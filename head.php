@@ -13,11 +13,11 @@
     
 <body>
     
-    <a href = "<?php echo $prefix ?>index.php"><img src ="<?php echo $prefix ?>assets/images/YinHorizontalBlack.png" id = "logo" alt ="monkey walking on Yin type"></a>
+    <a href = "<?php echo $prefix ?>index.php"><img src ="<?php echo $prefix ?>assets/images/newLogo1.png" id = "logo" alt ="monkey walking on Yin type"></a>
       <nav>
         <ul>
             <li><a href = "<?php echo $prefix ?>pages/About.php" class ="<?php echo $aboutClass ?>">About</a></li>
+            <li><a href = "<?php echo $prefix ?>pages/sandbox.php" class ="<?php echo $sandboxClass ?>">Sandbox</a></li>
             <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.php" class ="<?php echo $LAClass ?>">Lessons and Activities</a></li>
-            <li><a href = "<?php echo $prefix ?>index.php" class ="<?php echo $indexClass ?>"> Home</a></li>
         </ul>
       </nav>

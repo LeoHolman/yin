@@ -216,3 +216,24 @@ export function showVisualization(){
 }
 
 window.onload = checkIfReloaded();
+
+var lesson ="";
+var pinyinContent = "<h1>Lesson One</h1><hr><h2>Pinyin</h2><p>There is a system of transcribing the pronunciation of Chinese characters called Pinyin. Offical Pinyin uses tone marks over the vowels of words, but these are special characters that can be difficult to produce quickly on a keyboard. A solution to this problem is to use the numbers of the tones at the end of the word. For example, 妈 can be transcribed as 'mā' or 'ma1'. <br><br><span id ='backToLesson'>Return to lesson.</span></p>";
+
+
+
+export function pinyin(){
+    let div =document.getElementById("lesson-one");
+    lesson = div.innerHTML;
+    
+    div.innerHTML = pinyinContent;
+    document.getElementById("backToLesson").addEventListener("click",backToLesson);
+    
+}
+
+export function backToLesson(){
+    let div =document.getElementById("lesson-one");
+    div.innerHTML=lesson;
+}
+
+document.getElementById("pinyin").addEventListener("click",pinyin);
