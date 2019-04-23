@@ -195,7 +195,7 @@ export function advance(lessonNum) {
     document.getElementById(`activity-${lessonNum}-content`).style.display ="block";
 	d3.selectAll("svg > .userPitch").remove();
 	   newTest(lessonNum);
-	   if(lessonNum = 3){
+	   if(lessonNum == 3){
 		document.getElementById("audioSource").parentElement.play();	
 		}
 }
