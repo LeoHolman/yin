@@ -25,6 +25,8 @@ body{
 
 nav{
     margin-right:1em;
+    font-family: 'EB Garamond', serif;
+    font-size:1.2em;
 }
 
 nav ul {
@@ -46,6 +48,10 @@ nav li a {
     text-align: center;
     padding: 14px 26px 50px 0px;
     text-decoration: none;
+}
+
+.link:hover{
+    color:#5E99D3;
 }
 
 h1, h2, h3, h4, h5{
