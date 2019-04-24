@@ -94,11 +94,11 @@ export function newTest(lessonNum){
     //present user with options
     if(lessonNum == 1){
 	    if (Math.random() > 0.5){
-		df.presentOption("firstResponse",df.pickIncorrectOption(thisTest));
-		df.presentOption("secondResponse",thisTest.correctOption);
+		df.presentOption("firstResponse",df.pickIncorrectOption(thisTest),thisTest);
+		df.presentOption("secondResponse",thisTest.correctOption,thisTest);
 	    } else {
-		df.presentOption("firstResponse",thisTest.correctOption);
-		df.presentOption("secondResponse",df.pickIncorrectOption(thisTest));
+		df.presentOption("firstResponse",thisTest.correctOption,thisTest);
+		df.presentOption("secondResponse",df.pickIncorrectOption(thisTest),thisTest);
 	    }
 
 	    //set evaluation to occur onclick
@@ -106,10 +106,10 @@ export function newTest(lessonNum){
 	    df.addEvaluator(document.getElementById("secondResponse").firstChild.id,thisTest);
 	}
     if(lessonNum == 2) {
-	    df.presentOption("firstResponse",thisTest.options[0]);
-	    df.presentOption("secondResponse",thisTest.options[1]);
-	    df.presentOption("thirdResponse",thisTest.options[2]);
-	    df.presentOption("fourthResponse",thisTest.options[3]);
+	    df.presentOption("firstResponse",thisTest.options[0],thisTest);
+	    df.presentOption("secondResponse",thisTest.options[1],thisTest);
+	    df.presentOption("thirdResponse",thisTest.options[2],thisTest);
+	    df.presentOption("fourthResponse",thisTest.options[3],thisTest);
 		
 
 	    //set evaluation to occur onclick

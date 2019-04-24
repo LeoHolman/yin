@@ -86,7 +86,7 @@ export function clearResultStyle(){
 
 export var uniqueOptions = 0;
 
-export function presentOption(parentDiv,option){
+export function presentOption(parentDiv,option,test){
     let parentDivHandle = document.getElementById(parentDiv);
     while (parentDivHandle.firstChild){
         parentDivHandle.removeChild(parentDivHandle.firstChild);
@@ -102,7 +102,8 @@ export function presentOption(parentDiv,option){
     optionTextParagraph.classList.add("optionText");
     let image = document.createElement("IMG");
     var imageSrc = null;
-    var lastChar = option[option.length-1];
+    var lastChar = test.options.indexOf(option)+1;
+    lastChar = lastChar.toString();
     
     switch (lastChar){
         case "1":
@@ -120,7 +121,6 @@ export function presentOption(parentDiv,option){
         default:
             break;
     }
-    
     image.src = imageSrc;
     image.className = "graphOption";
     
