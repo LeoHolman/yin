@@ -40,7 +40,7 @@ include "../head.php";
             </div>
           <div id="examples-graphs-mother">
               <img src="../assets/images/ma_graph.png">
-            <p>The graph to the right shows what a pitch curve (in red, ma1) might look like for someone saying <span class ="red">妈(mother)</span>. It also shows a pitch curve (in blue, ma3) for what someone saying <span class ="blue">马(horse)</span> might look like.</p>
+            <p>The graph to the right shows what a pitch curve (in red, mā) might look like for someone saying <span class ="red">妈(mother)</span>. It also shows a pitch curve (in blue, mǎ) for what someone saying <span class ="blue">马(horse)</span> might look like.</p>
             
           </div>
           <div id="4-tones">

@@ -38,6 +38,8 @@ nav li {
     font-weight:400;
 }
 
+
+
 nav li a {
     display: block;
     color: black;
@@ -104,7 +106,7 @@ body{
     float:left;
     margin: 0;
     font-size: 3em;
-    width:3.5em;
+    width:5em;
     color:black;
 }
 

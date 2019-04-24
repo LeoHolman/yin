@@ -236,4 +236,7 @@ export function backToLesson(){
     div.innerHTML=lesson;
 }
 
-document.getElementById("pinyin").addEventListener("click",pinyin);
+if (document.getElementById("pinyin") != null){
+    document.getElementById("pinyin").addEventListener("click",pinyin);
+}
+

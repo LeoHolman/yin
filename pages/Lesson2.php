@@ -28,24 +28,28 @@ include "../head.php";
                 <source src="../assets/sounds/ma-1-mother.mp3" type="audio/mpeg"/>
                 Audio not working! 
             </audio>
+            <img class = "ex_graph" src ="../assets/images/1_graph.svg">
             <h3>2nd Tone</h3>
             <p>Tone 2 rises, it sounds much like a question in English. It moves 2-4-5</p>
             <audio controls>
                 <source src="../assets/sounds/ma-2-hemp.mp3" type="audio/mpeg"/>
                 Audio not working! 
             </audio>
+            <img class = "ex_graph" src ="../assets/images/2_graph.svg">
             <h3>3rd Tone</h3>
             <p>Tone 3 falls, then rises. This intonation pattern is not common in English, the closest approximation is incredulousness, something like "Are you sure?". It moves "2-1-4".</p>
             <audio controls>
                 <source src="../assets/sounds/ma-3-horse.mp3" type="audio/mpeg"/>
                 Audio not working! 
             </audio>
+            <img class = "ex_graph" src ="../assets/images/3_graph.svg">
             <h3>4th Tone</h3>
             <p>Tone 4 falls sharply, much like barking an order or scolding someone in English. It moves 5-3-1.</p>
             <audio controls>
                 <source src="../assets/sounds/ma-4-scold.mp3" type="audio/mpeg"/>
                 Audio not working! 
             </audio>
+            <img class = "ex_graph" src ="../assets/images/4_graph.svg">
         </div>
     </section>
     <section id = "lesson-two-ref" class = "hide view-2 lesson">

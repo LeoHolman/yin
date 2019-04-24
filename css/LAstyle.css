@@ -92,6 +92,17 @@ Blue - #5E99D3
     color:#9A2D04;
 }
 
+#lesson-two audio{
+    float:left;
+    margin-bottom:2em;
+}
+
+.ex_graph{
+    width:11em;
+    display:block;
+    margin:0 auto;
+}
+
 #example-audio{
     margin-right:3%;
 	overflow:auto;

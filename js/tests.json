@@ -2,73 +2,73 @@
     "test0" : {
         "id" : "zhong1",
         "audio" : "../assets/sounds/test0.mp3",
-        "options" : ["zhong1","zhong2","zhong3","zhong4"],
-        "correctOption" : "zhong1"
+        "options" : ["zhōng","zhóng","zhǒng","zhòng"],
+        "correctOption" : "zhōng"
     },
     "test1" : {
         "id" : "ma3",
         "audio" : "../assets/sounds/test1.mp3",
-        "options" : ["ma1","ma2","ma3","ma4"],
-        "correctOption" : "ma3"
+        "options" : ["mā","má","mǎ","mà"],
+        "correctOption" : "mǎ"
     },
     "test2" : {
         "id" : "gou3",
         "audio" : "../assets/sounds/test2.mp3",
-        "options" : ["gou1","gou2","gou3","gou4"],
-        "correctOption" : "gou3"
+        "options" : ["gōu","góu","gǒu","gòu"],
+        "correctOption" : "gǒu"
     },
     "test3" : { 
         "id" : "mao1",
         "audio" : "../assets/sounds/test3.mp3",
-        "options" : ["mao1","mao2","mao3","mao4"],
-        "correctOption" : "mao1"
+        "options" : ["māo","máo","mǎo","mào"],
+        "correctOption" : "māo"
     },
     "test4" : {
         "id" : "fan4",
         "audio" : "../assets/sounds/test4.mp3",
-        "options" : ["fan1","fan2","fan3","fan4"],
-        "correctOption" : "fan4"
+        "options" : ["fān","fán","fǎn","fàn"],
+        "correctOption" : "fàn"
     },
     "test5" : {
         "id" : "tian1",
         "audio" : "../assets/sounds/test5.mp3",
-        "options" : ["tian1","tian2","tian3","tian4"],
-        "correctOption" : "tian1"
+        "options" : ["tiān","tián","tiǎn","tiàn"],
+        "correctOption" : "tiān"
     },
     "test6" : {
         "id" : "wen2",
         "audio" : "../assets/sounds/test6.mp3",
-        "options" : ["wen1","wen2","wen3","wen4"],
-        "correctOption" : "wen2"
+        "options" : ["wēn","wén","wěn","wèn"],
+        "correctOption" : "wén"
     },
     "test7" : {
         "id" : "guo2",
         "audio" : "../assets/sounds/test7.mp3",
-        "options" : ["guo1","guo2","guo3","guo4"],
-        "correctOption" : "guo2"
+        "options" : ["gūo","gúo","gǔo","gùo"],
+        "correctOption" : "gúo"
     },
     "test8" : {
         "id" : "si4",
         "audio" : "../assets/sounds/test8.mp3",
-        "options" : ["si1","si2","si3","si4"],
-        "correctOption" : "si4"
+        "options" : ["sī","sí","sǐ","sì"],
+        "correctOption" : "sì"
     },
     "test9" : {
         "id" : "shi2",
         "audio" : "../assets/sounds/test9.mp3",
-        "options" : ["shi1","shi2","shi3","shi4"],
-        "correctOption" : "shi2"
+        "options" : ["shī","shí","shǐ","shì"],
+        "correctOption" : "shí"
     },
     "test10" : {
         "id" : "wu3",
         "audio" : "../assets/sounds/test10.mp3",
-        "options" : ["wu1","wu2","wu3","wu4"],
-        "correctOption" : "wu3"
+        "options" : ["wū","wú","wǔ","wù"],
+        "correctOption" : "wǔ"
     },
     "test11" : {
         "id" : "liu4",
         "audio" : "../assets/sounds/test11.mp3",
-        "options" : ["liu1","liu2","liu3","liu4"],
-        "correctOption" : "liu4"
+        "options" : ["liū","liú","liǔ","liù"],
+        "correctOption" : "liù"
     }
 }
