@@ -16,8 +16,8 @@
     <a href = "<?php echo $prefix ?>index.php"><img src ="<?php echo $prefix ?>assets/images/newLogo1.png" id = "logo" alt ="monkey walking on Yin type"></a>
       <nav>
         <ul>
-            <li><a href = "<?php echo $prefix ?>pages/About.php" class ="<?php echo $aboutClass ?>">|&emsp;About</a></li>
-            <li><a href = "<?php echo $prefix ?>pages/sandbox.php" class ="<?php echo $sandboxClass ?>">|&emsp;Sandbox</a></li>
-           <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.php" class ="<?php echo $LAClass ?>">Lessons and Activities</a></li>
+            <li><a href = "<?php echo $prefix ?>pages/About.php" class ="<?php echo $aboutClass ?>">|&emsp;<span class ="link">About</span></a></li>
+            <li><a href = "<?php echo $prefix ?>pages/sandbox.php" class ="<?php echo $sandboxClass ?>">|&emsp;<span class ="link">Sandbox</span></a></li>
+           <li><a href = "<?php echo $prefix ?>pages/LessonsAndActivities.php" class ="<?php echo $LAClass ?>"><span class ="link">Lessons and Activities</span></a></li>
         </ul>
       </nav>

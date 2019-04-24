@@ -50,6 +50,10 @@ nav li a {
     text-decoration: none;
 }
 
+.link:hover{
+    color:#5E99D3;
+}
+
 h1, h2, h3, h4, h5{
     font-family: 'EB Garamond', serif;
 }
