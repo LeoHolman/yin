@@ -10,7 +10,7 @@ include "head.php";
     <div id = "main">
         <img id = "yin1" src = "assets/images/yin1.svg">
         <section id = "home-intro">
-            <p>Yin is tool to help beginning learners of
+            <p>Yin is a tool to help beginning learners of
     Chinese understand, recognize, and produce Chinese tone. Tone is a
     foundation of the Chinese language, and critical to effective
     communication. Through four lessons and four activities, you will not only learn what tone is and how it's used, but also how to put it into practice. The first two activities work with distinguishing between tones and the final two ask you to pronounce some Chinese words yourself and will give you visual feedback on how you measure up to a native speaker. Ready to learn?</p>
@@ -22,6 +22,6 @@ include "head.php";
         <section id = "home-about">
         </section>
         <img id = "yin3" src = "assets/images/yin3.svg">
-    </div> 
+    </div>
 
 <?php include "foot.php"; ?>
