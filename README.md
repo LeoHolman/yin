@@ -1,27 +1,15 @@
-# capstone
+# Yin
 
-Create a web-based application for teaching native English speakers who are beginning learners of Mandarin Chinese tones.
+A tool to help beginning learners of Mandarin vizualize lexical tone. Lexical tone is a language feature where the pitch of one's voice changes the meaning of a word. Languages with this feature are often called 'tonal' languages. Individuals who did not learn a tonal language at a young age often struggle with lexical tone. Yin is a tool to help these learns visually compare their pitch curve to that of a native speaker to learn and correct their pronunciation.
 
-## Lit Review
-There is the application review which surveys what applications already exist and the theory review which addresses
-the pedagogy of teaching tone.
-### Application Review
+## Running
 
-### Theory Review
+First, run the development server:
 
-## Requirements
-This outlines the requirements for the application.
+```bash
+npm run dev
+```
 
-### Functional Requirements
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Usability Requirements
-
-### Support Requirements
-
-### Trouble Shooting
-If the app fails to work when put on a server check the pathways in
-
-pages/audioProcessing.php
-prepAudio.sh
-
-to ensure they are being routed correctly. 
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
