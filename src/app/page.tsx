@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import jojo from '@/app/assets/images/jojo_home.png';
+import jojo from '@/assets/images/jojo_home.png';
 import Link from 'next/link';
 import styles from './page.module.scss';
 
