@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { auth } from '@/auth';
 import { useSession } from 'next-auth/react';
 import { SessionProvider } from 'next-auth/react';
 
@@ -20,6 +19,7 @@ export default function NavigationHeader() {
           ) : (
             <Link href='/api/auth/signin'>Sign In</Link>
           )}
+          <Link href='/baseline'>Baseline Recording</Link>
           <Link href='/api/auth/signout'>Sign Out</Link>
         </nav>
       </div>
