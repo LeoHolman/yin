@@ -1,21 +1,54 @@
+'use client';
 import React, { useState, useEffect, useContext } from 'react';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/app/api/auth/[...nextauth]';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function Lessons() {
-  const [allLessons, setAllLessons] = useState([]);
+  const result = useSession();
+  const { data: session } = result;
+  if (!session) {
+    return (
+      <>
+        <p>You must sign in to view lessons</p>
+        <button onClick={() => signIn()}>Sign In</button>
+      </>
+    );
+  }
 
-  useEffect(() => {
-    async function fetchLessons() {
-      const response = await fetch(`/api/lessons`);
-      const data = await response.json();
-      return data;
-    }
+  return (
+    <>
+      <p>{session.user?.name}</p>
+      <p>{session.user?.baseline}</p>
+    </>
+  );
 
-    fetchLessons().then((data) => {
-      console.log(data);
-    });
-    // setAllLessons(result.filter((s) => s.language == activeLang));
-    // },[activeLang])
-  }, []);
+  // const session = await getServerSession(authOptions);
+  // const { data, status } = getServerSession({
+  // required: true,
+  // onUnauthenticated() {
+  // redirect('/');
+  // },
+  // });
+
+  // const [allLessons, setAllLessons] = useState([]);
+
+  // useEffect(() => {
+  //   async function fetchLessons() {
+  //     const response = await fetch(`/api/lessons`);
+  //     const data = await response.json();
+  //     return data;
+  //   }
+
+  //   fetchLessons().then((data) => {
+  //     console.log(data);
+  //   });
+  //   // setAllLessons(result.filter((s) => s.language == activeLang));
+  //   // },[activeLang])
+  // }, []);
+
+  const allLessons = [1, 2, 3, 4, 5];
 
   return (
     <ul>
@@ -28,7 +61,8 @@ export default function Lessons() {
           //     link={`/lessons/${lesson.name}/`}
           //     key={`${lesson._id}`}
           //   />
-          <p key={lesson.id}>{lesson.name}</p>
+          // <p key={lesson.id}>{lesson.name}</p>
+          <p>{lesson}</p>
         );
       })}
     </ul>

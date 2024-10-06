@@ -37,3 +37,15 @@ export interface QuizScoreModel extends Model {
   score: number;
   maxScore: number;
 }
+
+export interface UserModel extends Model {
+  id: string;
+  username: string;
+  email: string;
+  emailVerified: boolean;
+  isTeacher: boolean;
+  baseline: number;
+  ActiveLanguageId: number;
+  salt: string;
+  password: string;
+}
