@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.scss';
 import styles from './layout.module.scss';
+import NavigationHeader from '@/components/NavigationHeader';
+import SessionWrapper from '@/components/SessionWrapper';
 // import localFont from "next/font/local";
 
 // const geistSans = localFont({
@@ -26,7 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={styles.body}>{children}</body>
+      <body className={styles.body}>
+        <SessionWrapper>
+          <NavigationHeader />
+          {children}
+        </SessionWrapper>
+      </body>
     </html>
   );
 }

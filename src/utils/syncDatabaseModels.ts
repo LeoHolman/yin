@@ -6,6 +6,7 @@ import { Language } from '@/models/language';
 import { Word } from '@/models/word';
 import { Recording } from '@/models/recording';
 import { QuizScore } from '@/models/quizScore';
+import { User } from '@/models/user';
 
 export async function syncDatabaseModels(): Promise<boolean> {
   try {
@@ -18,6 +19,7 @@ export async function syncDatabaseModels(): Promise<boolean> {
     Word.sync({ alter: true });
     Recording.sync({ alter: true });
     QuizScore.sync({ alter: true });
+    User.sync({ alter: true });
     return true;
   } catch (error) {
     console.error('Unable to connect to database: ', error);

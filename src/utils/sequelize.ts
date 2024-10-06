@@ -12,6 +12,7 @@ const sequelize = new Sequelize({
   database: DB_NAME,
   dialect: 'postgres',
   dialectModule: pg,
+  logging: false,
 });
 
 export default sequelize;

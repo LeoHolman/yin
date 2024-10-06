@@ -38,7 +38,7 @@ export default function Home() {
         </Link>
         <Link
           className={styles.navLink}
-          href='/teacherInterface/'
+          href='/teachers/'
         >
           TEACHERS
         </Link>
