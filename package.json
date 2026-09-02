@@ -1,39 +1,32 @@
 {
-  "name": "yin",
-  "version": "0.1.0",
-  "private": true,
+  "name": "yinreact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:start": "powershell -ExecutionPolicy Bypass -File ./scripts/start-dev.ps1",
+    "dev:start:container": "powershell -ExecutionPolicy Bypass -File ./scripts/start-dev.ps1 -UseContainer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoHolman/YinReact.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoHolman/YinReact/issues"
+  },
+  "homepage": "https://github.com/LeoHolman/YinReact#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0"
   },
   "dependencies": {
-    "@auth/sequelize-adapter": "^2.5.3",
-    "bcryptjs": "^2.4.3",
-    "d3": "^7.9.0",
-    "extendable-media-recorder": "^9.2.13",
-    "extendable-media-recorder-wav-encoder": "^7.0.117",
-    "next": "14.2.14",
-    "next-auth": "^4.24",
-    "pg": "^8.13.0",
-    "pg-hstore": "^2.3.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-hot-toast": "^2.4.1",
-    "sass": "^1.79.4",
-    "sequelize": "^6.37.3"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/d3": "^7.4.3",
-    "@types/node": "^20",
-    "@types/pg": "^8.11.10",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@types/sequelize": "^4.28.20",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.14",
-    "typescript": "^5"
+    "eslint-config-prettier": "^6.15.0"
   }
 }

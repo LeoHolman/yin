@@ -1,0 +1,41 @@
+{
+  "name": "yin-next",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon server.js",
+    "build": "next build",
+    "start": "node server.js",
+    "docker:build": "docker build -t yin-next .",
+    "docker:run": "docker run -d --name yin-next -p 3000:3000 -e MONGO_URL=mongodb://host.docker.internal:27017/yin yin-next"
+  },
+  "dependencies": {
+    "argon2": "^0.45.1",
+    "body-parser": "^2.3.0",
+    "bootstrap": "^5.3.8",
+    "connect-mongo": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "d3": "^7.9.0",
+    "express": "^5.2.1",
+    "express-fileupload": "^1.5.2",
+    "express-session": "^1.19.0",
+    "extendable-media-recorder": "^6.6.10",
+    "extendable-media-recorder-wav-encoder": "^7.0.140",
+    "jquery": "^3.7.1",
+    "joi": "^18.2.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.1",
+    "next": "^15.4.2",
+    "popper.js": "^1.16.1",
+    "prop-types": "^15.8.1",
+    "randombytes": "^2.1.0",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^5.3.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

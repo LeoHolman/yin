@@ -1,0 +1,138 @@
+/** COLORS
+
+Dark red - #9A2D04
+Orange - //#FF8F17//  --->#db7a13
+Background gray - #EDEDED
+Blue - #5E99D3
+Dark blue - #245484 (sufficient contrast with white text)
+
+**/
+
+.classroom #background{
+    background-image: url(../assets/images/background.png);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index:-1000;
+    opacity:.3;
+}
+
+.homeHeader {
+    color: orange;
+}
+
+
+
+.classroom h2{
+    text-align:left;
+    font-weight:500;
+    font-size:5em;
+    line-height: 1.5;
+    width: 33.333vw;
+}
+
+@media only screen and (min-width: 600px) {
+    .classroom h2 {
+        font-size: 3em; /* Adjust font size for larger screens */
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .classroom h2 {
+        font-size: 4em; /* Adjust font size for even larger screens */
+    }
+}
+
+
+.jojo-image {
+    position: absolute;
+    top: auto; 
+    right: 0;
+    transform: rotate(-90deg);
+    width: 33.333vw;
+    height: 100hv;
+    
+  }
+
+.classroom #summary{
+    text-align: left;
+    
+    max-width: 33.337vw;
+}
+
+.classroom .intro{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-column-gap:1vw;
+    max-width:100px;
+
+}
+
+button{
+    /*margin:1em auto;
+    display:block;
+    padding:0 2em;
+    */
+    background-color: #db7a13;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #222222;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    padding: 13px 23px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+    user-select: none;
+    -webkit-user-select: none;
+    width: auto;
+}
+button:disabled{
+    background-color: grey;
+    cursor: default;
+    color: #222222;
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-item {
+    background-color: grey;
+    border: 1;
+    clear: both;
+    color: var(--bs-dropdown-link-color);
+    display: block;
+    white-space: nowrap;
+    padding-top:10%;
+    padding-bottom:10%;
+    width: 100%;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+
+/*a button{
+    text-decoration: none;
+}
+*/
+
+@media only screen and (max-width:550px){
+    .classroom .intro{
+        grid-template-columns:1fr;
+        grid-row-gap:10vw;
+    }
+}

@@ -1,0 +1,69 @@
+/** COLORS
+
+Dark red - #9A2D04
+Orange - //#FF8F17//  --->#db7a13
+Background gray - #EDEDED
+Blue - #5E99D3
+Dark blue - #245484 (sufficient contrast with white text)
+
+**/
+
+
+.lessonCard{
+    background-color:white;
+    margin:1em;
+    box-shadow:lightgray 2px 2px 3px;
+    border-radius: 1rem;
+}
+
+.lessonCard:hover{
+    box-shadow:#db7a13 2px 2px 3px;
+}
+
+
+.lessonCard .meta, .lessonCard .sub{
+    padding:1em;
+}
+
+ul.activityList{
+    text-align: center;
+    list-style:none;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    padding:0;
+}
+
+ul.activityList a{
+    text-decoration: none;
+    font-size:3em;
+    font-weight:600;
+    color:black;
+}
+
+ul.activityList a:hover{
+    text-shadow: #db7a13 3px 3px 0px;
+}
+
+.lessonCard .sub{
+    background-color:#FAFAFA;
+    color:black;
+    border-radius: 0rem 0rem 1rem 1rem;
+}
+
+.lessonCard.sub h3{
+    text-align:center;
+}
+
+.hide{
+    display:none;
+}
+
+.lessonCard .quiz, #no-underline{
+    text-decoration: none !important;
+    color:black;
+}
+
+.feedbackContainer #error{
+    text-align:right;
+    color:darkred;
+}
