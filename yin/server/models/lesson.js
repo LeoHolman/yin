@@ -1,17 +1,42 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../db/sequelize');
 
-const lessonSchema = new mongoose.Schema({
-    name: String,
-    words: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Word'
-    }],
-    description: String,
-    language: String,
-    is_quiz: Boolean,
-    quizSections:[{type:Number}]
-});
-
-const Lesson = mongoose.model('Lesson', lessonSchema);
+const Lesson = sequelize.define(
+    'Lesson',
+    {
+        _id: {
+            type: DataTypes.STRING,
+            primaryKey: true,
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        language: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        is_quiz: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
+        quizSections: {
+            type: DataTypes.JSONB,
+            allowNull: false,
+            defaultValue: [],
+        },
+    },
+    {
+        tableName: 'lessons',
+        freezeTableName: true,
+        timestamps: false,
+    }
+);
 
 module.exports = Lesson;

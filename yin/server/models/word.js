@@ -1,16 +1,39 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../db/sequelize');
 
-const wordSchema = new mongoose.Schema({
-    audioFile: String, 
-    pinyin: String, 
-    correctTone: [{type: Number}], 
-    character: String,
-    native_recording: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'NativeRecording'
+const Word = sequelize.define(
+    'Word',
+    {
+        _id: {
+            type: DataTypes.STRING,
+            primaryKey: true,
+        },
+        audioFile: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        pinyin: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        correctTone: {
+            type: DataTypes.JSONB,
+            allowNull: true,
+        },
+        character: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        native_recording_id: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+    },
+    {
+        tableName: 'words',
+        freezeTableName: true,
+        timestamps: false,
     }
-});
-
-const Word = mongoose.model('Word', wordSchema);
+);
 
 module.exports = Word;

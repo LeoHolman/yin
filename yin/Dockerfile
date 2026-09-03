@@ -14,7 +14,7 @@ RUN npm run build
 
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV MONGO_URL=mongodb://host.docker.internal:27017/yin
+ENV DATABASE_URL=postgresql://yin:yin@yin-postgres:5432/yin
 ENV PYTHON_EXECUTABLE=python3
 
 EXPOSE 3000

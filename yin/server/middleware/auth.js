@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const { User } = require('../models');
 
 const auth = async (req, res, next) => {
     try {
@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
             return;
         }
 
-        const user = await User.findById(userID);
+        const user = await User.findByPk(userID);
         if (!user) {
             console.log('Session present, but no such user exists');
             res.status(404).send('No such user found');
@@ -31,6 +31,7 @@ const getSafeUser = async (req, res, next) => {
     }
 
     req.user = {
+        _id: req.user._id,
         username: req.user.username || null,
         activeLang: req.user.activeLang || null,
         is_teacher: Boolean(req.user.is_teacher),

@@ -1,9 +1,23 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../db/sequelize');
 
-const nativeRecordingSchema = new mongoose.Schema({
-    data: String
-});
-
-const NativeRecording = mongoose.model('NativeRecording', nativeRecordingSchema);
+const NativeRecording = sequelize.define(
+    'NativeRecording',
+    {
+        _id: {
+            type: DataTypes.STRING,
+            primaryKey: true,
+        },
+        data: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+    },
+    {
+        tableName: 'nativerecordings',
+        freezeTableName: true,
+        timestamps: false,
+    }
+);
 
 module.exports = NativeRecording;

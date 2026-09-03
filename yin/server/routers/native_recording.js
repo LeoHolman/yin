@@ -1,5 +1,6 @@
 const express = require('express');
-const NativeRecording = require('../models/native_recording');
+const randomBytes = require('randombytes');
+const { NativeRecording, Word } = require('../models');
 
 const router = new express.Router();
 
@@ -7,12 +8,14 @@ router.post('/api/nativeRecording/add/', async (req,res,next) => {
     const data = new String(req.files.recording.data);
     const incomingword = req.body.word;
     try{
-        const word = await Word.findOne({'_id': incomingword});
+        const word = await Word.findByPk(incomingword);
         try{
-            let newNativeRecording = new NativeRecording({data});
-            newNativeRecording.save();
-            word.native_recording = newNativeRecording.id;
-            word.save();
+            let newNativeRecording = await NativeRecording.create({
+                _id: randomBytes(12).toString('hex'),
+                data,
+            });
+            word.native_recording_id = newNativeRecording._id;
+            await word.save();
             res.send(data);
 
         } catch (ex) {

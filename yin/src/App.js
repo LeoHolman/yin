@@ -49,7 +49,7 @@ function App() {
     const session = await fetch("/api/user/me/", {
       credentials: "include",
     });
-    if (session.status === 401 || session.status === 404) {
+    if (session.status === 204 || session.status === 401 || session.status === 404) {
       setIsLoggedIn(false);
       return false;
     }

@@ -13,8 +13,8 @@ npm run dev:start
 This script will:
 
 - Kill stale processes using ports `3000` and `8000` before startup
-- Start a MongoDB Docker container (`yin-mongo`) on port `27017`
-- Restore the database dump from `database/yin-1-2-3-4-5/yin` into database `yin`
+- Start a PostgreSQL Docker container (`yin-postgres`) on port `5432`
+- Seed the database from `yin/database/postgres/seed.sql`
 - Build and run backend in Docker (`yin-backend`) on port `8000`
 - Install dependencies in `yin` when `node_modules` is missing
 - Open one terminal and run the frontend (`yin`)
@@ -50,5 +50,5 @@ Manual backend build/run (optional):
 ```powershell
 cd yin-backend
 docker build -t yin-backend .
-docker run --rm -p 8000:8000 -e MONGO_URL=mongodb://host.docker.internal:27017/yin yin-backend
+docker run --rm -p 8000:8000 -e DATABASE_URL=postgresql://yin:yin@host.docker.internal:5432/yin yin-backend
 ```

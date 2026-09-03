@@ -54,15 +54,25 @@ function Start-NpmScriptInNewWindow {
 		[string]$ProjectPath,
 		[string]$ScriptName,
 		[string]$Title,
-		[string]$PythonExecutable = $null
+		[string]$PythonExecutable = $null,
+		[string]$DatabaseUrl = $null
 	)
 
+	$environmentAssignments = @()
 	if ($PythonExecutable) {
-		$command = "Set-Location -Path '$ProjectPath'; `$env:PYTHON_EXECUTABLE='$PythonExecutable'; npm run $ScriptName"
+		$environmentAssignments += "`$env:PYTHON_EXECUTABLE='$PythonExecutable'"
 	}
-	else {
-		$command = "Set-Location -Path '$ProjectPath'; npm run $ScriptName"
+	if ($DatabaseUrl) {
+		$environmentAssignments += "`$env:DATABASE_URL='$DatabaseUrl'"
 	}
+
+	$prefix = if ($environmentAssignments.Count -gt 0) {
+		($environmentAssignments -join '; ') + '; '
+	} else {
+		''
+	}
+
+	$command = "Set-Location -Path '$ProjectPath'; ${prefix}npm run $ScriptName"
 
 	Start-Process -FilePath 'powershell' -ArgumentList @('-NoExit', '-Command', $command) -WindowStyle Normal | Out-Null
 	Write-Host "Started $Title in a new terminal window." -ForegroundColor Green
@@ -118,10 +128,21 @@ function Remove-ContainerIfExists {
 	}
 }
 
+function Ensure-DockerNetwork {
+	param([string]$NetworkName)
+
+	$exists = docker network ls --filter "name=^$NetworkName$" --format '{{.Name}}'
+	if (-not $exists) {
+		Write-Host "Creating docker network '$NetworkName'..." -ForegroundColor Cyan
+		Invoke-ExternalCommand -File 'docker' -Arguments @('network', 'create', $NetworkName)
+	}
+}
+
 function Start-UnifiedAppContainer {
 	param(
 		[string]$ProjectPath,
-		[string]$MongoUrl,
+		[string]$DatabaseUrl,
+		[string]$NetworkName,
 		[string]$ContainerName,
 		[string]$ImageName
 	)
@@ -142,22 +163,43 @@ function Start-UnifiedAppContainer {
 	Invoke-ExternalCommand -File 'docker' -Arguments @(
 		'run', '-d',
 		'--name', $ContainerName,
+		'--network', $NetworkName,
 		'-p', '3000:3000',
-		'-e', "MONGO_URL=$MongoUrl",
+		'-e', "DATABASE_URL=$DatabaseUrl",
 		'-v', "${uploadsPathForDocker}:/app/server/uploads",
 		$ImageName
 	)
 }
 
-function Wait-ForMongo {
+function Start-PostgresContainer {
+	param(
+		[string]$ContainerName,
+		[string]$NetworkName,
+		[switch]$SkipRestore
+	)
+
+	if (-not $SkipRestore) {
+		Remove-ContainerIfExists -ContainerName $ContainerName
+	}
+
+	Ensure-ContainerRunning -ContainerName $ContainerName -ImageName 'postgres:16' -RunArguments @(
+		'--network', $NetworkName,
+		'-p', '5432:5432',
+		'-e', 'POSTGRES_USER=yin',
+		'-e', 'POSTGRES_PASSWORD=yin',
+		'-e', 'POSTGRES_DB=yin'
+	)
+}
+
+function Wait-ForPostgres {
 	param([string]$ContainerName)
 
-	Write-Host 'Waiting for MongoDB readiness...' -ForegroundColor Cyan
+	Write-Host 'Waiting for PostgreSQL readiness...' -ForegroundColor Cyan
 	for ($i = 0; $i -lt 30; $i++) {
 		try {
-			$ping = docker exec $ContainerName mongosh --quiet --eval "db.runCommand({ ping: 1 }).ok"
-			if ($ping -match '1') {
-				Write-Host 'MongoDB is ready.' -ForegroundColor Green
+			$ping = docker exec $ContainerName pg_isready -U yin -d yin
+			if ($ping -match 'accepting connections') {
+				Write-Host 'PostgreSQL is ready.' -ForegroundColor Green
 				return
 			}
 		}
@@ -167,34 +209,7 @@ function Wait-ForMongo {
 		Start-Sleep -Seconds 2
 	}
 
-	throw 'MongoDB did not become ready in time.'
-}
-
-function Restore-MongoDump {
-	param(
-		[string]$DumpRoot,
-		[string]$DbName
-	)
-
-	$dumpRootUnix = $DumpRoot -replace '\\', '/'
-	if (-not (Test-Path (Join-Path $DumpRoot 'yin'))) {
-		throw "Expected dump folder not found: $(Join-Path $DumpRoot 'yin')"
-	}
-
-	Write-Host "Restoring dump from $DumpRoot into database '$DbName'..." -ForegroundColor Cyan
-	Invoke-ExternalCommand -File 'docker' -Arguments @(
-		'run', '--rm',
-		'-v', "${dumpRootUnix}:/dump:ro",
-		'mongo:7',
-		'mongorestore',
-		'--host', 'host.docker.internal',
-		'--port', '27017',
-		'--drop',
-		'--nsInclude', "$DbName.*",
-		'/dump'
-	)
-
-	Write-Host 'MongoDB restore complete.' -ForegroundColor Green
+	throw 'PostgreSQL did not become ready in time.'
 }
 
 Assert-Command -Name 'docker'
@@ -204,14 +219,12 @@ $yinRoot = Split-Path -Parent $PSScriptRoot
 $projectsRoot = Split-Path -Parent $yinRoot
 
 $unifiedRoot = Join-Path $yinRoot 'yin'
-$dumpRoot = Join-Path $yinRoot 'database\yin-1-2-3-4-5'
+$databaseUrlLocal = 'postgresql://yin:yin@localhost:5432/yin'
+$databaseUrlContainer = 'postgresql://yin:yin@yin-postgres:5432/yin'
+$networkName = 'yin-net'
 
 if (-not (Test-Path $unifiedRoot)) {
 	throw "Unified Next.js directory was not found at: $unifiedRoot"
-}
-
-if (-not (Test-Path $dumpRoot)) {
-	throw "Database dump directory was not found at: $dumpRoot"
 }
 
 if (-not $SkipPortGuard) {
@@ -229,23 +242,17 @@ else {
 
 Write-Host 'Checking Docker daemon...' -ForegroundColor Cyan
 Invoke-ExternalCommand -File 'docker' -Arguments @('info')
-Ensure-ContainerRunning -ContainerName 'yin-mongo' -ImageName 'mongo:7' -RunArguments @('-p', '27017:27017')
+Ensure-DockerNetwork -NetworkName $networkName
+Start-PostgresContainer -ContainerName 'yin-postgres' -NetworkName $networkName -SkipRestore:$SkipRestore
 
-Wait-ForMongo -ContainerName 'yin-mongo'
-
-if (-not $SkipRestore) {
-	Restore-MongoDump -DumpRoot $dumpRoot -DbName 'yin'
-}
-else {
-	Write-Host 'Skipping MongoDB restore because -SkipRestore was passed.' -ForegroundColor Yellow
-}
+	Wait-ForPostgres -ContainerName 'yin-postgres'
 
 if (-not $SkipInstall) {
 	Ensure-NodeModules -ProjectPath $unifiedRoot
 }
 
 if ($UseContainer) {
-	Start-UnifiedAppContainer -ProjectPath $unifiedRoot -MongoUrl 'mongodb://host.docker.internal:27017/yin' -ContainerName 'yin' -ImageName 'yin'
+	Start-UnifiedAppContainer -ProjectPath $unifiedRoot -DatabaseUrl $databaseUrlContainer -NetworkName $networkName -ContainerName 'yin' -ImageName 'yin'
 }
 else {
 	$pythonExecutable = Get-PythonExecutablePreference
@@ -256,13 +263,13 @@ else {
 
 	Remove-ContainerIfExists -ContainerName 'yin'
 	Remove-ContainerIfExists -ContainerName 'yin-next'
-	Start-NpmScriptInNewWindow -ProjectPath $unifiedRoot -ScriptName 'dev' -Title 'yin unified next app' -PythonExecutable $pythonExecutable
+		Start-NpmScriptInNewWindow -ProjectPath $unifiedRoot -ScriptName 'dev' -Title 'yin unified next app' -PythonExecutable $pythonExecutable -DatabaseUrl $databaseUrlLocal
 }
 
 Write-Host ''
 Write-Host 'Development environment is starting.' -ForegroundColor Green
 Write-Host 'Unified app (frontend + API): http://localhost:3000' -ForegroundColor Green
-Write-Host 'MongoDB:   mongodb://localhost:27017/yin' -ForegroundColor Green
+Write-Host 'PostgreSQL: postgresql://yin:yin@localhost:5432/yin' -ForegroundColor Green
 if ($UseContainer) {
 	Write-Host 'Mode: Docker container' -ForegroundColor Green
 }
