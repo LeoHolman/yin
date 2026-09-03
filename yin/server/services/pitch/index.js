@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const { spawn } = require('child_process');
+const WavDecoder = require('wav-decoder');
+const Pitchfinder = require('pitchfinder');
 
 const PYTHON_SCRIPT_PATH = path.join(__dirname, 'extract_pitch.py');
 const WAV_HEADER = 'time\tfrequency';
@@ -39,6 +41,42 @@ function normalizePitchCsv(rawCsv) {
     });
 
     return [WAV_HEADER, ...normalizedRows].join('\n');
+}
+
+function formatPitchRows(rows) {
+    return [WAV_HEADER, ...rows].join('\n');
+}
+
+function extractPitchRowsFromAudioData(audioData) {
+    const channelData = audioData.channelData && audioData.channelData[0];
+    if (!channelData || channelData.length === 0) {
+        return [];
+    }
+
+    const sampleRate = Number(audioData.sampleRate) || 44100;
+    const detector = Pitchfinder.YIN({ sampleRate });
+    const frameSize = Math.max(1024, Math.round(sampleRate * 0.04));
+    const hopSize = Math.max(1, Math.round(sampleRate * 0.01));
+    const rows = [];
+    const minPitch = 50;
+    const maxPitch = 1000;
+
+    for (let start = 0; start + frameSize <= channelData.length; start += hopSize) {
+        const frame = channelData.subarray(start, start + frameSize);
+        const pitch = detector(frame);
+        if (!Number.isFinite(pitch) || pitch < minPitch || pitch > maxPitch) {
+            continue;
+        }
+
+        rows.push(`${start / sampleRate}\t${pitch}`);
+    }
+
+    return rows;
+}
+
+function extractPitchWithNodeFallback(buffer) {
+    const audioData = WavDecoder.decode.sync(buffer);
+    return formatPitchRows(extractPitchRowsFromAudioData(audioData));
 }
 
 function runPythonCommand(command, args) {
@@ -155,6 +193,9 @@ async function extractPitchFromWavFile(wavPath) {
         await runPitchExtractor(wavPath, csvPath);
         const rawCsv = await fs.promises.readFile(csvPath, 'utf8');
         return normalizePitchCsv(rawCsv);
+    } catch (error) {
+        const buffer = await fs.promises.readFile(wavPath);
+        return extractPitchWithNodeFallback(buffer);
     } finally {
         await fs.promises.rm(tempDir, { recursive: true, force: true });
     }
@@ -166,7 +207,11 @@ async function extractPitchFromBuffer(buffer) {
 
     try {
         await fs.promises.writeFile(wavPath, buffer);
-        return await extractPitchFromWavFile(wavPath);
+        try {
+            return await extractPitchFromWavFile(wavPath);
+        } catch (error) {
+            return extractPitchWithNodeFallback(buffer);
+        }
     } finally {
         await fs.promises.rm(tempDir, { recursive: true, force: true });
     }
@@ -176,5 +221,6 @@ module.exports = {
     VALID_AUDIO_TYPES,
     extractPitchFromBuffer,
     extractPitchFromWavFile,
+    extractPitchWithNodeFallback,
     normalizePitchCsv,
 };

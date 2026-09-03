@@ -175,6 +175,7 @@ function Start-PostgresContainer {
 	param(
 		[string]$ContainerName,
 		[string]$NetworkName,
+		[int]$HostPort,
 		[switch]$SkipRestore
 	)
 
@@ -184,7 +185,7 @@ function Start-PostgresContainer {
 
 	Ensure-ContainerRunning -ContainerName $ContainerName -ImageName 'postgres:16' -RunArguments @(
 		'--network', $NetworkName,
-		'-p', '5432:5432',
+		'-p', "${HostPort}:5432",
 		'-e', 'POSTGRES_USER=yin',
 		'-e', 'POSTGRES_PASSWORD=yin',
 		'-e', 'POSTGRES_DB=yin'
@@ -219,7 +220,8 @@ $yinRoot = Split-Path -Parent $PSScriptRoot
 $projectsRoot = Split-Path -Parent $yinRoot
 
 $unifiedRoot = Join-Path $yinRoot 'yin'
-$databaseUrlLocal = 'postgresql://yin:yin@localhost:5432/yin'
+$postgresHostPort = 5433
+$databaseUrlLocal = "postgresql://yin:yin@localhost:${postgresHostPort}/yin"
 $databaseUrlContainer = 'postgresql://yin:yin@yin-postgres:5432/yin'
 $networkName = 'yin-net'
 
@@ -243,7 +245,7 @@ else {
 Write-Host 'Checking Docker daemon...' -ForegroundColor Cyan
 Invoke-ExternalCommand -File 'docker' -Arguments @('info')
 Ensure-DockerNetwork -NetworkName $networkName
-Start-PostgresContainer -ContainerName 'yin-postgres' -NetworkName $networkName -SkipRestore:$SkipRestore
+Start-PostgresContainer -ContainerName 'yin-postgres' -NetworkName $networkName -HostPort $postgresHostPort -SkipRestore:$SkipRestore
 
 	Wait-ForPostgres -ContainerName 'yin-postgres'
 
@@ -269,7 +271,7 @@ else {
 Write-Host ''
 Write-Host 'Development environment is starting.' -ForegroundColor Green
 Write-Host 'Unified app (frontend + API): http://localhost:3000' -ForegroundColor Green
-Write-Host 'PostgreSQL: postgresql://yin:yin@localhost:5432/yin' -ForegroundColor Green
+Write-Host "PostgreSQL: $databaseUrlLocal" -ForegroundColor Green
 if ($UseContainer) {
 	Write-Host 'Mode: Docker container' -ForegroundColor Green
 }

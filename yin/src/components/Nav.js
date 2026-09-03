@@ -36,7 +36,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
               <Dropdown>
                 <Dropdown.Toggle
                   disabled={isLessonsSubpage}
-                  variant="success"
+                  variant="secondary"
                   id="dropdown-basic"
                 >
                   {activeLang}

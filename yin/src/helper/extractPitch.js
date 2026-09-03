@@ -13,7 +13,8 @@ export default async function extractPitchFromAudioBlob(audioBlob) {
     });
 
     if (!response.ok) {
-      throw new Error(`Pitch extraction request failed with status ${response.status}`);
+      console.warn(`Pitch extraction request failed with status ${response.status}`);
+      return "";
     }
 
     return await response.text();

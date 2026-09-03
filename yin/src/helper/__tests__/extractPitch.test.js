@@ -21,4 +21,14 @@ describe("extractPitchFromAudioBlob", () => {
 
     await expect(extractPitchFromAudioBlob(new Blob(["audio"], { type: "audio/wav" }))).resolves.toContain("time");
   });
+
+  it("returns an empty string when the pitch service returns an error response", async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: false,
+      status: 500,
+      text: async () => "",
+    });
+
+    await expect(extractPitchFromAudioBlob(new Blob(["audio"], { type: "audio/wav" }))).resolves.toBe("");
+  });
 });

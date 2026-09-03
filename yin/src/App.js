@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { Toast, ToastContainer } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toast";
 import "./helper/navigation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import BaselineExplanation from "./components/BaselineExplanation";
@@ -143,29 +143,25 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  useEffect(() => {
+    if (!showSignupToast) {
+      return;
+    }
+
+    toast("Sign up complete. You are now logged in.", {
+      backgroundColor: "#245484",
+      color: "#ffffff",
+    });
+    setShowSignupToast(false);
+  }, [showSignupToast]);
+
   return (
     <LanguageContext.Provider value={contextValue}>
       <UserContext.Provider value={activeLang}>
         <Router>
           <ToastContainer
-            position="top-end"
-            className="p-3"
-            style={{ zIndex: 1080 }}
+            position="top-right"
           >
-            <Toast
-              bg="success"
-              onClose={() => setShowSignupToast(false)}
-              show={showSignupToast}
-              autohide
-              delay={3500}
-            >
-              <Toast.Header closeButton>
-                <strong className="me-auto">Welcome</strong>
-              </Toast.Header>
-              <Toast.Body className="text-white">
-                Sign up complete. You are now logged in.
-              </Toast.Body>
-            </Toast>
           </ToastContainer>
           <Header
             checkLogin={checkLogin}

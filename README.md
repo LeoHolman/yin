@@ -1,54 +1,59 @@
-# YinReact
+# Yin
 
-A project to help beginning learners of Mandarin Chinese visualize lexical tone by comparing their pitch curve with that of a native speaker. 
+A project to help beginning learners of Mandarin Chinese visualize lexical tone by comparing their pitch curve with that of a native speaker.
 
-## One command startup for new developers
+The app is now a unified Next.js project in [yin/](yin) backed by PostgreSQL. The root `package.json` only orchestrates development startup.
 
-From the `YinReact` root, run:
+## Quick Start
+
+From the repository root, run:
 
 ```powershell
 npm run dev:start
 ```
 
-This script will:
+This will:
 
-- Kill stale processes using ports `3000` and `8000` before startup
-- Start a PostgreSQL Docker container (`yin-postgres`) on port `5432`
-- Seed the database from `yin/database/postgres/seed.sql`
-- Build and run backend in Docker (`yin-backend`) on port `8000`
-- Install dependencies in `yin` when `node_modules` is missing
-- Open one terminal and run the frontend (`yin`)
-- Run pitch extraction inside `yin-backend` (no separate pitch extraction container)
+- Kill stale processes using ports `3000` and `8000`
+- Start a PostgreSQL Docker container named `yin-postgres` and expose it on host port `5433`
+- Seed the database from [yin/database/postgres/seed.sql](yin/database/postgres/seed.sql)
+- Install app dependencies in [yin/](yin) if `node_modules` is missing
+- Start the unified app locally on [http://localhost:3000](http://localhost:3000)
 
-Optional flags:
+If you want the app itself to run in Docker, use:
+
+```powershell
+npm run dev:start:container
+```
+
+That path builds the `yin` container, joins it to the `yin-net` Docker network, and connects it to the same PostgreSQL instance.
+
+## Startup Options
+
+You can also call the PowerShell orchestrator directly:
 
 ```powershell
 ./scripts/start-dev.ps1 -SkipRestore
 ./scripts/start-dev.ps1 -SkipInstall
 ./scripts/start-dev.ps1 -SkipPortGuard
+./scripts/start-dev.ps1 -UseContainer
 ```
 
-You can also run the guard directly:
+The port guard can be run on its own if needed:
 
 ```powershell
 ./scripts/guard-dev-ports.ps1
 ```
 
-## Backend Container
+## Development Notes
 
-The backend container includes all pitch extraction dependencies (`python3`, `praat`, `ffmpeg`, `libsndfile1`) so local Python package setup is no longer required.
+- The application data layer uses PostgreSQL through Sequelize.
+- The current app shell includes the language selector, signup toast, and other UI pieces inside the unified Next.js app.
+- Local mode expects a Python runtime on `PATH` for pitch extraction; container mode is the fallback if Python is not installed locally.
+- The main app listens on port `3000` and local development PostgreSQL listens on `5433`; the container still uses `5432` on the Docker network.
 
-Pitch extraction now runs through the native Praat CLI script pipeline in the backend container using the legacy script text verbatim:
+## Project Layout
 
-- `Read from file`
-- `To Manipulation: 0.01, 75, 600`
-- `Extract pitch tier`
-- `Save as PitchTier spreadsheet file`
-
-Manual backend build/run (optional):
-
-```powershell
-cd yin-backend
-docker build -t yin-backend .
-docker run --rm -p 8000:8000 -e DATABASE_URL=postgresql://yin:yin@host.docker.internal:5432/yin yin-backend
-```
+- [yin/](yin) contains the running Next.js app.
+- [scripts/start-dev.ps1](scripts/start-dev.ps1) coordinates Postgres, dependency install, and app startup.
+- [yin/database/postgres/seed.sql](yin/database/postgres/seed.sql) contains the SQL seed generated from the migrated data.
