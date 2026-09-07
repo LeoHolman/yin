@@ -73,8 +73,23 @@ function Start-NpmScriptInNewWindow {
 	}
 
 	$command = "Set-Location -Path '$ProjectPath'; ${prefix}npm run $ScriptName"
+	$powerShellExecutable = if (Get-Command pwsh -ErrorAction SilentlyContinue) {
+		'pwsh'
+	}
+	elseif (Get-Command powershell -ErrorAction SilentlyContinue) {
+		'powershell'
+	}
+	else {
+		throw "Neither 'pwsh' nor 'powershell' was found on PATH."
+	}
 
-	Start-Process -FilePath 'powershell' -ArgumentList @('-NoExit', '-Command', $command) -WindowStyle Normal | Out-Null
+	$startProcessArguments = @('-NoExit', '-Command', $command)
+	if ($IsWindows) {
+		Start-Process -FilePath $powerShellExecutable -ArgumentList $startProcessArguments -WindowStyle Normal | Out-Null
+	}
+	else {
+		Start-Process -FilePath $powerShellExecutable -ArgumentList $startProcessArguments | Out-Null
+	}
 	Write-Host "Started $Title in a new terminal window." -ForegroundColor Green
 }
 
@@ -219,7 +234,7 @@ Assert-Command -Name 'npm'
 $yinRoot = Split-Path -Parent $PSScriptRoot
 $projectsRoot = Split-Path -Parent $yinRoot
 
-$unifiedRoot = Join-Path $yinRoot 'yin'
+$unifiedRoot = Join-Path $yinRoot 'app'
 $postgresHostPort = 5433
 $databaseUrlLocal = "postgresql://yin:yin@localhost:${postgresHostPort}/yin"
 $databaseUrlContainer = 'postgresql://yin:yin@yin-postgres:5432/yin'

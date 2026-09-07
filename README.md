@@ -2,7 +2,7 @@
 
 A project to help beginning learners of Mandarin Chinese visualize lexical tone by comparing their pitch curve with that of a native speaker.
 
-The app is now a unified Next.js project in [yin/](yin) backed by PostgreSQL. The root `package.json` only orchestrates development startup.
+The app is now a unified Next.js project in [app/](app) backed by PostgreSQL. The root `package.json` only orchestrates development startup.
 
 ## Quick Start
 
@@ -16,8 +16,8 @@ This will:
 
 - Kill stale processes using ports `3000` and `8000`
 - Start a PostgreSQL Docker container named `yin-postgres` and expose it on host port `5433`
-- Seed the database from [yin/database/postgres/seed.sql](yin/database/postgres/seed.sql)
-- Install app dependencies in [yin/](yin) if `node_modules` is missing
+- Seed the database from [app/database/postgres/seed.sql](app/database/postgres/seed.sql)
+- Install app dependencies in [app/](app) if `node_modules` is missing
 - Start the unified app locally on [http://localhost:3000](http://localhost:3000)
 
 If you want the app itself to run in Docker, use:
@@ -39,14 +39,15 @@ Install these before running the app:
 - Node.js LTS (18+ recommended)
 - Python 3
 - Docker Desktop for Mac
-- PowerShell 7 (`pwsh`)
+- PowerShell 7 (`pwsh`), installed from Homebrew as the `powershell` formula
 
 If you use Homebrew, the quickest setup is:
 
 ```bash
 brew update
 brew install node python
-brew install --cask docker powershell
+brew install --cask docker
+brew install powershell
 ```
 
 Then start Docker Desktop and confirm it is running:
@@ -78,7 +79,7 @@ This script will:
 - clear stale listeners on ports `3000` and `8000`
 - create/start the PostgreSQL container named `yin-postgres`
 - expose PostgreSQL on host port `5433`
-- install app dependencies in the unified app under `yin/` if needed
+- install app dependencies in the unified app under `app/` if needed
 - launch the app at `http://localhost:3000`
 
 After startup, open:
@@ -123,13 +124,13 @@ pwsh -ExecutionPolicy Bypass -File ./scripts/guard-dev-ports.ps1
 ### Troubleshooting
 
 - If Docker reports that the daemon is not available, open Docker Desktop and wait for it to finish starting.
-- If PowerShell is not found, install PowerShell 7 and reopen the terminal, or use `pwsh` explicitly.
+- If PowerShell is not found, install the `powershell` formula, reopen the terminal, or use `pwsh` explicitly.
 - If the app says Python is missing, install Python 3 and ensure it is on your `PATH`.
 - If a port is already in use, run the port guard script or stop the stale process before restarting.
 - If dependencies are missing, run:
 
 ```bash
-cd yin
+cd app
 npm install
 ```
 
@@ -166,6 +167,6 @@ The port guard can be run on its own if needed:
 
 ## Project Layout
 
-- [yin/](yin) contains the running Next.js app.
+- [app/](app) contains the running Next.js app.
 - [scripts/start-dev.ps1](scripts/start-dev.ps1) coordinates Postgres, dependency install, and app startup.
-- [yin/database/postgres/seed.sql](yin/database/postgres/seed.sql) contains the SQL seed generated from the migrated data.
+- [app/database/postgres/seed.sql](app/database/postgres/seed.sql) contains the SQL seed generated from the migrated data.
