@@ -38,15 +38,13 @@ class Activity extends Component {
 
   componentDidUpdate(prevProps) {
     const { match, activeLang } = this.props;
-    const previousName = prevProps.match && prevProps.match.params
-      ? prevProps.match.params.name
-      : "";
+    const previousName =
+      prevProps.match && prevProps.match.params
+        ? prevProps.match.params.name
+        : "";
     const nextName = match && match.params ? match.params.name : "";
 
-    if (
-      previousName !== nextName ||
-      prevProps.activeLang !== activeLang
-    ) {
+    if (previousName !== nextName || prevProps.activeLang !== activeLang) {
       this.loadLesson();
     }
   }
@@ -105,14 +103,14 @@ class Activity extends Component {
           {Boolean(baseline) === false ? (
             <Baseline outputFunction={setBaseline} />
           ) : (
-            <Mimicking lesson={{ ...lesson, words }} />
+            <Mimicking lesson={{ ...lesson, words }} baseline={baseline} />
           )}
         </Route>
         <Route path={`/lessons/${name}/4`}>
           {Boolean(baseline) === false ? (
             <Baseline outputFunction={setBaseline} />
           ) : (
-            <Production lessonWords={words} />
+            <Production lessonWords={words} baseline={baseline} />
           )}
         </Route>
         <Route path={`/lessons/${name}/quiz`}>

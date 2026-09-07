@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import Recorder from "./Recorder";
 import PitchChart from "./PitchChart";
 import AudioPlayer from "./AudioPlayer";
@@ -75,11 +76,12 @@ class Mimicking extends Component {
             {this.props.lesson.words[this.state.currentStimuli]
               .native_recording && (
               <PitchChart
+                baseline={this.props.baseline}
                 dataset={[
                   [
                     String(
                       this.props.lesson.words[this.state.currentStimuli]
-                        .native_recording.data
+                        .native_recording.data,
                     ),
                     "blue",
                   ],
@@ -123,3 +125,21 @@ class Mimicking extends Component {
 }
 
 export default Mimicking;
+
+Mimicking.propTypes = {
+  lesson: PropTypes.shape({
+    is_quiz: PropTypes.bool,
+    words: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  recordingOutput: PropTypes.func,
+  advance: PropTypes.func,
+  quiz: PropTypes.string,
+  baseline: PropTypes.number,
+};
+
+Mimicking.defaultProps = {
+  recordingOutput: () => {},
+  advance: () => {},
+  quiz: "false",
+  baseline: 0,
+};

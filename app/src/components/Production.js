@@ -5,7 +5,13 @@ import Recorder from "./Recorder";
 import PitchChart from "./PitchChart";
 import AudioPlayer from "./AudioPlayer";
 
-function Production({ lessonWords, recordingOutput, isQuiz, advance }) {
+function Production({
+  lessonWords,
+  recordingOutput,
+  isQuiz,
+  advance,
+  baseline,
+}) {
   const [record, setRecord] = useState([]);
   const [userDataset, setUserDataset] = useState("");
   const [currentStimuli, setCurrentStimuli] = useState(0);
@@ -67,6 +73,7 @@ function Production({ lessonWords, recordingOutput, isQuiz, advance }) {
             <></>
           )}
           <PitchChart
+            baseline={baseline}
             dataset={
               allowAdvance
                 ? [
@@ -112,6 +119,11 @@ Production.propTypes = {
   recordingOutput: PropTypes.func.isRequired,
   isQuiz: PropTypes.bool.isRequired,
   advance: PropTypes.func.isRequired,
+  baseline: PropTypes.number,
+};
+
+Production.defaultProps = {
+  baseline: 0,
 };
 
 export default Production;

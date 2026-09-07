@@ -35,7 +35,7 @@ function PitchChart({ dataset }) {
     rawDataset,
     width,
     height,
-    { color = "red", chartID = "__visualization" } = {}
+    { color = "red", chartID = "__visualization" } = {},
   ) {
     const parsedData = d3.tsvParse(rawDataset);
     const points = parsedData
@@ -44,7 +44,8 @@ function PitchChart({ dataset }) {
         frequency: Number(row.frequency),
       }))
       .filter(
-        (point) => Number.isFinite(point.time) && Number.isFinite(point.frequency)
+        (point) =>
+          Number.isFinite(point.time) && Number.isFinite(point.frequency),
       );
 
     if (points.length === 0) {
@@ -55,7 +56,10 @@ function PitchChart({ dataset }) {
     const xScale =
       minTime === maxTime
         ? () => width / 2
-        : d3.scaleLinear().domain([minTime, maxTime]).range([10, width - 10]);
+        : d3
+            .scaleLinear()
+            .domain([minTime, maxTime])
+            .range([10, width - 10]);
 
     points.forEach((point) => {
       const x = xScale(point.time);
