@@ -3,6 +3,8 @@ import * as d3 from "d3";
 import PropTypes from "prop-types";
 
 function PitchChart({ dataset }) {
+  const shouldShowDebugCsv = process.env.NODE_ENV !== "production";
+
   function drawPitchChart(divID, width, height) {
     d3.select(`#${divID}`)
       .append("svg")
@@ -82,7 +84,37 @@ function PitchChart({ dataset }) {
     });
   }, [dataset]);
 
-  return <div id="__visualization" />;
+  return (
+    <div>
+      <div id="__visualization" />
+      {shouldShowDebugCsv && dataset.length > 0 ? (
+        <details style={{ marginTop: "16px" }}>
+          <summary>Debug CSV</summary>
+          {dataset.map((curve, index) => {
+            const [rawCsv, color] = curve;
+            return (
+              <div key={`${color}-${index}`} style={{ marginTop: "12px" }}>
+                <strong style={{ color }}>{color}</strong>
+                <pre
+                  style={{
+                    whiteSpace: "pre-wrap",
+                    wordBreak: "break-word",
+                    background: "#fafafa",
+                    border: "1px solid #ddd",
+                    padding: "12px",
+                    maxHeight: "220px",
+                    overflow: "auto",
+                  }}
+                >
+                  {rawCsv}
+                </pre>
+              </div>
+            );
+          })}
+        </details>
+      ) : null}
+    </div>
+  );
 }
 
 PitchChart.propTypes = {

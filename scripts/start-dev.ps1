@@ -55,12 +55,16 @@ function Start-NpmScriptInNewWindow {
 		[string]$ScriptName,
 		[string]$Title,
 		[string]$PythonExecutable = $null,
+		[string]$PraatExecutable = $null,
 		[string]$DatabaseUrl = $null
 	)
 
 	$environmentAssignments = @()
 	if ($PythonExecutable) {
 		$environmentAssignments += "`$env:PYTHON_EXECUTABLE='$PythonExecutable'"
+	}
+	if ($PraatExecutable) {
+		$environmentAssignments += "`$env:PRAAT_EXECUTABLE='$PraatExecutable'"
 	}
 	if ($DatabaseUrl) {
 		$environmentAssignments += "`$env:DATABASE_URL='$DatabaseUrl'"
@@ -104,6 +108,15 @@ function Get-PythonExecutablePreference {
 
 	if (Get-Command python -ErrorAction SilentlyContinue) {
 		return 'python'
+	}
+
+	return $null
+}
+
+function Get-PraatExecutablePreference {
+	$command = Get-Command praat -ErrorAction SilentlyContinue
+	if ($command) {
+		return $command.Source
 	}
 
 	return $null
@@ -273,14 +286,19 @@ if ($UseContainer) {
 }
 else {
 	$pythonExecutable = Get-PythonExecutablePreference
+	$praatExecutable = Get-PraatExecutablePreference
 	if (-not $pythonExecutable) {
 		Write-Host 'No Python runtime found on PATH. Pitch extraction will fail in local mode unless Python 3 is installed.' -ForegroundColor Yellow
 		Write-Host 'Alternative: run container mode with npm run dev:start:container.' -ForegroundColor Yellow
 	}
+	if (-not $praatExecutable) {
+		Write-Host 'No Praat executable found on PATH. Pitch extraction will fail in local mode unless Praat is installed.' -ForegroundColor Yellow
+		Write-Host 'Alternative: install Praat or run container mode with npm run dev:start:container.' -ForegroundColor Yellow
+	}
 
 	Remove-ContainerIfExists -ContainerName 'yin'
 	Remove-ContainerIfExists -ContainerName 'yin-next'
-		Start-NpmScriptInNewWindow -ProjectPath $unifiedRoot -ScriptName 'dev' -Title 'yin unified next app' -PythonExecutable $pythonExecutable -DatabaseUrl $databaseUrlLocal
+		Start-NpmScriptInNewWindow -ProjectPath $unifiedRoot -ScriptName 'dev' -Title 'yin unified next app' -PythonExecutable $pythonExecutable -PraatExecutable $praatExecutable -DatabaseUrl $databaseUrlLocal
 }
 
 Write-Host ''

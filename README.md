@@ -38,6 +38,7 @@ Install these before running the app:
 
 - Node.js LTS (18+ recommended)
 - Python 3
+- Praat
 - Docker Desktop for Mac
 - PowerShell 7 (`pwsh`), installed from Homebrew as the `powershell` formula
 
@@ -46,7 +47,7 @@ If you use Homebrew, the quickest setup is:
 ```bash
 brew update
 brew install node python
-brew install --cask docker
+brew install --cask docker praat
 brew install powershell
 ```
 
@@ -57,6 +58,7 @@ docker info
 node -v
 npm -v
 python3 --version
+praat --version
 pwsh -v
 ```
 
@@ -126,6 +128,7 @@ pwsh -ExecutionPolicy Bypass -File ./scripts/guard-dev-ports.ps1
 - If Docker reports that the daemon is not available, open Docker Desktop and wait for it to finish starting.
 - If PowerShell is not found, install the `powershell` formula, reopen the terminal, or use `pwsh` explicitly.
 - If the app says Python is missing, install Python 3 and ensure it is on your `PATH`.
+- If the app says Praat is missing, install the `praat` cask and ensure the `praat` command is available on your `PATH`.
 - If a port is already in use, run the port guard script or stop the stale process before restarting.
 - If dependencies are missing, run:
 
@@ -138,7 +141,7 @@ npm install
 
 - The application data layer uses PostgreSQL through Sequelize.
 - The current app shell includes the language selector, signup toast, and other UI pieces inside the unified Next.js app.
-- Local mode expects a Python runtime on `PATH` for pitch extraction; container mode is the fallback if Python is not installed locally.
+- Local mode expects both Python 3 and Praat on `PATH` for pitch extraction; container mode is the fallback if either is not installed locally.
 - The main app listens on port `3000` and local development PostgreSQL listens on `5433`; the container still uses `5432` on the Docker network.
 
 ## Startup Options
