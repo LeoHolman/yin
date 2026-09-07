@@ -1,5 +1,4 @@
 # Bugs
-1. the language selector gets cut off
 
 # Infrastructure
 
