@@ -100,7 +100,7 @@ def run_praat_extraction(input_wav: Path, raw_output_path: Path) -> list[tuple[f
 
         try:
             result = subprocess.run(
-                [praat_executable, "--run", str(script_path)],
+                [praat_executable, "--FULL-TRUST", "--run", str(script_path)],
                 check=False,
                 text=True,
                 capture_output=True,
