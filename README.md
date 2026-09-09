@@ -124,6 +124,7 @@ pwsh -ExecutionPolicy Bypass -File ./scripts/guard-dev-ports.ps1
 
 - If Docker reports that the daemon is not available, open Docker Desktop and wait for it to finish starting.
 - If PowerShell is not found, install PowerShell 7 and reopen the terminal, or use `pwsh` explicitly.
+- If you see `sh: nodemon: command not found`, the app dependencies in [yin/](yin) are incomplete. Re-run the startup script after deleting `yin/node_modules`, or run `cd yin && npm install` directly.
 - If the app says Python is missing, install Python 3 and ensure it is on your `PATH`.
 - If a port is already in use, run the port guard script or stop the stale process before restarting.
 - If dependencies are missing, run:

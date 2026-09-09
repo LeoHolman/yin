@@ -43,7 +43,10 @@ function Ensure-NodeModules {
 	param([string]$ProjectPath)
 
 	$nodeModulesPath = Join-Path $ProjectPath 'node_modules'
-	if (-not (Test-Path $nodeModulesPath)) {
+	$nodemonPath = Join-Path $ProjectPath 'node_modules/.bin/nodemon'
+	$nodemonCmdPath = Join-Path $ProjectPath 'node_modules/.bin/nodemon.cmd'
+
+	if (-not (Test-Path $nodeModulesPath) -or (-not (Test-Path $nodemonPath) -and -not (Test-Path $nodemonCmdPath))) {
 		Write-Host "Installing dependencies in $ProjectPath ..." -ForegroundColor Cyan
 		Invoke-ExternalCommand -File 'npm' -Arguments @('install') -WorkingDirectory $ProjectPath
 	}
