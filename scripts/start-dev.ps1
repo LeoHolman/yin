@@ -58,12 +58,16 @@ function Start-NpmScriptInNewWindow {
 		[string]$ScriptName,
 		[string]$Title,
 		[string]$PythonExecutable = $null,
+		[string]$PraatExecutable = $null,
 		[string]$DatabaseUrl = $null
 	)
 
 	$environmentAssignments = @()
 	if ($PythonExecutable) {
 		$environmentAssignments += "`$env:PYTHON_EXECUTABLE='$PythonExecutable'"
+	}
+	if ($PraatExecutable) {
+		$environmentAssignments += "`$env:PRAAT_EXECUTABLE='$PraatExecutable'"
 	}
 	if ($DatabaseUrl) {
 		$environmentAssignments += "`$env:DATABASE_URL='$DatabaseUrl'"
@@ -76,8 +80,23 @@ function Start-NpmScriptInNewWindow {
 	}
 
 	$command = "Set-Location -Path '$ProjectPath'; ${prefix}npm run $ScriptName"
+	$powerShellExecutable = if (Get-Command pwsh -ErrorAction SilentlyContinue) {
+		'pwsh'
+	}
+	elseif (Get-Command powershell -ErrorAction SilentlyContinue) {
+		'powershell'
+	}
+	else {
+		throw "Neither 'pwsh' nor 'powershell' was found on PATH."
+	}
 
-	Start-Process -FilePath 'powershell' -ArgumentList @('-NoExit', '-Command', $command) -WindowStyle Normal | Out-Null
+	$startProcessArguments = @('-NoExit', '-Command', $command)
+	if ($IsWindows) {
+		Start-Process -FilePath $powerShellExecutable -ArgumentList $startProcessArguments -WindowStyle Normal | Out-Null
+	}
+	else {
+		Start-Process -FilePath $powerShellExecutable -ArgumentList $startProcessArguments | Out-Null
+	}
 	Write-Host "Started $Title in a new terminal window." -ForegroundColor Green
 }
 
@@ -92,6 +111,15 @@ function Get-PythonExecutablePreference {
 
 	if (Get-Command python -ErrorAction SilentlyContinue) {
 		return 'python'
+	}
+
+	return $null
+}
+
+function Get-PraatExecutablePreference {
+	$command = Get-Command praat -ErrorAction SilentlyContinue
+	if ($command) {
+		return $command.Source
 	}
 
 	return $null
@@ -222,7 +250,7 @@ Assert-Command -Name 'npm'
 $yinRoot = Split-Path -Parent $PSScriptRoot
 $projectsRoot = Split-Path -Parent $yinRoot
 
-$unifiedRoot = Join-Path $yinRoot 'yin'
+$unifiedRoot = Join-Path $yinRoot 'app'
 $postgresHostPort = 5433
 $databaseUrlLocal = "postgresql://yin:yin@localhost:${postgresHostPort}/yin"
 $databaseUrlContainer = 'postgresql://yin:yin@yin-postgres:5432/yin'
@@ -261,14 +289,19 @@ if ($UseContainer) {
 }
 else {
 	$pythonExecutable = Get-PythonExecutablePreference
+	$praatExecutable = Get-PraatExecutablePreference
 	if (-not $pythonExecutable) {
 		Write-Host 'No Python runtime found on PATH. Pitch extraction will fail in local mode unless Python 3 is installed.' -ForegroundColor Yellow
 		Write-Host 'Alternative: run container mode with npm run dev:start:container.' -ForegroundColor Yellow
 	}
+	if (-not $praatExecutable) {
+		Write-Host 'No Praat executable found on PATH. Pitch extraction will fail in local mode unless Praat is installed.' -ForegroundColor Yellow
+		Write-Host 'Alternative: install Praat or run container mode with npm run dev:start:container.' -ForegroundColor Yellow
+	}
 
 	Remove-ContainerIfExists -ContainerName 'yin'
 	Remove-ContainerIfExists -ContainerName 'yin-next'
-		Start-NpmScriptInNewWindow -ProjectPath $unifiedRoot -ScriptName 'dev' -Title 'yin unified next app' -PythonExecutable $pythonExecutable -DatabaseUrl $databaseUrlLocal
+		Start-NpmScriptInNewWindow -ProjectPath $unifiedRoot -ScriptName 'dev' -Title 'yin unified next app' -PythonExecutable $pythonExecutable -PraatExecutable $praatExecutable -DatabaseUrl $databaseUrlLocal
 }
 
 Write-Host ''

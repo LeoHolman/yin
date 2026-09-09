@@ -27,14 +27,27 @@ function Test-PortBindable {
 function Get-ListeningPids {
     param([int]$Port)
 
-    $connections = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue |
-        Where-Object { $_.State -eq 'Listen' }
+    if (Get-Command Get-NetTCPConnection -ErrorAction SilentlyContinue) {
+        $connections = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue |
+            Where-Object { $_.State -eq 'Listen' }
 
-    if (-not $connections) {
+        if (-not $connections) {
+            return @()
+        }
+
+        return @($connections | Select-Object -ExpandProperty OwningProcess -Unique)
+    }
+
+    if (-not (Get-Command lsof -ErrorAction SilentlyContinue)) {
         return @()
     }
 
-    return @($connections | Select-Object -ExpandProperty OwningProcess -Unique)
+    $pids = & lsof -nP -iTCP:$Port -sTCP:LISTEN -t 2>$null
+    if (-not $pids) {
+        return @()
+    }
+
+    return @($pids | Sort-Object -Unique | ForEach-Object { [int]$_ })
 }
 
 function Stop-ProcessOnPort {
