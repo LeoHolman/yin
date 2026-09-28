@@ -183,6 +183,9 @@ function App() {
               />
               {/* <Route path="/lessons/:name/" component={LessonShow} /> */}
               <Route path="/lessons/" component={LessonDirectory} />
+              <Route exact path="*/explanation">
+                <BaselineExplanation />
+              </Route>
               <Route path="/" component={Home} />
             </Switch>
           ) : (
@@ -192,9 +195,6 @@ function App() {
                 <SignUp onSignupSuccess={checkLogin} />
               </Route>
               {/* <Route exact path="/logout">{this.logOut}</Route> */}
-              <Route exact path="*/explanation">
-                <BaselineExplanation />
-              </Route>
               <Route exact path="/*">
                 <Login submitForm={submitForm} parentError={error} />
               </Route>
