@@ -302,6 +302,9 @@ class ChoiceQuiz extends Component {
               <button onClick={this.handleSubmit} id="submitAnswer">
                 Submit
               </button>
+              <button onClick={this.nextQuestion} id="skipQuestion">
+                Skip
+              </button>
               <button
                 onClick={this.nextQuestion}
                 className="hide"

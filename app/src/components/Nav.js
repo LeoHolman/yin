@@ -71,7 +71,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
             <>
               <li>
                 <span>
-                  Logged in as:
+                  Logged in as:&nbsp;
                   {username}
                   &emsp;|
                 </span>

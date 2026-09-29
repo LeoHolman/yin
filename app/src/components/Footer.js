@@ -11,7 +11,7 @@ function Footer() {
         <p>
           Have any problems, comments, or suggestions?
           <br />
-          Contact us at:
+          Contact us at:&nbsp;
           <a href="mailto:yinwebapp@gmail.com">yinwebapp@gmail.com</a>
         </p>
       </div>
