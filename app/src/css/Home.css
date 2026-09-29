@@ -9,7 +9,7 @@ Dark blue - #245484 (sufficient contrast with white text)
 **/
 
 .classroom #background{
-    background-image: url(../assets/images/background.png);
+    background-color:#FAFFF4;
     position:fixed;
     top:0;
     left:0;
