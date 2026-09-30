@@ -68,21 +68,23 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
             </Link>
           </li>
           {isLoggedIn ? (
-            <>
+            <span>
               <li>
-                <span>
+                <Link to="/profile/" id="nav-profile">
                   Logged in as:&nbsp;
                   {username}
                   &emsp;|
-                </span>
+                </Link>
               </li>
-              <Link to="/logout/" id="logout-link" onClick={logout}>
-                {" "}
-                Logout
-              </Link>
-            </>
+              <li>
+                <Link to="/logout/" id="logout-link" onClick={logout}>
+                  {" "}
+                  Logout
+                </Link>
+              </li>
+            </span>
           ) : (
-            <>
+            <span>
               <li>
                 <Link to="/login/" id="nav-login">
                   Login &emsp;|
@@ -93,7 +95,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
                   Sign Up &emsp;|
                 </Link>
               </li>
-            </>
+            </span>
           )}
           {isTeacher && (
             <li>
