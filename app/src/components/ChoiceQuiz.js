@@ -67,6 +67,7 @@ class ChoiceQuiz extends Component {
   }
 
   handleClick() {
+    document.getElementById("skipQuestion").classList.remove("hide");
     this.setState({ currentStimulus: this.state.currentStimulus + 1 });
     this.reset();
   }
@@ -115,6 +116,7 @@ class ChoiceQuiz extends Component {
       }
 
       document.getElementById("nextQuestion").classList.remove("hide");
+      document.getElementById("skipQuestion").classList.add("hide");
       document.getElementById("submitAnswer").classList.add("hide");
       document.getElementById("feedback-box").style.visibility = "visible";
       this.setState({ error: "" });
