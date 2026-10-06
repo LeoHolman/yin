@@ -6,7 +6,7 @@ function Home() {
   return (
     <div id="main" className="classroom">
       <h2>音</h2>
-      <img src={jojo.src} alt="Jojo" className="jojo-image" />
+      {/* <img src={jojo.src} alt="Jojo" className="jojo-image" /> */}
       <p id="summary">
         Yin Classroom is a companion to Yin to facilitate using Yin's tools and
         activities in the classroom. Teachers can create lessons to correspond
