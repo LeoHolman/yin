@@ -5,7 +5,7 @@ import jojo from "../assets/images/jojo_home.png";
 function Home() {
   return (
     <div id="main" className="classroom">
-      <h2>Welcome to Yin Classroom!</h2>
+      <h2>音</h2>
       <img src={jojo.src} alt="Jojo" className="jojo-image" />
       <p id="summary">
         Yin Classroom is a companion to Yin to facilitate using Yin's tools and
