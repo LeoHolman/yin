@@ -8,8 +8,7 @@ WorkingDirectory=/var/www/yin/app
 Environment=NODE_ENV=production
 Environment=PORT=3000
 EnvironmentFile=/etc/yin.env
-Environment=PATH=/usr/local/bin:/usr/bin:/bin:/snap/bin
-ExecStart=/bin/bash -lc 'cd /var/www/yin/app && exec npm start'
+ExecStart=/root/.nvm/versions/node/v20.20.2/bin/node /root/.nvm/versions/node/v20.20.2/lib/node_modules/npm/bin/npm-cli.js start
 Restart=always
 RestartSec=5
 
