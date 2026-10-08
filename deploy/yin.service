@@ -1,0 +1,16 @@
+[Unit]
+Description=Yin Next App
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/yin/app
+Environment=NODE_ENV=production
+Environment=PORT=3000
+EnvironmentFile=/etc/yin.env
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
