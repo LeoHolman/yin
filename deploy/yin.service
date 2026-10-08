@@ -8,7 +8,7 @@ WorkingDirectory=/var/www/yin/app
 Environment=NODE_ENV=production
 Environment=PORT=3000
 EnvironmentFile=/etc/yin.env
-ExecStart=/root/.nvm/versions/node/v20.20.2/bin/node /root/.nvm/versions/node/v20.20.2/lib/node_modules/npm/bin/npm-cli.js start
+ExecStart=/root/.nvm/versions/node/v20.20.2/bin/node /var/www/yin/app/server.js
 Restart=always
 RestartSec=5
 
