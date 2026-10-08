@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+fi
+
+# Ensure Node/npm are available in non-login shells used by systemd/ssh scripts.
+export PATH="/root/.nvm/versions/node/v20.20.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+
 APP_DIR="${APP_DIR:-/var/www/yin}"
 REPO_URL="${REPO_URL:-https://github.com/LeoHolman/YinReact.git}"
 BRANCH="${BRANCH:-main}"
+
+command -v node >/dev/null 2>&1 || { echo "Node is not installed or not on PATH."; exit 1; }
+command -v npm >/dev/null 2>&1 || { echo "npm is not installed or not on PATH."; exit 1; }
 
 echo "Ensuring app directory exists: ${APP_DIR}"
 mkdir -p "${APP_DIR}"
