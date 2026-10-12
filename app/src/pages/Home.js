@@ -33,7 +33,6 @@ function Home() {
           </Link>
         </div>
       </section>
-      <div id="background" />
     </div>
   );
 }
