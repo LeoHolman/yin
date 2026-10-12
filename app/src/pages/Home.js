@@ -24,7 +24,7 @@ function Home() {
         <div id="tutorial">
           {/* reusing previous buttons but need new paths! */}
           <Link to="/lessons/"> 
-            <button type="button">tutorialS</button>
+            <button type="button">tutorial</button>
           </Link>
         </div>
         <div id="start_home">
