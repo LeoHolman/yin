@@ -1,28 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import jojo from "../assets/images/jojo_home.png";
 
 function Home() {
   return (
-    <div id="main" className="classroom">
+    <div id="main" className="landingpage">
+    
       <h2>音</h2>
-      {/* <img src={jojo.src} alt="Jojo" className="jojo-image" /> */}
-      <p id="summary">
-        Yin Classroom is a companion to Yin to facilitate using Yin's tools and
-        activities in the classroom. Teachers can create lessons to correspond
-        with classroom curriculum, upload audio for vocabulary lists, and add
-        quizzes to test their students. Students can practice the words they'll
-        actually need to know for class, and take quizzes at their convenience.
+  
+      <p id="definition">
+        yīn (n.)
+        sound
+        tone
+        pitch
+        pronunciation
       </p>
-      <section className="intro">
-        <div id="students">
-          <Link to="/lessons/">
-            <button type="button">STUDENTS</button>
+      <section className="about">
+        <div>
+          <h2>About</h2>
+          <p>Yin is made for learners of Mandarin Chinese to practice their tones.
+            Learn through structured lessons and compare your pronunciation with native speakers!
+          </p>
+        </div>
+        <div id="tutorial">
+          {/* reusing previous buttons but need new paths! */}
+          <Link to="/lessons/"> 
+            <button type="button">tutorialS</button>
           </Link>
         </div>
-        <div id="teachers">
+        <div id="start_home">
           <Link to="/teacherInterface/">
-            <button type="button">TEACHERS</button>
+            <button type="button">start</button>
           </Link>
         </div>
       </section>
