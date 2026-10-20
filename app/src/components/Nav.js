@@ -31,7 +31,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
     <>
       <nav id="main">
         <ul>
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? (
             <li>
               <Dropdown>
                 <Dropdown.Toggle
@@ -56,7 +56,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
                 </Dropdown.Menu>
               </Dropdown>
             </li>
-          ) : null}
+          ) : null} */}
           <li>
             <a id="nav-old-yin" href="/">
               Return to Yin
