@@ -142,6 +142,7 @@ npm install
 
 - The application data layer uses PostgreSQL through Sequelize.
 - The current app shell includes the language selector, signup toast, and other UI pieces inside the unified Next.js app.
+- In development, the app runs through a custom Express + Next server. The dev script uses `node --watch server.js`, which restarts the server when server code changes while letting Next’s built-in HMR handle front-end updates in the browser.
 - Local mode expects both Python 3 and Praat on `PATH` for pitch extraction; container mode is the fallback if either is not installed locally.
 - The main app listens on port `3000` and local development PostgreSQL listens on `5433`; the container still uses `5432` on the Docker network.
 
