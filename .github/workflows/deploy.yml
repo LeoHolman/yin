@@ -1,0 +1,42 @@
+name: Deploy Yin to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install and build app
+        working-directory: app
+        run: |
+          npm ci --include=dev
+          npm run build
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DO_SSH_KEY }}
+          known_hosts: ${{ secrets.DO_KNOWN_HOSTS }}
+
+      - name: Copy deployment script to the server
+        run: |
+          scp -o StrictHostKeyChecking=yes scripts/deploy.sh "${{ secrets.DO_USER }}@${{ secrets.DO_HOST }}:/tmp/deploy-yin.sh"
+
+      - name: Deploy app on the server
+        run: |
+          ssh -o StrictHostKeyChecking=yes "${{ secrets.DO_USER }}@${{ secrets.DO_HOST }}" \
+            "chmod +x /tmp/deploy-yin.sh && APP_DIR='${{ secrets.DO_APP_DIR }}' REPO_URL='https://github.com/${{ github.repository }}.git' BRANCH='main' /tmp/deploy-yin.sh"
