@@ -51,6 +51,11 @@ nav li a, nav li span {
     text-decoration: none;
 }
 
+#navbar {
+    padding: 5;
+}
+
+
 .link:hover{
     color:#3070B0;
 }
