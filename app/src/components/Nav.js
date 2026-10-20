@@ -29,7 +29,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
 
   return (
     <>
-      <nav id="main">
+      <nav id="navbar">
         <ul>
           {/* {isLoggedIn ? (
             <li>
