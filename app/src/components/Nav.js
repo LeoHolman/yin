@@ -64,16 +64,16 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
           </li>
           <li>
             <Link to="/lessons/" id="nav-lessons-quizzes">
-              Lessons & Quizzes &emsp;|
+              Lessons & Quizzes 
             </Link>
           </li>
           {isLoggedIn ? (
             <span>
               <li>
                 <Link to="/profile/" id="nav-profile">
-                  Logged in as:&nbsp;
+                  Logged in as: &nbsp; &nbsp;
                   {username}
-                  &emsp;|
+                  
                 </Link>
               </li>
               <li>
@@ -87,12 +87,12 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
             <span>
               <li>
                 <Link to="/login/" id="nav-login">
-                  Login &emsp;|
+                  Login 
                 </Link>
               </li>
               <li>
                 <Link to="/SignUp" id="nav-signup">
-                  Sign Up &emsp;|
+                  Sign Up 
                 </Link>
               </li>
             </span>
@@ -100,7 +100,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
           {isTeacher && (
             <li>
               <Link to="/teacherInterface/" id="nav-teacher-interface">
-                Teachers &emsp;|
+                Teachers 
               </Link>
             </li>
           )}
