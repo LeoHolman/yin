@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 const { spawn } = require("child_process");
+const wavDecoder = require("wav-decoder");
+const { YIN } = require("pitchfinder");
 
 const PYTHON_SCRIPT_PATH = path.join(__dirname, "extract_pitch.py");
 const WAV_HEADER = "time\tfrequency";
@@ -169,6 +171,29 @@ async function runPitchExtractor(wavPath, csvPath) {
   );
 }
 
+async function extractPitchFromWavFileFallback(wavPath) {
+  const buffer = await fs.promises.readFile(wavPath);
+  const { sampleRate, channelData } = await wavDecoder.decode(buffer);
+  const samples = channelData[0] || channelData;
+  const detector = YIN({ sampleRate });
+  const step = Math.max(1024, Math.floor(sampleRate * 0.02));
+  const rows = [];
+
+  for (let offset = 0; offset + step <= samples.length; offset += step) {
+    const frame = samples.subarray(offset, offset + step);
+    const frequency = detector(frame);
+    if (
+      Number.isFinite(frequency) &&
+      frequency > 50 &&
+      frequency < 2000
+    ) {
+      rows.push(`${offset / sampleRate}\t${frequency}`);
+    }
+  }
+
+  return [WAV_HEADER, ...rows].join("\n");
+}
+
 async function extractPitchFromWavFile(wavPath) {
   const tempDir = await fs.promises.mkdtemp(
     path.join(os.tmpdir(), "yin-pitch-"),
@@ -176,9 +201,17 @@ async function extractPitchFromWavFile(wavPath) {
   const csvPath = path.join(tempDir, "output.csv");
 
   try {
-    await runPitchExtractor(wavPath, csvPath);
-    const rawCsv = await fs.promises.readFile(csvPath, "utf8");
-    return normalizePitchCsv(rawCsv);
+    try {
+      await runPitchExtractor(wavPath, csvPath);
+      const rawCsv = await fs.promises.readFile(csvPath, "utf8");
+      return normalizePitchCsv(rawCsv);
+    } catch (error) {
+      console.warn(
+        "Praat/Python pitch extraction failed; falling back to Node pitch detection.",
+        error,
+      );
+      return await extractPitchFromWavFileFallback(wavPath);
+    }
   } finally {
     await fs.promises.rm(tempDir, { recursive: true, force: true });
   }
