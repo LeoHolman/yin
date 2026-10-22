@@ -6,7 +6,7 @@ function Footer() {
       <div className="footer">
         <p>
           © Anna Liang, Christopher Eng, Chiny Okonkwo, Lawrence Meng, Leo
-          Holman, Christine McCullough
+          Holman, Christine McCullough, Ava Inskeep, Catherine Watkins, Angelina Placencia
         </p>
         <p>
           Have any problems, comments, or suggestions?
