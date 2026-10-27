@@ -1,9 +1,19 @@
-#signUp {
-    border: solid #9A2D04;
+/* .container {
+    display: flex;
 }
 
-form {
-    border-radius: 5px;
-    background-color: #FFCD6D;
+.container div {
+    margin: 10px;
     padding: 20px;
+    font-size: 30px;
+} */
+
+form {
+    border-radius: 25px;
+    /* background-color: #FFCD6D; */
+    width: 632px;
+    height: 859px;
+    border-radius: 25px;
+    border: 8px solid #970C12;
+    background: rgba(255, 205, 109, 0.50);
 }

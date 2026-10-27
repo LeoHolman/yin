@@ -154,11 +154,11 @@ class SignUp extends Component {
         </label>
         <p id="error">{errorMessage}</p>
         <input type="submit" value="Submit" />
-        <p>
+        {/* <p>
           If you are a teacher, please
           <a href="mailto:yinwebapp@gmail.com">contact us</a>
           for special permissions.
-        </p>
+        </p> */}
       </form>
     );
   }

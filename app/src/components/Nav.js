@@ -13,9 +13,9 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
   const location = useLocation();
   const isLessonsSubpage = location.pathname.split("/").length === 4;
 
-  const handleLanguageClick = (newLanguage) => {
-    setActiveLang(newLanguage);
-  };
+  // const handleLanguageClick = (newLanguage) => {
+  //   setActiveLang(newLanguage);
+  // };
 
   const openMobileNav = () => {
     open ? setOpen(false) : setOpen(true);
