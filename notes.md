@@ -2,8 +2,6 @@
 
 # Infrastructure
 
-1. add project file and folder explaination
-
 # features
 
 1. automatic scoring
