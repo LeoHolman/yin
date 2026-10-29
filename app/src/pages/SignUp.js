@@ -152,8 +152,8 @@ class SignUp extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <p id="error">{errorMessage}</p>
-        <input type="submit" value="Submit" />
+        {/* <p id="error">{errorMessage}</p>
+        <input type="submit" value="Submit" /> */}
         {/* <p>
           If you are a teacher, please
           <a href="mailto:yinwebapp@gmail.com">contact us</a>
