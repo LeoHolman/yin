@@ -152,11 +152,13 @@ npm install
 You can also call the PowerShell orchestrator directly:
 
 ```powershell
-./scripts/start-dev.ps1 -SkipRestore
+./scripts/start-dev.ps1 -ResetDatabase
 ./scripts/start-dev.ps1 -SkipInstall
 ./scripts/start-dev.ps1 -SkipPortGuard
 ./scripts/start-dev.ps1 -UseContainer
 ```
+
+By default, the PostgreSQL data is kept in a Docker volume so new user data is not wiped when the app restarts. Use `-ResetDatabase` only when you intentionally want to reset the database back to the seed data.
 
 The port guard can be run on its own if needed:
 

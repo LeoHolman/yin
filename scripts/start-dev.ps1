@@ -2,7 +2,8 @@ param(
 	[switch]$SkipRestore,
 	[switch]$SkipInstall,
 	[switch]$SkipPortGuard,
-	[switch]$UseContainer
+	[switch]$UseContainer,
+	[switch]$ResetDatabase
 )
 
 $ErrorActionPreference = 'Stop'
@@ -159,6 +160,26 @@ function Remove-ContainerIfExists {
 	}
 }
 
+function Ensure-Volume {
+	param([string]$VolumeName)
+
+	$exists = docker volume ls --filter "name=^$VolumeName$" --format '{{.Name}}'
+	if (-not $exists) {
+		Write-Host "Creating docker volume '$VolumeName'..." -ForegroundColor Cyan
+		Invoke-ExternalCommand -File 'docker' -Arguments @('volume', 'create', $VolumeName)
+	}
+}
+
+function Remove-VolumeIfExists {
+	param([string]$VolumeName)
+
+	$exists = docker volume ls --filter "name=^$VolumeName$" --format '{{.Name}}'
+	if ($exists) {
+		Write-Host "Removing existing docker volume '$VolumeName'..." -ForegroundColor Cyan
+		Invoke-ExternalCommand -File 'docker' -Arguments @('volume', 'rm', '-f', $VolumeName)
+	}
+}
+
 function Ensure-DockerNetwork {
 	param([string]$NetworkName)
 
@@ -213,16 +234,23 @@ function Start-PostgresContainer {
 		[string]$ContainerName,
 		[string]$NetworkName,
 		[int]$HostPort,
-		[switch]$SkipRestore
+		[switch]$SkipRestore,
+		[switch]$ResetDatabase
 	)
 
-	if (-not $SkipRestore) {
+	if ($ResetDatabase) {
 		Remove-ContainerIfExists -ContainerName $ContainerName
+		Remove-VolumeIfExists -VolumeName 'yin-postgres-data'
+	}
+	elseif (-not $SkipRestore) {
+		Write-Host 'Keeping the PostgreSQL data volume intact; use -ResetDatabase to wipe it.' -ForegroundColor Yellow
 	}
 
+	Ensure-Volume -VolumeName 'yin-postgres-data'
 	Ensure-ContainerRunning -ContainerName $ContainerName -ImageName 'postgres:16' -RunArguments @(
 		'--network', $NetworkName,
 		'-p', "${HostPort}:5432",
+		'-v', 'yin-postgres-data:/var/lib/postgresql/data',
 		'-e', 'POSTGRES_USER=yin',
 		'-e', 'POSTGRES_PASSWORD=yin',
 		'-e', 'POSTGRES_DB=yin'
@@ -282,7 +310,7 @@ else {
 Write-Host 'Checking Docker daemon...' -ForegroundColor Cyan
 Invoke-ExternalCommand -File 'docker' -Arguments @('info')
 Ensure-DockerNetwork -NetworkName $networkName
-Start-PostgresContainer -ContainerName 'yin-postgres' -NetworkName $networkName -HostPort $postgresHostPort -SkipRestore:$SkipRestore
+Start-PostgresContainer -ContainerName 'yin-postgres' -NetworkName $networkName -HostPort $postgresHostPort -SkipRestore:$SkipRestore -ResetDatabase:$ResetDatabase
 
 	Wait-ForPostgres -ContainerName 'yin-postgres'
 
