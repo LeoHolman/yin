@@ -28,7 +28,7 @@ function Home() {
           </Link>
         </div>
         <div id="start_home">
-          <Link to="/teacherInterface/">
+          <Link to="/lessons/">
             <button type="button">start</button>
           </Link>
         </div>
