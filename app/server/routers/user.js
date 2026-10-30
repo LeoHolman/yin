@@ -6,6 +6,24 @@ const { User } = require('../models');
 
 const router = new express.Router();
 
+function parseBoolean(value) {
+    if (typeof value === 'boolean') {
+        return value;
+    }
+
+    if (typeof value === 'string') {
+        const normalized = value.trim().toLowerCase();
+        if (['true', '1', 'yes'].includes(normalized)) {
+            return true;
+        }
+        if (['false', '0', 'no'].includes(normalized)) {
+            return false;
+        }
+    }
+
+    return null;
+}
+
 router.post('/api/signup/', async (req, res) => {
     const username = req.body.username;
     const nameUnavailable = await User.findOne({ where: { username } });
@@ -119,6 +137,40 @@ router.post('/api/user/activeLang/add/', auth, async (req, res, next) => {
     user.activeLang = req.body.activeLang;
     await user.save();
     res.sendStatus(204);
+});
+
+router.post('/api/admin/user/teacher/set/', async (req, res, next) => {
+    try {
+        const username = String(req.body.username || '').trim();
+        const isTeacher = parseBoolean(req.body.is_teacher);
+
+        if (!username) {
+            res.status(400).send('username is required');
+            return;
+        }
+
+        if (isTeacher === null) {
+            res.status(400).send('is_teacher must be a boolean');
+            return;
+        }
+
+        const userToUpdate = await User.findOne({ where: { username } });
+        if (!userToUpdate) {
+            res.status(404).send('User not found');
+            return;
+        }
+
+        userToUpdate.is_teacher = isTeacher;
+        await userToUpdate.save();
+
+        res.status(200).json({
+            username: userToUpdate.username,
+            is_teacher: Boolean(userToUpdate.is_teacher),
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Unable to update teacher permissions');
+    }
 });
 //this works now!! i think
 

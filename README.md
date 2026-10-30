@@ -191,6 +191,45 @@ The port guard can be run on its own if needed:
 - Local mode expects a Python runtime on `PATH` for pitch extraction; container mode is the fallback if Python is not installed locally.
 - The main app listens on port `3000` and local development PostgreSQL listens on `5433`; the container still uses `5432` on the Docker network.
 
+## Manage Teacher Permissions
+
+Yin now includes an admin endpoint to promote or demote app users without direct SQL updates.
+
+Endpoint:
+
+```text
+POST /api/admin/user/teacher/set/
+```
+
+Request body:
+
+```json
+{
+	"username": "target_username",
+	"is_teacher": true
+}
+```
+
+Authorization options:
+
+- None. This endpoint is currently open and does not require authentication.
+
+Direct curl example:
+
+```bash
+curl -X POST "https://<your-staging-host>/api/admin/user/teacher/set/" \
+	-H "Content-Type: application/json" \
+	-d '{"username":"target_username","is_teacher":true}'
+```
+
+To revoke teacher permissions, set `is_teacher` to `false`.
+
+You can also run the helper script from the repo root:
+
+```powershell
+npm run user:set-teacher -- --host https://<your-staging-host> --target-username <target_username> --is-teacher true
+```
+
 ## Project Layout
 
 - [app/](app) contains the running Next.js app.
