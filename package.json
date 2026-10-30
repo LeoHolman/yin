@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:start": "powershell -ExecutionPolicy Bypass -File ./scripts/start-dev.ps1",
-    "dev:start:container": "powershell -ExecutionPolicy Bypass -File ./scripts/start-dev.ps1 -UseContainer"
+    "dev:start:container": "powershell -ExecutionPolicy Bypass -File ./scripts/start-dev.ps1 -UseContainer",
+    "db:dump": "node app/scripts/generate-postgres-seed.js",
+    "db:restore": "node app/scripts/restore-postgres-seed.js"
   },
   "repository": {
     "type": "git",

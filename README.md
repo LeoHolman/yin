@@ -28,6 +28,24 @@ npm run dev:start:container
 
 That path builds the `yin` container, joins it to the `yin-net` Docker network, and connects it to the same PostgreSQL instance.
 
+### Dump the database as a seed
+
+If you want to capture the current PostgreSQL data so it can be restored later or used as a seed file, run:
+
+```powershell
+npm run db:dump
+```
+
+This writes the current database to [app/database/postgres/seed.sql](app/database/postgres/seed.sql) using `pg_dump` against the running `yin-postgres` Docker container.
+
+To restore the database from that saved seed file, run:
+
+```powershell
+npm run db:restore
+```
+
+This replays the SQL in [app/database/postgres/seed.sql](app/database/postgres/seed.sql) back into the running PostgreSQL container.
+
 ## macOS Setup and Run
 
 The project is designed to start with a PowerShell orchestration script, so macOS users should install the required tooling first and then run the same startup flow from the repo root.
