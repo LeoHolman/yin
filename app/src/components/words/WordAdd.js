@@ -36,25 +36,36 @@ class AudioUpload extends Component {
   //     })
   // }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData();
-    formData.append(
-      "audioFile",
-      document.getElementById("audioFileInput").files[0]
-    );
+    const file = document.getElementById("audioFileInput").files[0];
+
+    if (!file) {
+      alert("Please choose an audio file first.");
+      return;
+    }
+
+    formData.append("audioFile", file);
     formData.append("pinyin", this.state.pinyin);
     formData.append("correctTone", this.state.correct);
     formData.append("character", this.state.character);
 
-    // formData.append('alternateTones', this.state.alternateTones);
-    fetch("/api/words/add/", {
-      method: "POST",
-      body: formData,
-    }).then((response) => {
-      console.log(response);
-    });
-    this.setState({ form_complete: true });
+    try {
+      const response = await fetch("/api/words/add/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Upload failed with status ${response.status}`);
+      }
+
+      this.setState({ form_complete: true });
+    } catch (error) {
+      console.error("Word upload failed:", error);
+      alert("The audio upload failed. Please try again.");
+    }
   }
 
   render() {

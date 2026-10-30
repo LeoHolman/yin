@@ -8,19 +8,26 @@ const randomBytes = require('randombytes');
 const router = new express.Router();
 
 router.post('/api/words/add/', async (req, res, next) => {
-    const relativeBase = path.join('uploads', 'test');
-    const audioDirPath = path.join(path.dirname(__dirname), relativeBase);
-    const audioPath = path.join(audioDirPath, req.files.audioFile.name);
-    const storePath = path.join('test', req.files.audioFile.name);
+    const file = req.files && req.files.audioFile;
+    if (!file) {
+        res.status(400).send('Missing file upload in form field "audioFile".');
+        return;
+    }
+
+    const audioDirPath = path.join(path.dirname(__dirname), 'uploads');
+    const safeFileName = path.basename(file.name || 'upload.wav');
+    const audioPath = path.join(audioDirPath, safeFileName);
+    const storePath = safeFileName;
     const pinyin = req.body.pinyin;
     const correctTone = [Number(req.body.correctTone)];
     const character = req.body.character;
+
     try {
-        if(!fs.existsSync(audioDirPath)){
+        if (!fs.existsSync(audioDirPath)) {
             fs.mkdirSync(audioDirPath, { recursive: true });
         }
-        const incomingFile = req.files.audioFile;
-        await incomingFile.mv(audioPath);
+
+        await file.mv(audioPath);
 
         const formattedData = await extractPitchFromWavFile(audioPath);
         const newNativeRecording = await NativeRecording.create({
@@ -36,10 +43,11 @@ router.post('/api/words/add/', async (req, res, next) => {
             character,
             native_recording_id: newNativeRecording._id,
         });
+
         res.status(200).send('Upload complete.');
         return;
     } catch (ex) {
-        console.log(ex);
+        console.error('Word upload failed:', ex);
         res.status(500).send('Internal server error');
     }
 });
