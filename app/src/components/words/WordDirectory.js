@@ -9,11 +9,26 @@ class WordDirectory extends Component {
     this.state = {
       words: [],
     };
+    this.loadWords = this.loadWords.bind(this);
   }
 
-  async componentDidMount() {
-    const words = await (await fetch("/api/words/all/")).json();
-    this.setState({ words });
+  async loadWords() {
+    try {
+      const words = await (await fetch("/api/words/all/")).json();
+      this.setState({ words });
+    } catch (error) {
+      console.error("Failed to fetch words:", error);
+    }
+  }
+
+  componentDidMount() {
+    this.loadWords();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location?.pathname !== this.props.location?.pathname) {
+      this.loadWords();
+    }
   }
 
   render() {

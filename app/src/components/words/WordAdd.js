@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 
 class AudioUpload extends Component {
   constructor(props) {
@@ -61,7 +60,9 @@ class AudioUpload extends Component {
         throw new Error(`Upload failed with status ${response.status}`);
       }
 
-      this.setState({ form_complete: true });
+      this.setState({ form_complete: true }, () => {
+        this.props.history.push("/teacherInterface/words/");
+      });
     } catch (error) {
       console.error("Word upload failed:", error);
       alert("The audio upload failed. Please try again.");
@@ -71,9 +72,7 @@ class AudioUpload extends Component {
   render() {
     return (
       <>
-        {this.state.form_complete ? (
-          <Redirect to="/teacherInterface/words/" />
-        ) : (
+        {!this.state.form_complete ? (
           <form onSubmit={this.handleSubmit} className="audioForm">
             <label htmlFor="audioFileInput">Audio File:</label>
             <input id="audioFileInput" type="file" name="audioFile" />
@@ -105,7 +104,7 @@ class AudioUpload extends Component {
               <input type="submit" value="Submit" />
             </label>
           </form>
-        )}
+        ) : null}
       </>
     );
   }
