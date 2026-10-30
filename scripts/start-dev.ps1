@@ -178,11 +178,11 @@ function Start-UnifiedAppContainer {
 		[string]$ImageName
 	)
 
-	$uploadsPath = Join-Path $ProjectPath 'server\uploads'
+	$uploadsPath = Join-Path $ProjectPath 'server/uploads'
 	if (-not (Test-Path $uploadsPath)) {
 		New-Item -Path $uploadsPath -ItemType Directory -Force | Out-Null
 	}
-	$uploadsPathForDocker = $uploadsPath -replace '\\', '/'
+	$projectPathForDocker = $ProjectPath -replace '\\', '/'
 
 	Write-Host "Building unified app image '$ImageName'..." -ForegroundColor Cyan
 	Invoke-ExternalCommand -File 'docker' -Arguments @('build', '-t', $ImageName, '.') -WorkingDirectory $ProjectPath
@@ -196,9 +196,15 @@ function Start-UnifiedAppContainer {
 		'--name', $ContainerName,
 		'--network', $NetworkName,
 		'-p', '3000:3000',
+		'-e', 'NODE_ENV=development',
+		'-e', 'CHOKIDAR_USEPOLLING=true',
+		'-e', 'WATCHPACK_POLLING=true',
 		'-e', "DATABASE_URL=$DatabaseUrl",
-		'-v', "${uploadsPathForDocker}:/app/server/uploads",
-		$ImageName
+		'-v', "${projectPathForDocker}:/app",
+		'-v', 'yin-app-node-modules:/app/node_modules',
+		'-v', 'yin-next-cache:/app/.next',
+		$ImageName,
+		'npm', 'run', 'dev:container'
 	)
 }
 

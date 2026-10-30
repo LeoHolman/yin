@@ -105,6 +105,7 @@ pwsh -ExecutionPolicy Bypass -File ./scripts/start-dev.ps1 -UseContainer
 ```
 
 This builds the app image and runs the app container while PostgreSQL remains in Docker on the same network.
+Container mode now bind-mounts the app source and runs the dev server with polling, so edits under app/ hot reload automatically.
 
 ### Common macOS options
 
