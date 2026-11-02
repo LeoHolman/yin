@@ -6,12 +6,12 @@ function Footer() {
       <div className="footer">
         <p>
           © Anna Liang, Christopher Eng, Chiny Okonkwo, Lawrence Meng, Leo
-          Holman, Christine McCullough
+          Holman, Christine McCullough, Ava Inskeep, Catherine Watkins, Angelina Placencia
         </p>
         <p>
           Have any problems, comments, or suggestions?
           <br />
-          Contact us at:
+          Contact us at:&nbsp;
           <a href="mailto:yinwebapp@gmail.com">yinwebapp@gmail.com</a>
         </p>
       </div>

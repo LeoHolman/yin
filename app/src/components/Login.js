@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function Login({ submitForm, parentError }) {
   const [fUsername, setFUsername] = useState("");
@@ -66,7 +66,7 @@ function Login({ submitForm, parentError }) {
           {parentError} {error}
         </p>
       </form>
-      {/* <Link to="/SignUp">Don't have an account? Sign up.</Link> */}
+      <Link to="/SignUp">Don't have an account? Sign up.</Link>
     </>
   );
 }
