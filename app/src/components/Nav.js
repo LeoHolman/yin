@@ -13,9 +13,9 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
   const location = useLocation();
   const isLessonsSubpage = location.pathname.split("/").length === 4;
 
-  // const handleLanguageClick = (newLanguage) => {
-  //   setActiveLang(newLanguage);
-  // };
+  const handleLanguageClick = (newLanguage) => {
+    setActiveLang(newLanguage);
+  };
 
   const openMobileNav = () => {
     open ? setOpen(false) : setOpen(true);
@@ -29,9 +29,9 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
 
   return (
     <>
-      <nav id="navbar">
+      <nav id="main">
         <ul>
-          {/* {isLoggedIn ? (
+          {isLoggedIn ? (
             <li>
               <Dropdown>
                 <Dropdown.Toggle
@@ -56,7 +56,7 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
                 </Dropdown.Menu>
               </Dropdown>
             </li>
-          ) : null} */}
+          ) : null}
           <li>
             <a id="nav-old-yin" href="/">
               Return to Yin
@@ -64,43 +64,41 @@ function Nav({ isLoggedIn, isTeacher, username, logout, activeLang }) {
           </li>
           <li>
             <Link to="/lessons/" id="nav-lessons-quizzes">
-              Lessons & Quizzes 
+              Lessons & Quizzes &emsp;|
             </Link>
           </li>
           {isLoggedIn ? (
-            <span>
+            <>
               <li>
-                <Link to="/profile/" id="nav-profile">
-                  Logged in as: &nbsp; &nbsp;
+                <span>
+                  Logged in as:
                   {username}
-                  
-                </Link>
+                  &emsp;|
+                </span>
               </li>
-              <li>
-                <Link to="/logout/" id="logout-link" onClick={logout}>
-                  {" "}
-                  Logout
-                </Link>
-              </li>
-            </span>
+              <Link to="/logout/" id="logout-link" onClick={logout}>
+                {" "}
+                Logout
+              </Link>
+            </>
           ) : (
-            <span>
+            <>
               <li>
                 <Link to="/login/" id="nav-login">
-                  Login 
+                  Login &emsp;|
                 </Link>
               </li>
               <li>
                 <Link to="/SignUp" id="nav-signup">
-                  Sign Up 
+                  Sign Up &emsp;|
                 </Link>
               </li>
-            </span>
+            </>
           )}
           {isTeacher && (
             <li>
               <Link to="/teacherInterface/" id="nav-teacher-interface">
-                Teachers 
+                Teachers &emsp;|
               </Link>
             </li>
           )}
