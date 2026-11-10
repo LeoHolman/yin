@@ -17,10 +17,3 @@ form {
     border: 8px solid #970C12;
     background: rgba(255, 205, 109, 0.50);
 }
-
-#loginform h3 {
-    font-family: "Averia Sans Libre", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 50px;
-}
