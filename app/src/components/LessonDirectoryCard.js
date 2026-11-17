@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+//variables that it takes
 function LessonDirectoryCard({
   lessonName,
   link,
@@ -11,11 +12,14 @@ function LessonDirectoryCard({
 }) {
   const [activityOpen, setActivityOpen] = useState(false);
 
+  //sets to opposite value
   function toggleActivityList() {
     setActivityOpen(!activityOpen);
   }
 
+  //this is what is displayed
   return (
+    // there are currently no quizzes according to the api, so isQuiz==true is n/a
     <div className="lessonCard">
       {isQuiz ? (
         <Link to={`${link}quiz`} style={{ textDecoration: "none" }}>
@@ -30,6 +34,7 @@ function LessonDirectoryCard({
           </div>
         </Link>
       ) : (
+        //lesson display
         <>
           <div className="meta" onClick={toggleActivityList}>
             <h2>

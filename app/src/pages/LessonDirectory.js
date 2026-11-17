@@ -11,7 +11,9 @@ import { userContext } from "../context/userContext";
 
 function LessonDirectory() {
   const [allLessons, setAllLessons] = useState([]);
-  const activeLang = useContext(userContext);
+  const activeLang = useContext(userContext); //sets activeLang to null from userContext
+
+
   /**
     constructor(props){
         super(props)
@@ -32,10 +34,12 @@ function LessonDirectory() {
 // wip
      */
 
+
+
   useEffect(() => {
-    fetch(`/api/lessons/all/`).then((response) =>
+    fetch(`/api/lessons/all/`).then((response) =>   //requests all lessons from the api
       response.json().then((result) => {
-        const lessons = Array.isArray(result) ? result : [];
+        const lessons = Array.isArray(result) ? result : [];    //stores them in lessons array, is set to be empty if there are no results
         const normalizedActive = String(activeLang || "").trim().toLowerCase();
 
         const safeLessons = lessons.filter((lesson) => {
@@ -65,9 +69,11 @@ function LessonDirectory() {
   return (
     <div>
       <ul>
+        {/* loops thru all lessons */}
         {allLessons.map((lesson) => {
-          const { _id: lessonId, name, description } = lesson;
+          const { _id: lessonId, name, description } = lesson;    //these are values stored in api/lessons/all
           const isQuiz = lesson.is_quiz;
+          // for each lesson, a lesson card is made, which is an expandable menu
           return (
             <LessonDirectoryCard
               lessonName={name}
