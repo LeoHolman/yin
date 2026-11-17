@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node --watch server.js",
+    "dev": "nodemon --legacy-watch --watch server --watch pages --watch src --watch server.js --ignore .next/ --ignore node_modules/ --ignore server/uploads/ --ext js,jsx,json,css,scss,sql server.js",
     "dev:container": "nodemon --legacy-watch --watch server --watch pages --watch src --watch server.js --ext js,jsx,json,ts,tsx,css,scss,sql server.js",
     "dev:once": "node server.js",
     "build": "next build",
